@@ -1,0 +1,5566 @@
+[
+    {
+        "id": 1,
+        "name": "leon alejandra",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    3,
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "villagran sidney hernan",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    11,
+                    12
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    7,
+                    8
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    5,
+                    6
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "bartolo leonardo mauricio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    3,
+                    4
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 13,
+                "related_sections": [
+                    13
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 14,
+                "related_sections": [
+                    14
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 10,
+                "related_sections": [
+                    19,
+                    20
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 19,
+                "related_sections": [
+                    19
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 20,
+                "related_sections": [
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "paredes daniela victoria",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    5,
+                    6
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    11,
+                    12
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    17,
+                    18
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 17,
+                "related_sections": [
+                    17
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 18,
+                "related_sections": [
+                    18
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "olivares marco andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    7,
+                    8
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "LABORATORIO",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    15,
+                    16
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 15,
+                "related_sections": [
+                    15
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 16,
+                "related_sections": [
+                    16
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    3,
+                    4
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    7,
+                    8
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "eremeev vitalie",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1000",
+                "course_name": "mecánica",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    13,
+                    14
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    13,
+                    14
+                ]
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "lavin roberto osvaldo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "name": "miranda mario ernesto brayan",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    5,
+                    6
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "name": "rivera josé ricardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            },
+            {
+                "course_code": "CBF1001",
+                "course_name": "calor y ondas",
+                "event_type": "LABORATORIO",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    9,
+                    10
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            },
+            {
+                "course_code": "CBF1002",
+                "course_name": "electricidad y magnetismo",
+                "event_type": "LABORATORIO",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "name": "rivero rosa elvira",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 14,
+                "related_sections": [
+                    14
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 18,
+                "related_sections": [
+                    18
+                ]
+            },
+            {
+                "course_code": "CBM1003",
+                "course_name": "cálculo ii",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "name": "rossel juan baudilio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 18,
+                "related_sections": [
+                    18
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CBM1002",
+                "course_name": "álgebra lineal",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBM1002",
+                "course_name": "álgebra lineal",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "name": "marti emilio andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "landero carlos gabriel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 16,
+                "related_sections": [
+                    16
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CBM1002",
+                "course_name": "álgebra lineal",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "name": "brayovic boris alexander",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 21,
+                "related_sections": [
+                    21
+                ]
+            },
+            {
+                "course_code": "CBM1003",
+                "course_name": "cálculo ii",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "name": "casado andrea",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CBM1003",
+                "course_name": "cálculo ii",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "contreras jaime gilberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            },
+            {
+                "course_code": "CBM1002",
+                "course_name": "álgebra lineal",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "name": "muñoz juan esteban eduardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 21,
+                "related_sections": [
+                    21
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 20,
+                "related_sections": [
+                    20
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 13,
+                "related_sections": [
+                    13
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "name": "saavedra ignacio eduardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 13,
+                "related_sections": [
+                    13
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 17,
+                "related_sections": [
+                    17
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 17,
+                "related_sections": [
+                    17
+                ]
+            },
+            {
+                "course_code": "CBM1002",
+                "course_name": "álgebra lineal",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "name": "vera sebastián nicolás",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 15,
+                "related_sections": [
+                    15
+                ]
+            },
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 20,
+                "related_sections": [
+                    20
+                ]
+            },
+            {
+                "course_code": "CBM1003",
+                "course_name": "cálculo ii",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CII2751",
+                "course_name": "inferencia estadística",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII2751",
+                "course_name": "inferencia estadística",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "name": "aguiló bruno",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1000",
+                "course_name": "álgebra y geometría",
+                "event_type": "CATEDRA",
+                "event_number": 22,
+                "related_sections": [
+                    22
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            }
+        ]
+    },
+    {
+        "id": 21,
+        "name": "arancibia sara de las mercedes",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "name": "echevarria claudio arturo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 19,
+                "related_sections": [
+                    19
+                ]
+            }
+        ]
+    },
+    {
+        "id": 23,
+        "name": "marechal matthieu philippe",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 13,
+                "related_sections": [
+                    13
+                ]
+            },
+            {
+                "course_code": "CBM1006",
+                "course_name": "cálculo iii",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "name": "neira tomas alfonso",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 15,
+                "related_sections": [
+                    15
+                ]
+            },
+            {
+                "course_code": "CBM1001",
+                "course_name": "cálculo i",
+                "event_type": "CATEDRA",
+                "event_number": 16,
+                "related_sections": [
+                    16
+                ]
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "name": "zuñiga fernando",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1003",
+                "course_name": "cálculo ii",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 26,
+        "name": "lopez julio cesar",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CBM1005",
+                "course_name": "ecuaciones diferenciales",
+                "event_type": "CATEDRA",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "name": "opazo edith alejandra",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 13,
+                "related_sections": [
+                    13
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 17,
+                "related_sections": [
+                    17
+                ]
+            }
+        ]
+    },
+    {
+        "id": 28,
+        "name": "reyes nora lilian",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 14,
+                "related_sections": [
+                    14
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 16,
+                "related_sections": [
+                    16
+                ]
+            }
+        ]
+    },
+    {
+        "id": 29,
+        "name": "vidal matías sebastián",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 18,
+                "related_sections": [
+                    18
+                ]
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "name": "contenla rommina stefannie",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            }
+        ]
+    },
+    {
+        "id": 31,
+        "name": "arias maria patricia",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            },
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 19,
+                "related_sections": [
+                    19
+                ]
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "name": "monasterio ángela",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "name": "muñoz daniel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 15,
+                "related_sections": [
+                    15
+                ]
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "name": "gacitua manuel alejandro",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBQ1000",
+                "course_name": "química",
+                "event_type": "CATEDRA",
+                "event_number": 20,
+                "related_sections": [
+                    20
+                ]
+            }
+        ]
+    },
+    {
+        "id": 35,
+        "name": "cortes ema benita",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            }
+        ]
+    },
+    {
+        "id": 36,
+        "name": "san martin rosa irene",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CII2003",
+                "course_name": "finanzas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "name": "ortiz roberto enrique",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CII2002",
+                "course_name": "ingenieria económica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII3600",
+                "course_name": "tópicos en finanzas",
+                "event_type": "CATEDRA",
+                "event_number": 0,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "name": "hermosilla álvaro david",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII1000",
+                "course_name": "contabilidad y costos",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CII2103",
+                "course_name": "microeconomía",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "name": "faivovich eduardo jaime",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2002",
+                "course_name": "ingenieria económica",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2004",
+                "course_name": "evaluación de proyectos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII2004",
+                "course_name": "evaluación de proyectos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2207",
+                "course_name": "evaluación de proyectos tic",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "name": "geisse esteban",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "name": "márquez renny javier",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2253",
+                "course_name": "producción",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CII2755",
+                "course_name": "modelos estocásticos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "name": "zúñiga alvaro sebastián",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 43,
+        "name": "jara francisco ivan",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CII2755",
+                "course_name": "modelos estocásticos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "name": "lemus pablo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2253",
+                "course_name": "producción",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CII3629",
+                "course_name": "data mining",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 45,
+        "name": "tanida mitsuo lucas mati",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2750",
+                "course_name": "optimización",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "CII2757",
+                "course_name": "simulación",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "name": "duarte juan jose",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 18,
+                "related_sections": [
+                    18
+                ]
+            },
+            {
+                "course_code": "CIT2007",
+                "course_name": "bases de datos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT3325",
+                "course_name": "inteligencia de negocios",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "name": "sáez rodrigo antonio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 48,
+        "name": "fantoval marcos",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CIT1010",
+                "course_name": "programación avanzada",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT1010",
+                "course_name": "programación avanzada",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "name": "sierra abel cain",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "name": "huichulef patricio eduardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            },
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 15,
+                "related_sections": [
+                    15
+                ]
+            },
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 16,
+                "related_sections": [
+                    16
+                ]
+            },
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 17,
+                "related_sections": [
+                    17
+                ]
+            }
+        ]
+    },
+    {
+        "id": 51,
+        "name": "suchan karol marcin",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT1000",
+                "course_name": "programación",
+                "event_type": "CATEDRA",
+                "event_number": 20,
+                "related_sections": [
+                    20
+                ]
+            },
+            {
+                "course_code": "CIT2006",
+                "course_name": "estructuras de datos y algoritmos",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2006",
+                "course_name": "estructuras de datos y algoritmos",
+                "event_type": "LABORATORIO",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 52,
+        "name": "llanza leandro antonio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT1010",
+                "course_name": "programación avanzada",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "name": "elliott jorge ernesto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2205",
+                "course_name": "proyecto en tics i",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2207",
+                "course_name": "evaluación de proyectos tic",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT3100",
+                "course_name": "arquitecturas emergentes",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT3320",
+                "course_name": "continuidad de negocios",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 54,
+        "name": "dujovne diego roberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2205",
+                "course_name": "proyecto en tics i",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT3427",
+                "course_name": "internet de las cosas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ING9101",
+                "course_name": "prácticas electivas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 55,
+        "name": "geoffroy ximena maria",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2203",
+                "course_name": "gestión organizacional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT4011",
+                "course_name": "titulación exámen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT4012",
+                "course_name": "titulación memoria",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT4013",
+                "course_name": "titulación taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT4014",
+                "course_name": "titulación paper",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT4015",
+                "course_name": "titulación via magister",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "name": "hidalgo nicolas andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2011",
+                "course_name": "sistemas distribuidos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2011",
+                "course_name": "sistemas distribuidos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2011",
+                "course_name": "sistemas distribuidos",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT4011",
+                "course_name": "titulación exámen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT4012",
+                "course_name": "titulación memoria",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT4013",
+                "course_name": "titulación taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "name": "medina maría belén",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 58,
+        "name": "quezada maría graciela",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 19,
+                "related_sections": [
+                    19
+                ]
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "name": "gómez paulina inés",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 10,
+                "related_sections": [
+                    10
+                ]
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "name": "servello stephanie isabel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "name": "reyes graciela de lourdes",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 11,
+                "related_sections": [
+                    11
+                ]
+            }
+        ]
+    },
+    {
+        "id": 62,
+        "name": "rojas pablo elias",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            }
+        ]
+    },
+    {
+        "id": 63,
+        "name": "gonzález kevin bastián",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 12,
+                "related_sections": [
+                    12
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 15,
+                "related_sections": [
+                    15
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 16,
+                "related_sections": [
+                    16
+                ]
+            }
+        ]
+    },
+    {
+        "id": 64,
+        "name": "corral gabriela andrea",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3101",
+                "course_name": "liderazgo y emprendimiento",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 13,
+                "related_sections": [
+                    13
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 17,
+                "related_sections": [
+                    17
+                ]
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "name": "iturriaga alejandra paola",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 14,
+                "related_sections": [
+                    14
+                ]
+            },
+            {
+                "course_code": "FIC1000",
+                "course_name": "comunicación para la ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 18,
+                "related_sections": [
+                    18
+                ]
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "name": "reyes victor alejandro",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2010",
+                "course_name": "sistemas operativos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2013",
+                "course_name": "inteligencia artificial",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT3352",
+                "course_name": "algoritmos exactos y metaheurísticas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ING9101",
+                "course_name": "prácticas electivas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 67,
+        "name": "palacios pablo geovanny",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2108",
+                "course_name": "taller de redes y servicios",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2108",
+                "course_name": "taller de redes y servicios",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "ING9101",
+                "course_name": "prácticas electivas",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 68,
+        "name": "ortiz yerko miguel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2006",
+                "course_name": "estructuras de datos y algoritmos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2006",
+                "course_name": "estructuras de datos y algoritmos",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 69,
+        "name": "negroni juan jose",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2107",
+                "course_name": "electrónica y electrotecnia",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 70,
+        "name": "tobar jorge andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2107",
+                "course_name": "electrónica y electrotecnia",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2107",
+                "course_name": "electrónica y electrotecnia",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2107",
+                "course_name": "electrónica y electrotecnia",
+                "event_type": "LABORATORIO",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CIT2107",
+                "course_name": "electrónica y electrotecnia",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CIT2107",
+                "course_name": "electrónica y electrotecnia",
+                "event_type": "LABORATORIO",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CIT2109",
+                "course_name": "arquitectura y organiz de computadores",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2109",
+                "course_name": "arquitectura y organiz de computadores",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2109",
+                "course_name": "arquitectura y organiz de computadores",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 71,
+        "name": "frez jonathan",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2008",
+                "course_name": "desarrollo web y móvil",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 72,
+        "name": "giadach juan ricardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2009",
+                "course_name": "bases de datos avanzadas",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2009",
+                "course_name": "bases de datos avanzadas",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT3000",
+                "course_name": "arquitectura de software",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT3000",
+                "course_name": "arquitectura de software",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "name": "sanchez pablo raul",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2109",
+                "course_name": "arquitectura y organiz de computadores",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2109",
+                "course_name": "arquitectura y organiz de computadores",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "name": "muñoz rodrigo eugenio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2110",
+                "course_name": "señales y sistemas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CIT3432",
+                "course_name": "comunicaciones satelitales",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 75,
+        "name": "ortigueira raydel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2110",
+                "course_name": "señales y sistemas",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2110",
+                "course_name": "señales y sistemas",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 76,
+        "name": "venegas luis javier",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2110",
+                "course_name": "señales y sistemas",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT2111",
+                "course_name": "comunicaciones digitales",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 77,
+        "name": "garcia carlos enrique antonio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2110",
+                "course_name": "señales y sistemas",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT2111",
+                "course_name": "comunicaciones digitales",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2111",
+                "course_name": "comunicaciones digitales",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2111",
+                "course_name": "comunicaciones digitales",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2111",
+                "course_name": "comunicaciones digitales",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 78,
+        "name": "gutierrez martin eduardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2010",
+                "course_name": "sistemas operativos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2013",
+                "course_name": "inteligencia artificial",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 79,
+        "name": "rojas matias ignacio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2012",
+                "course_name": "ingeniería de software",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT3356",
+                "course_name": "juegos serios",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 80,
+        "name": "calcagno jaime alberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2100",
+                "course_name": "introducción  a la economía",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII2100",
+                "course_name": "introducción  a la economía",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2100",
+                "course_name": "introducción  a la economía",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CII3612",
+                "course_name": "tópicos en macroeconomía",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 81,
+        "name": "gillibrand richard patricio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2100",
+                "course_name": "introducción  a la economía",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 82,
+        "name": "olivares guillermo antonio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2003",
+                "course_name": "finanzas",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2003",
+                "course_name": "finanzas",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CII2100",
+                "course_name": "introducción  a la economía",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CII2100",
+                "course_name": "introducción  a la economía",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 83,
+        "name": "carreño erick roberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2112",
+                "course_name": "tecnologías inalámbricas",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "course_code": "CIT2112",
+                "course_name": "tecnologías inalámbricas",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2112",
+                "course_name": "tecnologías inalámbricas",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 84,
+        "name": "valdés enzo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2113",
+                "course_name": "criptografía y seguridad en redes",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2113",
+                "course_name": "criptografía y seguridad en redes",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "name": "ceballos osvaldo andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT3202",
+                "course_name": "data science",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 86,
+        "name": "osorio cristian augusto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT3203",
+                "course_name": "proyecto en tics ii",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 87,
+        "name": "ruminot nicolás alberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    5
+                ]
+            }
+        ]
+    },
+    {
+        "id": 88,
+        "name": "miranda fabian andrés",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            },
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "LABORATORIO",
+                "event_number": 8,
+                "related_sections": [
+                    8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 89,
+        "name": "espina brayan antonio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2,
+                    6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 90,
+        "name": "jaque luis ignacio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CIT2114",
+                "course_name": "redes de datos",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4,
+                    8
+                ]
+            }
+        ]
+    },
+    {
+        "id": 91,
+        "name": "miranda fabiola marisol",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "PRI0001",
+                "course_name": "práctica electiva interdisciplinaria",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 92,
+        "name": "carvajal claudio enrique",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "PRI0001",
+                "course_name": "práctica electiva interdisciplinaria",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "PRI0001",
+                "course_name": "práctica electiva interdisciplinaria",
+                "event_type": "CATEDRA",
+                "event_number": 9,
+                "related_sections": [
+                    9
+                ]
+            }
+        ]
+    },
+    {
+        "id": 93,
+        "name": "parada francisco javier",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "PRI0001",
+                "course_name": "práctica electiva interdisciplinaria",
+                "event_type": "CATEDRA",
+                "event_number": 7,
+                "related_sections": [
+                    7
+                ]
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "name": "guerrero miguel angel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 95,
+        "name": "robotham hugo eduardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "AYUDANTIA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "AYUDANTIA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            },
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "CATEDRA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "AYUDANTIA",
+                "event_number": 5,
+                "related_sections": [
+                    5
+                ]
+            },
+            {
+                "course_code": "CII2751",
+                "course_name": "inferencia estadística",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 96,
+        "name": "perez-kallens jaime osvaldo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "CATEDRA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            },
+            {
+                "course_code": "CBE2000",
+                "course_name": "probabilidades y estadística",
+                "event_type": "AYUDANTIA",
+                "event_number": 6,
+                "related_sections": [
+                    6
+                ]
+            }
+        ]
+    },
+    {
+        "id": 97,
+        "name": "acosta sandra yolanda",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2001",
+                "course_name": "ingeniería en materiales",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "course_code": "COC2001",
+                "course_name": "ingeniería en materiales",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2001",
+                "course_name": "ingeniería en materiales",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "COC2001",
+                "course_name": "ingeniería en materiales",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "COC3633",
+                "course_name": "ep gc; sistemas integrados de gestión",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 98,
+        "name": "urrutia cristóbal gabriel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2001",
+                "course_name": "ingeniería en materiales",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "course_code": "COC2202",
+                "course_name": "edificación",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 99,
+        "name": "narvaez cristian ignacio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2003",
+                "course_name": "tecnología del hormigón",
+                "event_type": "CATEDRA",
+                "event_number": 0,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 100,
+        "name": "colombo jose ignacio jesandip",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2102",
+                "course_name": "análisis estructural",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2108",
+                "course_name": "estática",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2
+                ]
+            },
+            {
+                "course_code": "COC2108",
+                "course_name": "estática",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    3,
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 101,
+        "name": "manqui fhernando",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2102",
+                "course_name": "análisis estructural",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2105",
+                "course_name": "diseño en hormigón",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 102,
+        "name": "muñoz sebastián",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2102",
+                "course_name": "análisis estructural",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2207",
+                "course_name": "hidráulica",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 103,
+        "name": "contreras victor alejandro",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2104",
+                "course_name": "mecánica de suelos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "course_code": "COC3530",
+                "course_name": "ep eg; ingeniería geotécnica avanzada",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 104,
+        "name": "tapia juan ramon",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2104",
+                "course_name": "mecánica de suelos",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2104",
+                "course_name": "mecánica de suelos",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "COC2104",
+                "course_name": "mecánica de suelos",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 105,
+        "name": "carmona juan",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2104",
+                "course_name": "mecánica de suelos",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 106,
+        "name": "valdés bastián alfredo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2104",
+                "course_name": "mecánica de suelos",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 107,
+        "name": "diaz sebastian alexander",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2105",
+                "course_name": "diseño en hormigón",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC3532",
+                "course_name": "ep eg; taller  de estructuras",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 108,
+        "name": "gonzalez pablo andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2106",
+                "course_name": "fundaciones",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2109",
+                "course_name": "mecánica de sólidos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 109,
+        "name": "olivares roberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2106",
+                "course_name": "fundaciones",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 110,
+        "name": "plaza angela valeria",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2203",
+                "course_name": "ingeniería ambiental",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 111,
+        "name": "carvacho francisco javier",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2203",
+                "course_name": "ingeniería ambiental",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 112,
+        "name": "alcayaga hernan andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2204",
+                "course_name": "hidrología",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 113,
+        "name": "moreno matias",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2204",
+                "course_name": "hidrología",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 114,
+        "name": "abarca nelson rodrigo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2205",
+                "course_name": "hidráulica urbana",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 115,
+        "name": "nuñez yebel kely",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2205",
+                "course_name": "hidráulica urbana",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2206",
+                "course_name": "mecánica de fluidos",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "course_code": "COC2206",
+                "course_name": "mecánica de fluidos",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 116,
+        "name": "acuña juan francisco",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3000",
+                "course_name": "ingeniería de costos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 117,
+        "name": "martínez oscar alejandro",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3000",
+                "course_name": "ingeniería de costos",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 118,
+        "name": "auad gaspar andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3100",
+                "course_name": "ingeniería sísmica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC3533",
+                "course_name": "ep eg; sistemas de protección sísmica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 119,
+        "name": "amaya williams",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3100",
+                "course_name": "ingeniería sísmica",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 120,
+        "name": "vejar nicolas",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3100",
+                "course_name": "ingeniería sísmica",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 121,
+        "name": "valverde sergio patricio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3410",
+                "course_name": "ep. tecnología del asfalto",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 122,
+        "name": "gonzalez christian rodrigo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2206",
+                "course_name": "mecánica de fluidos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "course_code": "COC2207",
+                "course_name": "hidráulica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 123,
+        "name": "fuentes gonzalo jesus",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2206",
+                "course_name": "mecánica de fluidos",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "course_code": "COC2207",
+                "course_name": "hidráulica",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 124,
+        "name": "morales carmen gloria",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2202",
+                "course_name": "edificación",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 125,
+        "name": "gomez cesar",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2207",
+                "course_name": "hidráulica",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 126,
+        "name": "montorio carolina andrea",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2006",
+                "course_name": "topografía",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 127,
+        "name": "saez marcela rosa",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2006",
+                "course_name": "topografía",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2006",
+                "course_name": "topografía",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "course_code": "COC2006",
+                "course_name": "topografía",
+                "event_type": "LABORATORIO",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "COC2006",
+                "course_name": "topografía",
+                "event_type": "LABORATORIO",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 128,
+        "name": "madler thomas frank valentin",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3622",
+                "course_name": "python for engineers",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2305",
+                "course_name": "seminario cs ingeniería",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 129,
+        "name": "saez nicolás esteban",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2305",
+                "course_name": "seminario cs ingeniería",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 130,
+        "name": "dulovits alexander alois",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2007",
+                "course_name": "adm de proyectos civiles",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 131,
+        "name": "rivas sebastian ignacio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2007",
+                "course_name": "adm de proyectos civiles",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 132,
+        "name": "cayo teodosio araya",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2008",
+                "course_name": "planificación de proyectos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 133,
+        "name": "acevedo macarena",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2008",
+                "course_name": "planificación de proyectos",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 134,
+        "name": "muñoz victor eduardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2009",
+                "course_name": "bim",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC2009",
+                "course_name": "bim",
+                "event_type": "LABORATORIO",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 135,
+        "name": "obregon christian ignacio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC2009",
+                "course_name": "bim",
+                "event_type": "AYUDANTIA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 136,
+        "name": "bello diego ignacio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3300",
+                "course_name": "taller de proyectos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 137,
+        "name": "silva gabriel mauricio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3300",
+                "course_name": "taller de proyectos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 138,
+        "name": "yanez simon benjamin",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3300",
+                "course_name": "taller de proyectos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 139,
+        "name": "pizarro alonso vicente",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "COC3428",
+                "course_name": "ep hm; modelación hidrológica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "COC3439",
+                "course_name": "ep hm; diseño hidráulico de puentes",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 140,
+        "name": "busco carolina mariela elena",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII1001",
+                "course_name": "teoría organizaciónal",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 141,
+        "name": "hinojosa gladys adriana",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII1001",
+                "course_name": "teoría organizaciónal",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII1001",
+                "course_name": "teoría organizaciónal",
+                "event_type": "CATEDRA",
+                "event_number": 4,
+                "related_sections": [
+                    4
+                ]
+            }
+        ]
+    },
+    {
+        "id": 142,
+        "name": "araya tamara andrea",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII1001",
+                "course_name": "teoría organizaciónal",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 143,
+        "name": "danitz rodolfo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2250",
+                "course_name": "estática",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII2250",
+                "course_name": "estática",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2402",
+                "course_name": "termodinámica",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 144,
+        "name": "gallo leonardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2250",
+                "course_name": "estática",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 145,
+        "name": "pezoa raul alejandro",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2254",
+                "course_name": "logística",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII2504",
+                "course_name": "data science",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 146,
+        "name": "abudinen alberto eduardo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2501",
+                "course_name": "bases de datos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII2501",
+                "course_name": "bases de datos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2501",
+                "course_name": "bases de datos",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CII3500",
+                "course_name": "juego de negocios: aplicación práctica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 147,
+        "name": "fariña paula",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2751",
+                "course_name": "inferencia estadística",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 148,
+        "name": "achá matías",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3406",
+                "course_name": "energías renovables y sustentabilidad",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 149,
+        "name": "behzad masoud",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2403",
+                "course_name": "proyectos energéticos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII3406",
+                "course_name": "energías renovables y sustentabilidad",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 150,
+        "name": "garrido rodrigo andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3422",
+                "course_name": "tópicos de log. y sis.  de dis. de carga",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 151,
+        "name": "gonzalez felipe alberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2757",
+                "course_name": "simulación",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII3425",
+                "course_name": "redes de transporte",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 152,
+        "name": "gaete luis alberto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3503",
+                "course_name": "gestión de procesos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 153,
+        "name": "schiappacasse vilma",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3607",
+                "course_name": "strategic communication in english",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 154,
+        "name": "diaz jose antonio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3611",
+                "course_name": "ética empresarial",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 155,
+        "name": "de grange louis",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3615",
+                "course_name": "microeconometría",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 156,
+        "name": "zamora esteban",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2401",
+                "course_name": "mecánica de fluidos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2401",
+                "course_name": "mecánica de fluidos",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 157,
+        "name": "diaz andres jose",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2402",
+                "course_name": "termodinámica",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 158,
+        "name": "sarmiento cristobal andres",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2402",
+                "course_name": "termodinámica",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "CII2403",
+                "course_name": "proyectos energéticos",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 159,
+        "name": "yañez luis ernesto",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2755",
+                "course_name": "modelos estocásticos",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            }
+        ]
+    },
+    {
+        "id": 160,
+        "name": "zuñiga eduardo israel",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2101",
+                "course_name": "microeconomía",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII3705",
+                "course_name": "introducción a la teoría de juegos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 161,
+        "name": "caceres rodrigo antonio",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2403",
+                "course_name": "proyectos energéticos",
+                "event_type": "CATEDRA",
+                "event_number": 3,
+                "related_sections": [
+                    3
+                ]
+            },
+            {
+                "course_code": "CII3730",
+                "course_name": "nexo agua-energía",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 162,
+        "name": "vidal ítalo elizardo isaac",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII2504",
+                "course_name": "data science",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 163,
+        "name": "olivares nicolás",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3101",
+                "course_name": "liderazgo y emprendimiento",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII3101",
+                "course_name": "liderazgo y emprendimiento",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 164,
+        "name": "vivanco luz maria adriana",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3101",
+                "course_name": "liderazgo y emprendimiento",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII3101",
+                "course_name": "liderazgo y emprendimiento",
+                "event_type": "CATEDRA",
+                "event_number": 2,
+                "related_sections": [
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "id": 165,
+        "name": "rodillo bartolome luis",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3102",
+                "course_name": "taller de ingenieria industrial",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 166,
+        "name": "matijevic branimir zvonimir",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 167,
+        "name": "veliz karina denisse",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3623",
+                "course_name": "economía circular",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3333",
+                "course_name": "examen de título",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3377",
+                "course_name": "taller profesional",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "ICI3388",
+                "course_name": "tesis",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 168,
+        "name": "von loebenstein alexa valeska marguerite",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3624",
+                "course_name": "evaluación social de proyectos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 169,
+        "name": "bertolotto bernardo raimundo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3706",
+                "course_name": "fundamentos de la inteligencia artificia",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            },
+            {
+                "course_code": "CII3731",
+                "course_name": "empresas impulsadas por datos",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 170,
+        "name": "perez dagoberto marcelo",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3709",
+                "course_name": "gestión en la industria minera",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 171,
+        "name": "alvarado hernan felipe",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3710",
+                "course_name": "fintech",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "id": 172,
+        "name": "vargas alejandro",
+        "unavailable_blocks": {},
+        "teaching_load": [
+            {
+                "course_code": "CII3724",
+                "course_name": "gestión cadena de abast. & operaciones",
+                "event_type": "CATEDRA",
+                "event_number": 1,
+                "related_sections": [
+                    1
+                ]
+            }
+        ]
+    }
+]

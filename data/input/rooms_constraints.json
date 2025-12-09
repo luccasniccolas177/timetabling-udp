@@ -1,0 +1,261 @@
+{
+  "CIT1000": {
+    "CATEDRA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "AYUDANTIA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "LABORATORIO": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ]
+  },
+  "CIT1010": {
+    "CATEDRA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "AYUDANTIA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "LABORATORIO": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ]
+  },
+  "CIT2006": {
+    "CATEDRA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "AYUDANTIA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "LABORATORIO": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ]
+  },
+  "CIT2107": {
+    "LABORATORIO": [
+      "LAB TELEMATICA"
+    ]
+  },
+  "CIT2008": {
+    "CATEDRA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "AYUDANTIA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "LABORATORIO": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ]
+  },
+  "CIT2108": {
+    "CATEDRA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "AYUDANTIA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ],
+    "LABORATORIO": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB INFORMATICA",
+      "LAB EIT"
+    ]
+  },
+  "CIT2109": {
+    "LABORATORIO": [
+      "LAB INFORMATICA"
+    ]
+  },
+  "CIT2110": {
+    "LABORATORIO": [
+      "LAB TELEMATICA"
+    ]
+  },
+  "CIT2112": {
+    "LABORATORIO": [
+      "LAB TELEMATICA"
+    ]
+  },
+  "CIT2113": {
+    "LABORATORIO": [
+      "LAB INFORMATICA"
+    ]
+  },
+  "CIT2114": {
+    "LABORATORIO": [
+      "LAB TELEMATICA"
+    ]
+  },
+  "CBF1000": {
+    "LABORATORIO": [
+      "LAB MECANICA"
+    ]
+  },
+  "CBF1001": {
+    "LABORATORIO": [
+      "LAB TERMODINAMICA"
+    ]
+  },
+  "CBF1002": {
+    "LABORATORIO": [
+      "LAB ELECTRO"
+    ]
+  },
+  "COC2001": {
+    "LABORATORIO": [
+      "LAB MATERIALES"
+    ]
+  },
+  "COC2003": {
+    "LABORATORIO": [
+      "LAB MATERIALES"
+    ]
+  },
+  "COC2104": {
+    "LABORATORIO": [
+      "LAB MATERIALES"
+    ]
+  },
+  "COC2108": {
+    "LABORATORIO": [
+      "LAB SOLIDOS"
+    ]
+  },
+  "COC2206": {
+    "LABORATORIO": [
+      "LAB AGUA"
+    ]
+  },
+  "COC2109": {
+    "LABORATORIO": [
+      "LAB SOLIDOS",
+      "LAB LOCK"
+    ]
+  },
+  "COC2207": {
+    "LABORATORIO": [
+      "LAB AGUA"
+    ]
+  },
+  "COC2006": {
+    "LABORATORIO": [
+      "LAB TOPO"
+    ]
+  },
+  "COC2305": {
+    "LABORATORIO": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB EIT"
+    ]
+  },
+  "COC2009": {
+    "CATEDRA": [
+      "LAB LOCK"
+    ],
+    "AYUDANTIA": [
+      "LAB LOCK"
+    ],
+    "LABORATORIO": [
+      "LAB LOCK"
+    ]
+  },
+  "CII2501": {
+    "CATEDRA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB EIT"
+    ],
+    "AYUDANTIA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB EIT"
+    ]
+  },
+  "CII3622": {
+    "CATEDRA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB EIT"
+    ],
+    "AYUDANTIA": [
+      "LAB D",
+      "LAB O",
+      "LAB U",
+      "LAB EIT"
+    ]
+  },
+  "DEFAULTS": {
+    "CATEDRA": [
+      "ANY_CLASSROOM"
+    ],
+    "AYUDANTIA": [
+      "ANY_CLASSROOM"
+    ],
+    "LABORATORIO": [
+      "ANY_LAB"
+    ]
+  }
+}
