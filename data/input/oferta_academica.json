@@ -13,7 +13,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -37,7 +37,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -61,7 +61,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -85,7 +85,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -109,7 +109,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -133,7 +133,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -157,7 +157,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -181,7 +181,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -205,7 +205,7 @@
             },
             {
                 "section_number": 9,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -229,7 +229,7 @@
             },
             {
                 "section_number": 10,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -253,7 +253,7 @@
             },
             {
                 "section_number": 11,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -277,7 +277,7 @@
             },
             {
                 "section_number": 12,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -301,7 +301,7 @@
             },
             {
                 "section_number": 13,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -325,7 +325,7 @@
             },
             {
                 "section_number": 14,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -363,7 +363,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -387,7 +387,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -411,7 +411,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -435,7 +435,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -459,7 +459,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -483,7 +483,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -507,7 +507,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -531,7 +531,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -555,7 +555,7 @@
             },
             {
                 "section_number": 9,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -579,7 +579,7 @@
             },
             {
                 "section_number": 10,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -603,7 +603,7 @@
             },
             {
                 "section_number": 11,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -627,7 +627,7 @@
             },
             {
                 "section_number": 12,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -651,7 +651,7 @@
             },
             {
                 "section_number": 13,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -675,7 +675,7 @@
             },
             {
                 "section_number": 14,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -699,7 +699,7 @@
             },
             {
                 "section_number": 15,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -723,7 +723,7 @@
             },
             {
                 "section_number": 16,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -747,7 +747,7 @@
             },
             {
                 "section_number": 17,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -771,7 +771,7 @@
             },
             {
                 "section_number": 18,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -795,7 +795,7 @@
             },
             {
                 "section_number": 19,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -819,7 +819,7 @@
             },
             {
                 "section_number": 20,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -843,7 +843,7 @@
             },
             {
                 "section_number": 21,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -867,7 +867,7 @@
             },
             {
                 "section_number": 22,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -891,7 +891,7 @@
             },
             {
                 "section_number": 23,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -915,7 +915,7 @@
             },
             {
                 "section_number": 24,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -953,7 +953,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -977,7 +977,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1001,7 +1001,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1025,7 +1025,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1049,7 +1049,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1073,7 +1073,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1097,7 +1097,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1121,7 +1121,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1145,7 +1145,7 @@
             },
             {
                 "section_number": 9,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1169,7 +1169,7 @@
             },
             {
                 "section_number": 10,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1193,7 +1193,7 @@
             },
             {
                 "section_number": 11,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -1217,7 +1217,7 @@
             },
             {
                 "section_number": 12,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2100,7 +2100,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2119,7 +2119,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2138,7 +2138,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2157,7 +2157,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2176,7 +2176,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2209,7 +2209,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2228,7 +2228,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2247,7 +2247,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2266,7 +2266,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2285,7 +2285,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2318,7 +2318,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2337,7 +2337,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2356,7 +2356,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2375,7 +2375,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2394,7 +2394,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2413,7 +2413,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2432,7 +2432,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2451,7 +2451,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2470,7 +2470,7 @@
             },
             {
                 "section_number": 9,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2489,7 +2489,7 @@
             },
             {
                 "section_number": 10,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2508,7 +2508,7 @@
             },
             {
                 "section_number": 11,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2527,7 +2527,7 @@
             },
             {
                 "section_number": 12,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2546,7 +2546,7 @@
             },
             {
                 "section_number": 13,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2579,7 +2579,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2598,7 +2598,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2617,7 +2617,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2636,7 +2636,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2655,7 +2655,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2674,7 +2674,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2693,7 +2693,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2712,7 +2712,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2731,7 +2731,7 @@
             },
             {
                 "section_number": 9,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2750,7 +2750,7 @@
             },
             {
                 "section_number": 10,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2769,7 +2769,7 @@
             },
             {
                 "section_number": 11,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2788,7 +2788,7 @@
             },
             {
                 "section_number": 12,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -2807,7 +2807,7 @@
             },
             {
                 "section_number": 13,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3234,7 +3234,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3253,7 +3253,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3272,7 +3272,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3291,7 +3291,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3310,7 +3310,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3329,7 +3329,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3348,7 +3348,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3400,7 +3400,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3419,7 +3419,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3452,7 +3452,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3471,7 +3471,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3490,7 +3490,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3509,7 +3509,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3528,7 +3528,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3547,7 +3547,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3566,7 +3566,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3585,7 +3585,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3618,7 +3618,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3637,7 +3637,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3656,7 +3656,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3675,7 +3675,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3694,7 +3694,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3713,7 +3713,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3732,7 +3732,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3751,7 +3751,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3770,7 +3770,7 @@
             },
             {
                 "section_number": 9,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3789,7 +3789,7 @@
             },
             {
                 "section_number": 10,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3808,7 +3808,7 @@
             },
             {
                 "section_number": 11,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3827,7 +3827,7 @@
             },
             {
                 "section_number": 12,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3846,7 +3846,7 @@
             },
             {
                 "section_number": 13,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3865,7 +3865,7 @@
             },
             {
                 "section_number": 14,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3884,7 +3884,7 @@
             },
             {
                 "section_number": 15,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3903,7 +3903,7 @@
             },
             {
                 "section_number": 16,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3922,7 +3922,7 @@
             },
             {
                 "section_number": 17,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3941,7 +3941,7 @@
             },
             {
                 "section_number": 18,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3960,7 +3960,7 @@
             },
             {
                 "section_number": 19,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -3979,7 +3979,7 @@
             },
             {
                 "section_number": 20,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4012,7 +4012,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4031,7 +4031,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4050,7 +4050,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4069,7 +4069,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4088,7 +4088,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4248,150 +4248,6 @@
         ]
     },
     {
-        "code": "CIT4011",
-        "name": "titulación exámen de título",
-        "distribution": {
-            "num_lectures": 2,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": [
-                                "geoffroy ximena maria",
-                                "hidalgo nicolas andres"
-                            ]
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "CIT4012",
-        "name": "titulación memoria",
-        "distribution": {
-            "num_lectures": 2,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": [
-                                "geoffroy ximena maria",
-                                "hidalgo nicolas andres"
-                            ]
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "CIT4013",
-        "name": "titulación taller profesional",
-        "distribution": {
-            "num_lectures": 2,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": [
-                                "geoffroy ximena maria",
-                                "hidalgo nicolas andres"
-                            ]
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "CIT4014",
-        "name": "titulación paper",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": "geoffroy ximena maria"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "CIT5002",
-        "name": "práctica profesional 2",
-        "distribution": {
-            "num_lectures": 0,
-            "duration_lectures": 0,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
         "code": "FIC1000",
         "name": "comunicación para la ingeniería",
         "distribution": {
@@ -4405,7 +4261,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4419,7 +4275,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4433,7 +4289,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4447,7 +4303,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4461,7 +4317,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4475,7 +4331,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4489,7 +4345,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4503,7 +4359,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4517,7 +4373,7 @@
             },
             {
                 "section_number": 9,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4531,7 +4387,7 @@
             },
             {
                 "section_number": 10,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4545,7 +4401,7 @@
             },
             {
                 "section_number": 11,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4559,7 +4415,7 @@
             },
             {
                 "section_number": 12,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4573,7 +4429,7 @@
             },
             {
                 "section_number": 13,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4587,7 +4443,7 @@
             },
             {
                 "section_number": 14,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4601,7 +4457,7 @@
             },
             {
                 "section_number": 15,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4615,7 +4471,7 @@
             },
             {
                 "section_number": 16,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4629,7 +4485,7 @@
             },
             {
                 "section_number": 17,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4643,7 +4499,7 @@
             },
             {
                 "section_number": 18,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4657,68 +4513,12 @@
             },
             {
                 "section_number": 19,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
                             "event_number": 19,
                             "teacher": "quezada maría graciela"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "ING9101",
-        "name": "prácticas electivas",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": "reyes victor alejandro"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            },
-            {
-                "section_number": 2,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": "dujovne diego roberto"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            },
-            {
-                "section_number": 3,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 3,
-                            "teacher": "palacios pablo geovanny"
                         }
                     ],
                     "LABORATORIO": [],
@@ -4741,7 +4541,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4760,7 +4560,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4780,34 +4580,6 @@
         ]
     },
     {
-        "code": "CIT4015",
-        "name": "titulación via magister",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": "geoffroy ximena maria"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
         "code": "CIT2006",
         "name": "estructuras de datos y algoritmos",
         "distribution": {
@@ -4821,7 +4593,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4845,7 +4617,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4869,7 +4641,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4893,7 +4665,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4917,7 +4689,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4955,7 +4727,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -4979,7 +4751,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5003,7 +4775,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5027,7 +4799,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5051,7 +4823,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 24,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5141,7 +4913,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5160,7 +4932,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5180,34 +4952,6 @@
         ]
     },
     {
-        "code": "CIT4000",
-        "name": "práctica i",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": null
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
         "code": "CIT2108",
         "name": "taller de redes y servicios",
         "distribution": {
@@ -5221,7 +4965,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5240,7 +4984,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5259,7 +5003,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5292,7 +5036,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5311,7 +5055,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5330,7 +5074,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5349,7 +5093,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5382,7 +5126,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5401,7 +5145,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5420,7 +5164,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5453,7 +5197,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5477,7 +5221,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5501,7 +5245,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 27,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5539,7 +5283,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5563,7 +5307,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5587,7 +5331,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 27,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5625,7 +5369,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5644,7 +5388,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 35,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5656,39 +5400,6 @@
                     "AYUDANTIA": [
                         {
                             "event_number": 2,
-                            "teacher": null
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    {
-        "code": "CIT2203",
-        "name": "gestión organizacional",
-        "distribution": {
-            "num_lectures": 2,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 1,
-            "duration_assistants": 1
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": "geoffroy ximena maria"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": [
-                        {
-                            "event_number": 1,
                             "teacher": null
                         }
                     ]
@@ -5814,7 +5525,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 24,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5838,7 +5549,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 24,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5862,7 +5573,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 27,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5900,7 +5611,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5919,7 +5630,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5952,7 +5663,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5971,7 +5682,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -5990,7 +5701,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6009,7 +5720,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6028,7 +5739,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6080,7 +5791,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 24,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6104,7 +5815,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 24,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6142,7 +5853,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 22,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6166,7 +5877,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 22,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6204,7 +5915,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6223,7 +5934,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6256,7 +5967,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6275,7 +5986,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6290,34 +6001,6 @@
                             "teacher": null
                         }
                     ]
-                }
-            }
-        ]
-    },
-    {
-        "code": "CIT4001",
-        "name": "práctica ii",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": null
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
                 }
             }
         ]
@@ -6525,7 +6208,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6549,7 +6232,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6573,7 +6256,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6597,7 +6280,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6621,7 +6304,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6645,7 +6328,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6669,7 +6352,7 @@
             },
             {
                 "section_number": 7,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6693,7 +6376,7 @@
             },
             {
                 "section_number": 8,
-                "total_enrolled": 30,
+                "total_enrolled": 21,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6802,76 +6485,6 @@
         ]
     },
     {
-        "code": "PRI0001",
-        "name": "práctica electiva interdisciplinaria",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 3,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 3,
-                            "teacher": "miranda fabiola marisol"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            },
-            {
-                "section_number": 5,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": "carvajal claudio enrique"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            },
-            {
-                "section_number": 7,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 7,
-                            "teacher": "parada francisco javier"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            },
-            {
-                "section_number": 9,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 9,
-                            "teacher": "carvajal claudio enrique"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
         "code": "CIT3363",
         "name": "sistemas de información empresariales",
         "distribution": {
@@ -6941,7 +6554,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6979,7 +6592,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -6998,7 +6611,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7017,7 +6630,7 @@
             },
             {
                 "section_number": 5,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7036,7 +6649,7 @@
             },
             {
                 "section_number": 6,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7069,7 +6682,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 16,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7093,7 +6706,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7117,7 +6730,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7155,7 +6768,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7179,7 +6792,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7203,7 +6816,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7235,13 +6848,13 @@
             "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
-            "num_assistants": 2,
+            "num_assistants": 1,
             "duration_assistants": 1
         },
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7277,7 +6890,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 55,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7304,13 +6917,13 @@
             "duration_lectures": 1,
             "num_labs": 1,
             "duration_labs": 2,
-            "num_assistants": 2,
+            "num_assistants": 1,
             "duration_assistants": 1
         },
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 16,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7337,7 +6950,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 17,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7364,7 +6977,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 16,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7405,7 +7018,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7438,7 +7051,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7471,7 +7084,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7504,7 +7117,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7537,7 +7150,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 50,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7570,7 +7183,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7603,7 +7216,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7636,7 +7249,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7663,13 +7276,13 @@
             "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
-            "num_assistants": 2,
+            "num_assistants": 1,
             "duration_assistants": 1
         },
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 50,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7738,7 +7351,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 20,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7762,7 +7375,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 18,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7786,7 +7399,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 19,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7810,7 +7423,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7842,13 +7455,13 @@
             "duration_lectures": 1,
             "num_labs": 1,
             "duration_labs": 1,
-            "num_assistants": 2,
+            "num_assistants": 1,
             "duration_assistants": 1
         },
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7875,7 +7488,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7902,7 +7515,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7943,7 +7556,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7967,7 +7580,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -7991,7 +7604,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8081,7 +7694,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8105,7 +7718,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8129,7 +7742,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8167,7 +7780,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8191,7 +7804,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8215,7 +7828,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 15,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8253,7 +7866,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 50,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8286,7 +7899,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8319,7 +7932,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8352,7 +7965,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8380,7 +7993,7 @@
         "code": "COC3300",
         "name": "taller de proyectos",
         "distribution": {
-            "num_lectures": 6,
+            "num_lectures": 2,
             "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
@@ -8390,7 +8003,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 46,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8427,7 +8040,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8460,7 +8073,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8493,7 +8106,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8526,7 +8139,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8559,7 +8172,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8592,7 +8205,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 25,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8625,7 +8238,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8644,7 +8257,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8663,7 +8276,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8682,7 +8295,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8715,7 +8328,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8734,7 +8347,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8753,7 +8366,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8786,7 +8399,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8805,7 +8418,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8838,7 +8451,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8857,7 +8470,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8876,7 +8489,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8909,7 +8522,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8928,7 +8541,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8947,7 +8560,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8980,7 +8593,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -8999,7 +8612,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9032,7 +8645,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9051,7 +8664,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9070,7 +8683,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9103,7 +8716,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9122,7 +8735,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9141,7 +8754,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9160,7 +8773,7 @@
             },
             {
                 "section_number": 4,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9183,7 +8796,7 @@
         "code": "CII3406",
         "name": "energías renovables y sustentabilidad",
         "distribution": {
-            "num_lectures": 4,
+            "num_lectures": 2,
             "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
@@ -9193,7 +8806,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9229,7 +8842,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9257,7 +8870,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9285,7 +8898,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9313,7 +8926,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9346,7 +8959,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9402,7 +9015,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9430,7 +9043,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9458,96 +9071,12 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
                             "event_number": 1,
                             "teacher": "de grange louis"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "ICI5001",
-        "name": "práctica profesional i",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": null
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "ICI5002",
-        "name": "práctica profesional ii",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": null
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "ICI3309",
-        "name": "seminario i",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": null
                         }
                     ],
                     "LABORATORIO": [],
@@ -9570,7 +9099,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9590,39 +9119,11 @@
         ]
     },
     {
-        "code": "ICI5011",
-        "name": "práctica profesional i",
-        "distribution": {
-            "num_lectures": 1,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": null
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
         "code": "CII2401",
         "name": "mecánica de fluidos",
         "distribution": {
-            "num_lectures": 0,
-            "duration_lectures": 0,
+            "num_lectures": 2,
+            "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
             "num_assistants": 1,
@@ -9631,21 +9132,21 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
                     "AYUDANTIA": [
                         {
                             "event_number": 1,
-                            "teacher": null
+                            "teacher": "patiño maria veronica"
                         }
                     ]
                 }
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9664,7 +9165,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9697,7 +9198,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9716,7 +9217,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9735,7 +9236,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9768,7 +9269,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9787,7 +9288,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9806,7 +9307,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9839,7 +9340,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9866,13 +9367,13 @@
             "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
-            "num_assistants": 2,
+            "num_assistants": 1,
             "duration_assistants": 1
         },
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
@@ -9886,7 +9387,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9913,8 +9414,8 @@
         "code": "CII2756",
         "name": "econometría",
         "distribution": {
-            "num_lectures": 0,
-            "duration_lectures": 0,
+            "num_lectures": 2,
+            "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
             "num_assistants": 1,
@@ -9923,42 +9424,42 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
                     "AYUDANTIA": [
                         {
                             "event_number": 1,
-                            "teacher": null
+                            "teacher": "quilondrán paulina"
                         }
                     ]
                 }
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
                     "AYUDANTIA": [
                         {
                             "event_number": 2,
-                            "teacher": null
+                            "teacher": "fariña paula"
                         }
                     ]
                 }
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
                     "AYUDANTIA": [
                         {
                             "event_number": 3,
-                            "teacher": null
+                            "teacher": "lemus pablo"
                         }
                     ]
                 }
@@ -9979,7 +9480,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -9998,7 +9499,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10017,7 +9518,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10040,8 +9541,8 @@
         "code": "CII2102",
         "name": "marketing",
         "distribution": {
-            "num_lectures": 0,
-            "duration_lectures": 0,
+            "num_lectures": 2,
+            "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
             "num_assistants": 1,
@@ -10050,42 +9551,42 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
                     "AYUDANTIA": [
                         {
                             "event_number": 1,
-                            "teacher": null
+                            "teacher": "zagal alejandro luis"
                         }
                     ]
                 }
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
                     "AYUDANTIA": [
                         {
                             "event_number": 2,
-                            "teacher": null
+                            "teacher": "zagal alejandro luis"
                         }
                     ]
                 }
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 40,
                 "assigned_events": {
                     "CATEDRA": [],
                     "LABORATORIO": [],
                     "AYUDANTIA": [
                         {
                             "event_number": 3,
-                            "teacher": null
+                            "teacher": "faivovich eduardo jaime"
                         }
                     ]
                 }
@@ -10106,7 +9607,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10125,7 +9626,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10158,7 +9659,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10177,7 +9678,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10201,7 +9702,7 @@
         "name": "liderazgo y emprendimiento",
         "distribution": {
             "num_lectures": 2,
-            "duration_lectures": 2,
+            "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
             "num_assistants": 0,
@@ -10210,7 +9711,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10227,7 +9728,7 @@
             },
             {
                 "section_number": 2,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10244,7 +9745,7 @@
             },
             {
                 "section_number": 3,
-                "total_enrolled": 30,
+                "total_enrolled": 45,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10272,137 +9773,12 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 95,
                 "assigned_events": {
                     "CATEDRA": [
                         {
                             "event_number": 1,
                             "teacher": "rodillo bartolome luis"
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "ICI3377",
-        "name": "taller profesional",
-        "distribution": {
-            "num_lectures": 14,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": [
-                                "behzad masoud",
-                                "busco carolina mariela elena",
-                                "caceres rodrigo antonio",
-                                "diaz andres jose",
-                                "faivovich eduardo jaime",
-                                "fariña paula",
-                                "garrido rodrigo andres",
-                                "gonzalez felipe alberto",
-                                "jara francisco ivan",
-                                "matijevic branimir zvonimir",
-                                "pezoa raul alejandro",
-                                "sarmiento cristobal andres",
-                                "veliz karina denisse",
-                                "zuñiga eduardo israel"
-                            ]
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "ICI3388",
-        "name": "tesis",
-        "distribution": {
-            "num_lectures": 12,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": [
-                                "behzad masoud",
-                                "busco carolina mariela elena",
-                                "caceres rodrigo antonio",
-                                "diaz andres jose",
-                                "fariña paula",
-                                "garrido rodrigo andres",
-                                "gonzalez felipe alberto",
-                                "jara francisco ivan",
-                                "pezoa raul alejandro",
-                                "sarmiento cristobal andres",
-                                "veliz karina denisse",
-                                "zuñiga eduardo israel"
-                            ]
-                        }
-                    ],
-                    "LABORATORIO": [],
-                    "AYUDANTIA": []
-                }
-            }
-        ]
-    },
-    {
-        "code": "ICI3333",
-        "name": "examen de título",
-        "distribution": {
-            "num_lectures": 24,
-            "duration_lectures": 1,
-            "num_labs": 0,
-            "duration_labs": 0,
-            "num_assistants": 0,
-            "duration_assistants": 0
-        },
-        "sections": [
-            {
-                "section_number": 1,
-                "total_enrolled": 30,
-                "assigned_events": {
-                    "CATEDRA": [
-                        {
-                            "event_number": 1,
-                            "teacher": [
-                                "behzad masoud",
-                                "busco carolina mariela elena",
-                                "caceres rodrigo antonio",
-                                "diaz andres jose",
-                                "fariña paula",
-                                "garrido rodrigo andres",
-                                "gonzalez felipe alberto",
-                                "jara francisco ivan",
-                                "pezoa raul alejandro",
-                                "sarmiento cristobal andres",
-                                "veliz karina denisse",
-                                "zuñiga eduardo israel"
-                            ]
                         }
                     ],
                     "LABORATORIO": [],
@@ -10425,7 +9801,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10453,7 +9829,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10481,7 +9857,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10514,7 +9890,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10532,7 +9908,7 @@
         "code": "CII3706",
         "name": "fundamentos de la inteligencia artificia",
         "distribution": {
-            "num_lectures": 1,
+            "num_lectures": 2,
             "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
@@ -10542,7 +9918,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10560,7 +9936,7 @@
         "code": "CII3709",
         "name": "gestión en la industria minera",
         "distribution": {
-            "num_lectures": 1,
+            "num_lectures": 2,
             "duration_lectures": 1,
             "num_labs": 0,
             "duration_labs": 0,
@@ -10570,7 +9946,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10598,7 +9974,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10626,7 +10002,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10654,7 +10030,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
@@ -10682,7 +10058,7 @@
         "sections": [
             {
                 "section_number": 1,
-                "total_enrolled": 30,
+                "total_enrolled": 38,
                 "assigned_events": {
                     "CATEDRA": [
                         {
