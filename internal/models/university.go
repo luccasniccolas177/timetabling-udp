@@ -1,6 +1,6 @@
 package models
 
-// Requirement vincula un curso con la carrera(s) a la(s) que pertenece y el semestre en el que se toma
+// Requirement vincula un curso con la carrera(s) a la(s) que pertenece y el semestre en el que se toma y sus pre-requisitos
 type Requirement struct {
 	Major    Major
 	Semester int
@@ -22,11 +22,12 @@ type Distribution struct {
 // un slice para almacenar los distintos semestres donde se imparte el ramo en cada carrera
 // Como la distribucion de eventos (catedras, ayudantía y labs) es general a un curso se almacena aca esa información
 type Course struct {
-	ID           int
-	Name         string `json:"name"`
-	Code         string `json:"code"`
-	Requirements []Requirement
-	Distribution Distribution
+	ID            int
+	Name          string `json:"name"`
+	Code          string `json:"code"`
+	Requirements  []Requirement
+	Distribution  Distribution
+	Prerequisites []string
 }
 
 // Section almacena la metadata de una sección en especifico (numero de sección, numero estudiantes)ñ
