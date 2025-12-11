@@ -2,154 +2,158 @@ package graph
 
 import (
 	"fmt"
-	"timetabling-UDP/internal/models"
+	"timetabling-UDP/internal/domain"
 )
 
-// ConflictGraph representa un grafo G(V, E), donde V son los eventos (catedras, ayudantias y labs) y E representan los conflictos o restricciones
+// ConflictGraph representa un grafo G(V, E)
+// V = Sesiones de clase (ClassSession)
+// E = Conflictos (dos sesiones no pueden estar en el mismo slot)
 type ConflictGraph struct {
-	// mapeamos los identifcadores del evento con la instancia
-	Nodes map[string]*models.EventInstance
+	// Nodos: ID de sesión → Sesión de clase
+	Nodes map[string]*domain.ClassSession
 
-	// Lista de Adyacencia: Mapa de UUID -> Set de UUIDs vecinos
-	// Usamos map[string]bool para búsquedas y eliminaciones O(1)
+	// Lista de Adyacencia: ID → Set de IDs vecinos
+	// Usamos map[string]bool para búsquedas O(1)
 	AdjacencyList map[string]map[string]bool
 
-	// MergeHistory: Mapa para rastrear fusiones.
-	// Key: UUID del nodo "sobreviviente" (u) -> Value: Lista de UUIDs absorbidos (v)
-	// Esto es vital para el paso final del paper: "colour all vertices merged into v_j colour i"
+	// MergeHistory: Rastrea fusiones de nodos
+	// Key: ID del nodo sobreviviente → Value: IDs absorbidos
+	// Vital para colorear nodos fusionados con el mismo color
 	MergeHistory map[string][]string
 }
 
-// NewConflictGraph inicializa el grafo
+// NewConflictGraph inicializa un grafo vacío
 func NewConflictGraph() *ConflictGraph {
 	return &ConflictGraph{
-		Nodes:         make(map[string]*models.EventInstance),
+		Nodes:         make(map[string]*domain.ClassSession),
 		AdjacencyList: make(map[string]map[string]bool),
 		MergeHistory:  make(map[string][]string),
 	}
 }
 
-func (g *ConflictGraph) AddNode(e *models.EventInstance) {
-	// si el identificador no se encuentra dentro de los nodos actuales se agrega al grafo y se inicializa la lista de adjacencia
-	if _, ok := g.Nodes[e.UUID]; !ok {
-		g.Nodes[e.UUID] = e
-		g.AdjacencyList[e.UUID] = make(map[string]bool)
+// AddNode agrega una sesión al grafo
+func (g *ConflictGraph) AddNode(session *domain.ClassSession) {
+	if _, ok := g.Nodes[session.ID]; !ok {
+		g.Nodes[session.ID] = session
+		g.AdjacencyList[session.ID] = make(map[string]bool)
 	}
 }
 
-func (g *ConflictGraph) AddEdge(uUUID, vUUID string) {
-	// verificamos que los identificadores no sea iguales y que existan como nodos registrados
-	if uUUID == vUUID {
+// AddEdge agrega una arista (conflicto) entre dos sesiones
+func (g *ConflictGraph) AddEdge(sessionID1, sessionID2 string) {
+	// Validaciones
+	if sessionID1 == sessionID2 {
 		return
 	}
-	if _, ok := g.Nodes[uUUID]; !ok {
+	if _, ok := g.Nodes[sessionID1]; !ok {
 		return
 	}
-	if _, ok := g.Nodes[vUUID]; !ok {
+	if _, ok := g.Nodes[sessionID2]; !ok {
 		return
 	}
 
-	// registramos la arista(conflicto) entre ambos eventos
-	g.AdjacencyList[uUUID][vUUID] = true
-	g.AdjacencyList[vUUID][uUUID] = true
+	// Agregar arista bidireccional
+	g.AdjacencyList[sessionID1][sessionID2] = true
+	g.AdjacencyList[sessionID2][sessionID1] = true
 }
 
-func (g *ConflictGraph) GetDegree(UUID string) int {
-	// verificamos que existe el identificador y retornamos el numero de eventos con conflictos
-	if neighbors, ok := g.AdjacencyList[UUID]; ok {
+// HasEdge verifica si existe una arista entre dos sesiones
+func (g *ConflictGraph) HasEdge(sessionID1, sessionID2 string) bool {
+	if neighbors, ok := g.AdjacencyList[sessionID1]; ok {
+		return neighbors[sessionID2]
+	}
+	return false
+}
+
+// GetDegree retorna el número de vecinos de una sesión
+func (g *ConflictGraph) GetDegree(sessionID string) int {
+	if neighbors, ok := g.AdjacencyList[sessionID]; ok {
 		return len(neighbors)
 	}
 	return 0
 }
 
-// GetNeighbors retorna una lista con los UUIDs de lo vecinos
-func (g *ConflictGraph) GetNeighbors(UUID string) []string {
-	neighbors := make([]string, 0, len(g.AdjacencyList[UUID]))
-	for neighborUUID := range g.AdjacencyList[UUID] {
-		neighbors = append(neighbors, neighborUUID)
+// GetNeighbors retorna los IDs de los vecinos de una sesión
+func (g *ConflictGraph) GetNeighbors(sessionID string) []string {
+	neighbors := make([]string, 0, len(g.AdjacencyList[sessionID]))
+	for neighborID := range g.AdjacencyList[sessionID] {
+		neighbors = append(neighbors, neighborID)
 	}
 	return neighbors
 }
 
-// RemoveNode elimina un nodo y limpia todas sus referencias en los vecinos.
-func (g *ConflictGraph) RemoveNode(targetUUID string) {
-	if _, exists := g.Nodes[targetUUID]; !exists {
+// RemoveNode elimina una sesión del grafo
+func (g *ConflictGraph) RemoveNode(sessionID string) {
+	if _, exists := g.Nodes[sessionID]; !exists {
 		return
 	}
 
-	// eliminar las referencias de v en todos sus vecinos
-	for neighborUUID := range g.AdjacencyList[targetUUID] {
-		delete(g.AdjacencyList[neighborUUID], targetUUID)
+	// Eliminar referencias en vecinos
+	for neighborID := range g.AdjacencyList[sessionID] {
+		delete(g.AdjacencyList[neighborID], sessionID)
 	}
 
-	// eliminar la entrada del nodo en la lista de adyacencia
-	delete(g.AdjacencyList, targetUUID)
-
-	// eliminar v
-	delete(g.Nodes, targetUUID)
+	// Eliminar nodo
+	delete(g.AdjacencyList, sessionID)
+	delete(g.Nodes, sessionID)
 }
 
-// MergeNodes fusiona el nodo v dentro de u
-// Implementa la lógica: "Merge v_j and y_i into v_j"[cite: 131].
-func (g *ConflictGraph) MergeNodes(uUUID, vUUID string) {
-	if uUUID == vUUID {
+// MergeNodes fusiona dos nodos (u absorbe a v)
+func (g *ConflictGraph) MergeNodes(uID, vID string) {
+	if uID == vID {
 		return
 	}
-	if _, ok := g.Nodes[uUUID]; !ok {
+	if _, ok := g.Nodes[uID]; !ok {
 		return
 	}
-	if _, ok := g.Nodes[vUUID]; !ok {
+	if _, ok := g.Nodes[vID]; !ok {
 		return
 	}
 
-	// agregamos a u todos los vecinos de v, se heredan
-	for neighborOfV := range g.AdjacencyList[vUUID] {
-		// si ya estan conectados, se omite
-		if neighborOfV != uUUID {
-			g.AddEdge(uUUID, neighborOfV)
+	// u hereda todos los vecinos de v
+	for neighborID := range g.AdjacencyList[vID] {
+		if neighborID != uID {
+			g.AddEdge(uID, neighborID)
 		}
 	}
 
-	// 2. Guardar Historial (Crucial para colorear al final):
-	// Registramos que 'v' ahora es parte de 'u'.
-	g.MergeHistory[uUUID] = append(g.MergeHistory[uUUID], vUUID)
+	// Guardar historial de fusión
+	g.MergeHistory[uID] = append(g.MergeHistory[uID], vID)
 
-	// Si 'v' ya había absorbido a otros antes, esos también pasan a ser parte de 'u'
-	if absorbedByV, ok := g.MergeHistory[vUUID]; ok {
-		g.MergeHistory[uUUID] = append(g.MergeHistory[uUUID], absorbedByV...)
-		delete(g.MergeHistory, vUUID) // Limpiamos el historial del nodo borrado
+	// Si v ya había absorbido otros, u los hereda
+	if absorbedByV, ok := g.MergeHistory[vID]; ok {
+		g.MergeHistory[uID] = append(g.MergeHistory[uID], absorbedByV...)
+		delete(g.MergeHistory, vID)
 	}
 
-	// 3. Eliminar el nodo absorbido del grafo activo
-	g.RemoveNode(vUUID)
+	// Eliminar v
+	g.RemoveNode(vID)
 }
 
+// IsNull verifica si el grafo está vacío
 func (g *ConflictGraph) IsNull() bool {
 	return len(g.Nodes) == 0
 }
 
-// Copy crea una copia profunda (Deep Copy) del grafo.
-// Es fundamental para el algoritmo recursivo que reduce el grafo (H = G).
+// Copy crea una copia profunda del grafo
 func (g *ConflictGraph) Copy() *ConflictGraph {
 	newGraph := NewConflictGraph()
 
-	// copiar Nodos
-	for id, node := range g.Nodes {
-		newGraph.Nodes[id] = node
-		// Inicializar mapa de adyacencia vacío para el nuevo nodo
+	// Copiar nodos
+	for id, session := range g.Nodes {
+		newGraph.Nodes[id] = session
 		newGraph.AdjacencyList[id] = make(map[string]bool)
 	}
 
-	// 2. copiar aristas
+	// Copiar aristas
 	for u, neighbors := range g.AdjacencyList {
 		for v := range neighbors {
 			newGraph.AdjacencyList[u][v] = true
 		}
 	}
 
-	// 3. Copiar Historial de Fusiones (Si lo estás usando)
+	// Copiar historial de fusiones
 	for survivor, absorbed := range g.MergeHistory {
-		// Necesitamos copiar el slice, no solo referenciarlo
 		newSlice := make([]string, len(absorbed))
 		copy(newSlice, absorbed)
 		newGraph.MergeHistory[survivor] = newSlice
@@ -158,28 +162,25 @@ func (g *ConflictGraph) Copy() *ConflictGraph {
 	return newGraph
 }
 
-func (g *ConflictGraph) GetCommonNeighbors(uUUID, vUUID string) []string {
-	// Validaciones básicas
-	if uUUID == vUUID {
+// GetCommonNeighbors retorna los vecinos comunes de dos sesiones
+func (g *ConflictGraph) GetCommonNeighbors(uID, vID string) []string {
+	if uID == vID {
 		return []string{}
 	}
-	if _, ok := g.Nodes[uUUID]; !ok {
+	if _, ok := g.Nodes[uID]; !ok {
 		return []string{}
 	}
-	if _, ok := g.Nodes[vUUID]; !ok {
+	if _, ok := g.Nodes[vID]; !ok {
 		return []string{}
 	}
 
 	var common []string
 
-	// Iteramos sobre los vecinos de u y verificamos existencia en v usando el mapa.
-	// Acceder a g.AdjacencyList[vUUID][vecino] es O(1), muy rápido.
+	// Obtener vecinos de v como mapa para búsqueda O(1)
+	vNeighborsMap := g.AdjacencyList[vID]
 
-	// Obtenemos el mapa de vecinos de V directamente para búsquedas rápidas
-	vNeighborsMap := g.AdjacencyList[vUUID]
-
-	for uNeighbor := range g.AdjacencyList[uUUID] {
-		// Verificamos si este vecino de U también está en el mapa de V
+	// Buscar vecinos comunes
+	for uNeighbor := range g.AdjacencyList[uID] {
 		if _, exists := vNeighborsMap[uNeighbor]; exists {
 			common = append(common, uNeighbor)
 		}
@@ -188,18 +189,18 @@ func (g *ConflictGraph) GetCommonNeighbors(uUUID, vUUID string) []string {
 	return common
 }
 
-// PrintStats imprime un resumen para verificar la construcción
+// PrintStats imprime estadísticas del grafo
 func (g *ConflictGraph) PrintStats() {
 	v := len(g.Nodes)
 	e := 0
 	for _, neighbors := range g.AdjacencyList {
 		e += len(neighbors)
 	}
-	e = e / 2 // Dividir por 2 porque es no dirigido (A->B y B->A cuentan como 1 arista)
+	e = e / 2 // Dividir por 2 (grafo no dirigido)
 
 	density := 0.0
 	if v > 1 {
-		// Fórmula de densidad: 2|E| / (|V| * (|V|-1))
+		// Densidad: 2|E| / (|V| * (|V|-1))
 		density = float64(2*e) / float64(v*(v-1))
 	}
 

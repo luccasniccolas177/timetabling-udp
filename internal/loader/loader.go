@@ -9,11 +9,12 @@ import (
 )
 
 type UniversityState struct {
-	Courses   map[int]models.Course
-	Sections  map[int]models.Section
-	Teachers  map[int]models.Teacher
-	Rooms     map[int]models.Room
-	RawEvents []models.LogicalEvent
+	Courses         map[int]models.Course
+	Sections        map[int]models.Section
+	Teachers        map[int]models.Teacher
+	Rooms           map[int]models.Room
+	RawEvents       []models.LogicalEvent
+	RoomConstraints *models.RoomConstraints // ✅ NUEVO: Restricciones de salas
 }
 
 type SectionLookUp map[string]map[int]int
@@ -186,15 +187,27 @@ func LoadFicData(basePath string) (*UniversityState, error) {
 		}
 	}
 
-	// === BUCLE 3: BARRIDO Y FUSIÓN DE ESPEJO (AYUDANTÍAS HUÉRFANAS) ===
+	// === BUCLE 3: BARRIDO Y FUSIÓN AUTOMÁTICA POR EVENT NUMBER ===
+	// Este bucle maneja eventos que no fueron procesados por el archivo de profesores (ej. Sin Profesor)
+	// Implementa una fusión inteligente basada puramente en el EventNumber del JSON de Oferta.
+
+	// Mapa para rastrear fusiones ya creadas en este paso
+	// Key: "CourseCode-Type-EventNumber" -> LogicalEventID
+	// Mapa para rastrear fusiones ya creadas en este paso
+	// Key: "CourseCode-Type-EventNumber" -> LogicalEventID
+	// createdAutoEvents := make(map[string]int) // No used anymore with pendingGroups approach
+
 	for _, cJSON := range coursesJson {
 		targetCode := strings.ToUpper(strings.TrimSpace(cJSON.Code))
 		if _, ok := sectionLookUp[targetCode]; !ok {
 			continue
 		}
 
+		// Obtener info del curso
 		var courseDist models.Distribution
 		var courseID int
+		// Asumimos que todas las secciones del mismo curso tienen el mismo ID de curso
+		// Tomamos la primera sección válida para sacar el ID
 		for _, s := range cJSON.Sections {
 			if gID, ok := sectionLookUp[targetCode][s.SectionNumber]; ok {
 				sec := universityState.Sections[gID]
@@ -207,93 +220,142 @@ func LoadFicData(basePath string) (*UniversityState, error) {
 			continue
 		}
 
+		// Recolectar todos los eventos pendientes por (Type, EventNum) -> [List of Sections]
+		// Esto nos permite agrupar secciones que comparten evento ANTES de crearlos
+		type PendingEventGroup struct {
+			Type         string
+			EventNumber  int
+			SectionIDs   []int
+			TotalSize    int
+			TeachersJSON TeacherField
+		}
+		// Key: "Type-EventNum"
+		pendingGroups := make(map[string]*PendingEventGroup)
+
 		for _, sJSON := range cJSON.Sections {
 			globalID, ok := sectionLookUp[targetCode][sJSON.SectionNumber]
 			if !ok {
 				continue
 			}
 
-			for rawType, eventsList := range sJSON.AssignedEvents { // Iteramos KEY y VALOR (lista)
+			for rawType, eventsList := range sJSON.AssignedEvents {
 				typeStr := strings.ToUpper(strings.TrimSpace(rawType))
 
-				// Si este tipo ya fue procesado para esta sección, saltamos TODOS los eventos de ese tipo
+				// Si ya fue procesado por el archivo de profesores, lo ignoramos
 				if processedEvents[fmt.Sprintf("%d-%s", globalID, typeStr)] {
 					continue
 				}
 
-				// Iteramos la lista de eventos dentro de este tipo (para capturar el numero)
 				for _, evtDetail := range eventsList {
+					// Clave de agrupación: Tipo y Número de Evento
+					groupKey := fmt.Sprintf("%s-%d", typeStr, evtDetail.EventNumber)
 
-					var eType models.EventType
-					var duration int
-					var rType models.RoomType
-					var freq int
-
-					switch typeStr {
-					case "CATEDRA":
-						eType = models.CAT
-						duration = courseDist.DurationLectures
-						rType = models.CR
-						freq = courseDist.NumLectures
-					case "LABORATORIO":
-						eType = models.LAB
-						duration = courseDist.DurationLabs
-						rType = models.LR
-						freq = courseDist.NumLabs
-					case "AYUDANTIA":
-						eType = models.AY
-						duration = courseDist.DurationAssistants
-						rType = models.CR
-						freq = courseDist.NumAssistants
-					default:
-						continue
-					}
-					if duration == 0 {
-						continue
-					}
-
-					// --- LÓGICA DE FUSIÓN POR ESPEJO ---
-					finalParentIDs := []int{globalID}
-					finalSize := universityState.Sections[globalID].StudentsNumber
-
-					if typeStr == "AYUDANTIA" || typeStr == "CATEDRA" {
-						if group, exists := sectionFusionMap[globalID]; exists {
-
-							// Verificamos si ya procesamos este grupo en Bucle 3 para no duplicar
-							groupKey := fmt.Sprintf("GROUP-%d-%s-%d", group[0], typeStr, evtDetail.EventNumber)
-							if processedEvents[groupKey] {
-								continue
-							}
-
-							finalParentIDs = group
-							finalSize = 0
-							for _, gID := range group {
-								finalSize += universityState.Sections[gID].StudentsNumber
-								processedEvents[fmt.Sprintf("%d-%s", gID, typeStr)] = true
-							}
-							processedEvents[groupKey] = true
+					if _, exists := pendingGroups[groupKey]; !exists {
+						pendingGroups[groupKey] = &PendingEventGroup{
+							Type:         typeStr,
+							EventNumber:  evtDetail.EventNumber,
+							SectionIDs:   []int{},
+							TotalSize:    0,
+							TeachersJSON: evtDetail.Teacher, // Guardamos teacher info (aunque sea null)
 						}
 					}
-					// -----------------------------------
 
+					// Agregar esta sección al grupo
+					group := pendingGroups[groupKey]
+					group.SectionIDs = append(group.SectionIDs, globalID)
+					group.TotalSize += universityState.Sections[globalID].StudentsNumber
+				}
+			}
+		}
+
+		// Procesar los grupos recolectados y crear LogicalEvents
+		for _, group := range pendingGroups {
+
+			// Determinar parámetros del modelo
+			var eType models.EventType
+			var duration int
+			var rType models.RoomType
+			var freq int
+
+			switch group.Type {
+			case "CATEDRA":
+				eType = models.CAT
+				duration = courseDist.DurationLectures
+				rType = models.CR
+				freq = courseDist.NumLectures
+			case "LABORATORIO":
+				eType = models.LAB
+				duration = courseDist.DurationLabs
+				rType = models.LR
+				freq = courseDist.NumLabs
+				// Excepción: Los laboratorios NO se fusionan, son por sección.
+				// A menos que explícitamente se quiera (pero el usuario pidió Cátedra).
+				// El modelo de dominio soporta Labs compartidos?
+				// domain/lab.go tiene "Section *Section" (singular).
+				// Por lo tanto, Labs NO se pueden fusionar en el modelo actual.
+				// Debemos crear uno por sección.
+			case "AYUDANTIA":
+				eType = models.AY
+				duration = courseDist.DurationAssistants
+				rType = models.CR
+				freq = courseDist.NumAssistants
+			default:
+				continue
+			}
+
+			if duration == 0 {
+				continue
+			}
+
+			// Caso especial LABORATORIO: Desagrupar
+			if eType == models.LAB {
+				for _, secID := range group.SectionIDs {
 					lEvent := models.LogicalEvent{
 						ID:               globalEventID,
 						CourseID:         courseID,
 						Type:             eType,
-						ParentSectionIDs: finalParentIDs,
-						EventNumber:      evtDetail.EventNumber, // <--- AQUÍ CAPTURAMOS EL NÚMERO
-						EventSize:        finalSize,
+						ParentSectionIDs: []int{secID},
+						EventNumber:      group.EventNumber,
+						EventSize:        universityState.Sections[secID].StudentsNumber,
 						DurationBlocks:   duration,
 						Frequency:        freq,
-						TeachersIDs:      []int{}, // Sin profesor
+						TeachersIDs:      []int{},
 						RoomType:         rType,
 					}
 					universityState.RawEvents = append(universityState.RawEvents, lEvent)
 					globalEventID++
+
+					// Marcar como procesado
+					// (Aunque ya no es necesario porque pendingGroups reemplaza el bucle directo)
 				}
+				continue
 			}
+
+			// Caso CATEDRA y AYUDANTIA: Crear UN evento fusionado
+			lEvent := models.LogicalEvent{
+				ID:               globalEventID,
+				CourseID:         courseID,
+				Type:             eType,
+				ParentSectionIDs: group.SectionIDs, // Todas las secciones juntas
+				EventNumber:      group.EventNumber,
+				EventSize:        group.TotalSize,
+				DurationBlocks:   duration,
+				Frequency:        freq,
+				TeachersIDs:      []int{}, // TODO: Podríamos intentar resolver nombres de TeachersJSON
+				RoomType:         rType,
+			}
+			universityState.RawEvents = append(universityState.RawEvents, lEvent)
+			globalEventID++
 		}
 	}
+
+	// ✅ NUEVO: Cargar restricciones de salas
+	constraintsPath := fmt.Sprintf("%s/rooms_constraints.json", basePath)
+	constraints, err := LoadRoomConstraints(constraintsPath)
+	if err != nil {
+		return nil, fmt.Errorf("error cargando room constraints: %w", err)
+	}
+	universityState.RoomConstraints = constraints
 
 	if err := ValidateState(universityState); err != nil {
 		return nil, err
