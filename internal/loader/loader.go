@@ -75,6 +75,34 @@ func LoadCourseDistributions(path string) (map[string]DistributionJSON, error) {
 	return result, nil
 }
 
+// CourseFullJSON representa un curso completo en courses.json con PlanLocation
+type CourseFullJSON struct {
+	ID           int              `json:"ID"`
+	Code         string           `json:"Code"`
+	Name         string           `json:"Name"`
+	PlanLocation map[string]int   `json:"PlanLocation"` // Major -> Semester
+	Distribution DistributionJSON `json:"Distribution"`
+}
+
+// LoadCoursePlanLocations carga courses.json y retorna mapa CourseCode -> (Major -> Semester)
+func LoadCoursePlanLocations(path string) (map[string]map[string]int, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	var courses []CourseFullJSON
+	if err := json.Unmarshal(data, &courses); err != nil {
+		return nil, err
+	}
+
+	result := make(map[string]map[string]int)
+	for _, c := range courses {
+		result[c.Code] = c.PlanLocation
+	}
+	return result, nil
+}
+
 // LoadActivitiesWithExpansion carga oferta_academica.json y expande cada actividad
 // en N sesiones según Distribution del curso.
 func LoadActivitiesWithExpansion(ofertaPath, coursesPath string) ([]domain.Activity, error) {

@@ -39,8 +39,14 @@ func main() {
 		log.Fatalf("Error cargando restricciones de salas: %v", err)
 	}
 
-	// Construir grafo de conflictos
-	conflictGraph := graph.BuildFromActivities(activities)
+	// Cargar PlanLocations para cliques de semestre
+	planLocations, err := loader.LoadCoursePlanLocations("data/input/courses.json")
+	if err != nil {
+		log.Fatalf("Error cargando plan locations: %v", err)
+	}
+
+	// Construir grafo de conflictos CON cliques de semestre
+	conflictGraph := graph.BuildFromActivitiesWithCliques(activities, planLocations)
 
 	// Estadísticas generales
 	fmt.Println("═══════════════════════════════════════════════════════════")
