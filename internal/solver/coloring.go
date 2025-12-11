@@ -1,269 +1,249 @@
 package solver
 
 import (
-	"fmt"
+	"sort"
+
 	"timetabling-UDP/internal/domain"
 	"timetabling-UDP/internal/graph"
 )
 
-// ColorGraph ejecuta el algoritmo de coloración de grafos
-// Implementa la Sección 2.1.2 del paper:
-// "An algorithm to give a Reasonable Colouring of any given graph"
-func ColorGraph(originalGraph *graph.ConflictGraph) *Solution {
+// ColorSet representa un conjunto de actividades que pueden ocurrir en el mismo periodo.
+// Todas las actividades en un ColorSet no tienen conflictos entre sí.
+type ColorSet struct {
+	Color      int                // Número del color/periodo
+	Activities []*domain.Activity // Actividades asignadas a este periodo
+}
 
-	// PASO 1: "Let j:=1, H:=G" [cite: 124]
-	// Crear copia profunda para destruir/fusionar nodos sin afectar el original
-	H := originalGraph.Copy()
+// GreedyColoring implementa el algoritmo de Dutton-Brigham para colorear el grafo.
+// Retorna una lista de ColorSets donde cada set es un periodo sin conflictos.
+func GreedyColoring(g *graph.ConflictGraph) []ColorSet {
+	// Crear copia de trabajo del grafo
+	H := cloneGraph(g)
 
-	solution := NewSolution()
+	var colorSets []ColorSet
+	color := 0
 
-	fmt.Println("🚀 Iniciando algoritmo de coloreo...")
+	// Mientras queden vértices sin colorear
+	for H.NumVertices() > 0 {
+		// Encontrar conjunto independiente máximo
+		colorSet := findMaxIndependentSet(H)
 
-	// Bucle Principal: Mientras queden vértices en H
-	for !H.IsNull() {
+		if len(colorSet) == 0 {
+			break // No deberían quedar vértices aislados, pero por seguridad
+		}
 
-		// PASO 2: "Let vj be a vertex of maximal degree in H" [cite: 126]
-		pivotID := findMaxDegreeNode(H)
+		// Crear ColorSet con las actividades
+		cs := ColorSet{
+			Color:      color,
+			Activities: make([]*domain.Activity, len(colorSet)),
+		}
+		for i, id := range colorSet {
+			cs.Activities[i] = g.Vertices[id] // Usar referencia del grafo original
+		}
+		colorSets = append(colorSets, cs)
 
-		// PASO 3 y 4 (Bucle de Fusión):
-		// "Merge vj and x_hat into vj... until no choice is possible" [cite: 131]
-		for {
-			candidateID := findBestMergeCandidate(H, pivotID)
+		// Eliminar vértices coloreados del grafo de trabajo
+		for _, id := range colorSet {
+			removeVertex(H, id)
+		}
 
-			if candidateID == "" {
-				// No hay más candidatos compatibles
+		color++
+	}
+
+	return colorSets
+}
+
+// findMaxIndependentSet encuentra un conjunto independiente (casi) máximo usando
+// el algoritmo de fusión del paper (Dutton-Brigham + Tehrani).
+func findMaxIndependentSet(H *graph.ConflictGraph) []int {
+	if H.NumVertices() == 0 {
+		return nil
+	}
+
+	// Paso 1: Elegir vértice de máximo grado como semilla
+	seed := maxDegreeVertex(H)
+	if seed == -1 {
+		return nil
+	}
+
+	// El conjunto independiente comienza con la semilla
+	independentSet := []int{seed}
+	merged := map[int]bool{seed: true}
+
+	// Paso 2-4: Fusionar vértices iterativamente
+	for {
+		// Buscar mejor candidato para fusionar (máximos vecinos comunes, no adyacente)
+		candidate := findBestMergeCandidate(H, independentSet, merged)
+
+		if candidate == -1 {
+			// No hay más candidatos, el conjunto está completo
+			break
+		}
+
+		// Fusionar: agregar al conjunto independiente
+		independentSet = append(independentSet, candidate)
+		merged[candidate] = true
+	}
+
+	return independentSet
+}
+
+// findBestMergeCandidate encuentra el vértice no adyacente con más vecinos comunes.
+// Implementa el concepto de triples (x, z, y) del paper.
+func findBestMergeCandidate(H *graph.ConflictGraph, currentSet []int, merged map[int]bool) int {
+	bestCandidate := -1
+	maxCommonNeighbors := -1
+
+	// Para cada vértice candidato
+	for candidateID := range H.Vertices {
+		// Saltar si ya está en el conjunto
+		if merged[candidateID] {
+			continue
+		}
+
+		// Verificar que NO sea adyacente a ningún vértice del conjunto actual
+		isAdjacent := false
+		for _, setID := range currentSet {
+			if H.HasEdge(candidateID, setID) {
+				isAdjacent = true
 				break
 			}
-
-			// Fusionar candidato dentro del pivot
-			H.MergeNodes(pivotID, candidateID)
 		}
-
-		// PASO 5: Asignar color [cite: 132]
-		// ESTRATEGIA: Balanced Coloring (Least Loaded Valid Color) + Heurísticas de Negocio
-
-		mergedGroup := H.MergeHistory[pivotID]
-		mergedGroup = append(mergedGroup, pivotID) // Agregar el líder
-
-		// Identificar tipo de sesión líder para aplicar heurísticas
-		isTutorial := false
-		isLecture := false
-		var pivotSession *domain.ClassSession
-		if session, ok := originalGraph.Nodes[pivotID]; ok {
-			pivotSession = session
-			if session.GetType() == domain.ClassTypeTutorial {
-				isTutorial = true
-			} else if session.GetType() == domain.ClassTypeLecture {
-				isLecture = true
-			}
-		}
-
-		// Pre-calcular bloques espejo deseados si es Cátedra
-		// Buscamos otras sesiones DEL MISMO CURSO Y SECCIÓN ya asignadas
-		desiredMirrorBlocks := make(map[int]bool)
-		if isLecture && pivotSession != nil {
-			// Accedemos a las sesiones a través de la clase -> sección -> sesiones
-			// Nota: Esto asume que pivotSession está vinculado correctamente
-			if course := pivotSession.GetCourse(); course != nil {
-				// Buscar sesiones ya asignadas de este curso/sección en la solución actual
-				// Recorremos el schedule actual para encontrar "hermanos"
-				for bID, assignedSessions := range solution.Schedule {
-					for _, s := range assignedSessions {
-						// Verificar si es "hermano": Mismo Curso, Misma Sección, Tipo Cátedra
-						if s.Class.GetCourse().Code == course.Code &&
-							s.GetType() == domain.ClassTypeLecture &&
-							s.Class.GetSections()[0].Number == pivotSession.Class.GetSections()[0].Number { // Simplificación: asumiendo 1 sección principal
-
-							// Es un hermano ya asignado en bloque bID
-							// Calcular sus espejos y marcarlos como deseables
-							mirrors := getMirrorBlocks(bID)
-							for _, m := range mirrors {
-								desiredMirrorBlocks[m] = true
-							}
-						}
-					}
-				}
-			}
-		}
-
-		bestColor := -1
-		minLoad := 999999
-		maxBlocks := 35 // Límite de la semana
-
-		// Buscar el mejor color (bloque) entre los disponibles
-		// Intentamos reutilizar colores existentes para mantenernos dentro de los 35 bloques
-		// Si no es posible, expandiremos.
-		searchLimit := maxBlocks
-		if solution.TotalColors > maxBlocks {
-			searchLimit = solution.TotalColors
-		}
-
-		for c := 1; c <= searchLimit; c++ {
-			// Verificar validez (Conflictos)
-			canUseBlock := true
-			for _, sessionID := range mergedGroup {
-				if session, ok := originalGraph.Nodes[sessionID]; ok {
-					if solution.HasConflictInBlock(c, session, originalGraph) {
-						canUseBlock = false
-						break
-					}
-				}
-			}
-
-			if canUseBlock {
-				// Calcular "Carga" (Load)
-				load := len(solution.Schedule[c])
-
-				// --- HEURÍSTICAS ---
-
-				// 1. Preferencia Ayudantías -> Miércoles
-				if isTutorial && isWednesdayBlock(c) {
-					load -= 10000 // Gran preferencia (Forzada si es posible)
-				}
-
-				// 2. Preferencia Cátedras -> Horarios Espejo
-				if isLecture && desiredMirrorBlocks[c] {
-					load -= 5000 // Preferencia muy alta para alinear horarios
-				}
-
-				// -------------------
-
-				if load < minLoad {
-					minLoad = load
-					bestColor = c
-				}
-			}
-		}
-
-		// Si no encontramos color válido en los existentes, crear uno nuevo
-		if bestColor == -1 {
-			// Buscar el primer color válido hacia arriba
-			c := searchLimit + 1
-			for {
-				canUseBlock := true
-				for _, sessionID := range mergedGroup {
-					if session, ok := originalGraph.Nodes[sessionID]; ok {
-						if solution.HasConflictInBlock(c, session, originalGraph) {
-							canUseBlock = false
-							break
-						}
-					}
-				}
-				if canUseBlock {
-					bestColor = c
-					break
-				}
-				c++
-			}
-		}
-
-		actualColor := bestColor
-
-		// Asignar color a todas las sesiones del grupo
-		for _, sessionID := range mergedGroup {
-			if session, ok := originalGraph.Nodes[sessionID]; ok {
-				session.Color = actualColor
-				session.AssignedSlot = domain.TimeSlot(actualColor)
-				solution.Schedule[actualColor] = append(solution.Schedule[actualColor], session)
-			}
-		}
-
-		// "Start again from 2 with H := H-{vj}" [cite: 131]
-		H.RemoveNode(pivotID)
-
-		// No incrementamos colorIndex linealmente porque reutilizamos colores
-	}
-
-	solution.TotalColors = findMaxUsedColor(solution)
-	return solution
-}
-
-func isWednesdayBlock(block int) bool {
-	return block >= 14 && block <= 20
-}
-
-// findMaxDegreeNode busca el nodo con más conflictos en el grafo
-// ... (resto del archivo)
-func findMaxDegreeNode(g *graph.ConflictGraph) string {
-	maxDegree := -1
-	var bestNodeID string
-
-	for id := range g.Nodes {
-		deg := g.GetDegree(id)
-		if deg > maxDegree {
-			maxDegree = deg
-			bestNodeID = id
-		}
-	}
-	return bestNodeID
-}
-
-// getMirrorBlocks retorna los bloques equivalentes en otros días (mismo horario)
-// Asumiendo 7 bloques por día
-func getMirrorBlocks(blockID int) []int {
-	// Normalizar a índice 0-6 (bloque del día)
-	blockIndex := (blockID - 1) % 7
-
-	// Generar los 5 días (o 6)
-	// Lunes: 1 + index
-	// Martes: 8 + index
-	// Miércoles: 15 + index
-	// Jueves: 22 + index
-	// Viernes: 29 + index
-	// Sábado: 36 + index (opcional, por ahora hasta viernes 35)
-
-	mirrors := []int{}
-	for d := 0; d < 5; d++ { // 5 días laborables estándar
-		m := (d * 7) + 1 + blockIndex
-		if m != blockID { // No incluirse a sí mismo (opcional, pero útil para lógica de conjuntos)
-			mirrors = append(mirrors, m)
-		}
-	}
-	return mirrors
-}
-
-// findBestMergeCandidate busca el mejor candidato para fusionar con targetID
-// Implementa la lógica de "Triples" y "Common Neighbors" del paper
-func findBestMergeCandidate(g *graph.ConflictGraph, targetID string) string {
-	var bestCandidate string
-	maxCommon := -1
-	maxDegree := -1
-
-	// Obtener vecinos del target para verificar adyacencia
-	targetAdjacency := g.AdjacencyList[targetID]
-
-	for candidateID := range g.Nodes {
-		// 1. Validaciones básicas
-		if candidateID == targetID {
+		if isAdjacent {
 			continue
 		}
 
-		// 2. REGLA DE ORO: No pueden ser adyacentes
-		// Si son vecinos, tienen conflicto y no se pueden fusionar
-		if targetAdjacency[candidateID] {
-			continue
-		}
+		// Contar vecinos comunes con el conjunto (triples del paper)
+		commonNeighbors := countCommonNeighbors(H, currentSet, candidateID)
 
-		// 3. Calcular métricas
-		commonNeighbors := g.GetCommonNeighbors(targetID, candidateID)
-		commonCount := len(commonNeighbors)
-		degree := g.GetDegree(candidateID)
-
-		// 4. Lógica de Selección
-		// "find y_i such that m_i = max(...)"
-		if commonCount > maxCommon {
-			maxCommon = commonCount
-			maxDegree = degree
+		// Elegir el candidato con más vecinos comunes
+		if commonNeighbors > maxCommonNeighbors {
+			maxCommonNeighbors = commonNeighbors
 			bestCandidate = candidateID
-		} else if commonCount == maxCommon {
-			// Empate: elegir el de mayor grado
-			// "choose a vertex of maximal degree non-adjacent"
-			if degree > maxDegree {
-				maxDegree = degree
+		} else if commonNeighbors == maxCommonNeighbors && bestCandidate != -1 {
+			// Desempate: elegir el de mayor grado
+			if H.Degree(candidateID) > H.Degree(bestCandidate) {
 				bestCandidate = candidateID
 			}
 		}
 	}
 
+	// Si no hay candidatos con vecinos comunes, buscar cualquier no-adyacente con max grado
+	if bestCandidate == -1 {
+		bestCandidate = findMaxDegreeNonAdjacent(H, currentSet, merged)
+	}
+
 	return bestCandidate
+}
+
+// countCommonNeighbors cuenta cuántos vecinos del conjunto son también vecinos del candidato.
+// Esto implementa los "triples" (x, z, y) donde z es un vecino común.
+func countCommonNeighbors(H *graph.ConflictGraph, currentSet []int, candidateID int) int {
+	candidateNeighbors := make(map[int]bool)
+	for _, n := range H.Neighbors(candidateID) {
+		candidateNeighbors[n] = true
+	}
+
+	count := 0
+	for _, setID := range currentSet {
+		for _, neighbor := range H.Neighbors(setID) {
+			if candidateNeighbors[neighbor] {
+				count++
+			}
+		}
+	}
+	return count
+}
+
+// findMaxDegreeNonAdjacent encuentra el vértice de mayor grado no adyacente al conjunto.
+func findMaxDegreeNonAdjacent(H *graph.ConflictGraph, currentSet []int, merged map[int]bool) int {
+	bestID := -1
+	maxDegree := -1
+
+	for id := range H.Vertices {
+		if merged[id] {
+			continue
+		}
+
+		// Verificar no-adyacencia
+		isAdjacent := false
+		for _, setID := range currentSet {
+			if H.HasEdge(id, setID) {
+				isAdjacent = true
+				break
+			}
+		}
+		if isAdjacent {
+			continue
+		}
+
+		if H.Degree(id) > maxDegree {
+			maxDegree = H.Degree(id)
+			bestID = id
+		}
+	}
+	return bestID
+}
+
+// maxDegreeVertex retorna el ID del vértice con mayor grado.
+func maxDegreeVertex(H *graph.ConflictGraph) int {
+	maxID := -1
+	maxDeg := -1
+	for id := range H.Vertices {
+		if H.Degree(id) > maxDeg {
+			maxDeg = H.Degree(id)
+			maxID = id
+		}
+	}
+	return maxID
+}
+
+// cloneGraph crea una copia del grafo para trabajar sin modificar el original.
+func cloneGraph(g *graph.ConflictGraph) *graph.ConflictGraph {
+	clone := graph.New()
+
+	// Copiar vértices
+	for id, a := range g.Vertices {
+		clone.Vertices[id] = a
+		clone.Adjacency[id] = make(map[int]bool)
+	}
+
+	// Copiar aristas
+	for id, neighbors := range g.Adjacency {
+		for n := range neighbors {
+			clone.Adjacency[id][n] = true
+		}
+	}
+
+	return clone
+}
+
+// removeVertex elimina un vértice y todas sus aristas del grafo.
+func removeVertex(H *graph.ConflictGraph, id int) {
+	// Eliminar aristas hacia este vértice
+	for neighborID := range H.Adjacency[id] {
+		delete(H.Adjacency[neighborID], id)
+	}
+	// Eliminar el vértice
+	delete(H.Adjacency, id)
+	delete(H.Vertices, id)
+}
+
+// AssignBlocksToColorSets asigna bloques temporales (0-34) a cada ColorSet.
+// Cada color se mapea a un bloque diferente.
+func AssignBlocksToColorSets(colorSets []ColorSet) {
+	for i := range colorSets {
+		block := i % domain.TotalBlocks // Wrap around si hay más colores que bloques
+		for _, activity := range colorSets[i].Activities {
+			activity.Block = block
+		}
+	}
+}
+
+// SortColorSetsBySize ordena los ColorSets por tamaño (más grandes primero).
+// Útil para asignar los bloques más convenientes a los periodos más llenos.
+func SortColorSetsBySize(colorSets []ColorSet) {
+	sort.Slice(colorSets, func(i, j int) bool {
+		return len(colorSets[i].Activities) > len(colorSets[j].Activities)
+	})
 }

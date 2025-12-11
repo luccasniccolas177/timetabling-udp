@@ -1,392 +1,359 @@
 package loader
 
 import (
+	"encoding/csv"
+	"encoding/json"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
-	"timetabling-UDP/internal/data"
-	"timetabling-UDP/internal/models"
+
+	"timetabling-UDP/internal/domain"
 )
 
-type UniversityState struct {
-	Courses         map[int]models.Course
-	Sections        map[int]models.Section
-	Teachers        map[int]models.Teacher
-	Rooms           map[int]models.Room
-	RawEvents       []models.LogicalEvent
-	RoomConstraints *models.RoomConstraints // ✅ NUEVO: Restricciones de salas
+// --------------------------------------------------------------------------
+// Estructuras intermedias para deserializar el JSON
+// --------------------------------------------------------------------------
+
+// CourseOfertaJSON representa un curso en oferta_academica.json
+type CourseOfertaJSON struct {
+	CourseCode string         `json:"course_code"`
+	CourseName string         `json:"course_name"`
+	Activities []ActivityJSON `json:"activities"`
 }
 
-type SectionLookUp map[string]map[int]int
-type ProcessedEvents map[string]bool
-
-func LoadFicData(basePath string) (*UniversityState, error) {
-
-	// 1. CARGA DE SALAS
-	rooms, err := LoadCSV(fmt.Sprintf("%s/rooms.csv", basePath))
-	if err != nil {
-		return nil, err
-	}
-
-	universityState := &UniversityState{
-		Courses:   make(map[int]models.Course),
-		Sections:  make(map[int]models.Section),
-		Teachers:  make(map[int]models.Teacher),
-		Rooms:     make(map[int]models.Room),
-		RawEvents: []models.LogicalEvent{},
-	}
-
-	for i, row := range rooms[1:] {
-		capacity, _ := strconv.Atoi(row[1])
-		code := row[0]
-		universityState.Rooms[i+1] = models.Room{
-			ID: i + 1, Code: code, Capacity: capacity, RoomType: getRoomType(code),
-		}
-	}
-
-	// 2. CARGA DE PROFESORES Y CURSOS
-	teachersJson, err := loadJSON[JSONTeacher](fmt.Sprintf("%s/profesores.json", basePath))
-	if err != nil {
-		return nil, err
-	}
-	for _, t := range teachersJson {
-		universityState.Teachers[t.ID] = ConvertJSONTeacherToModel(t)
-	}
-
-	coursesJson, err := loadJSON[JSONCourse](fmt.Sprintf("%s/oferta_academica.json", basePath))
-	if err != nil {
-		return nil, err
-	}
-
-	reqMap := data.RequirementsMap()
-	globalSectionID := 1
-	sectionLookUp := make(map[string]map[int]int)
-
-	// === BUCLE 1: POBLAR CURSOS Y SECCIONES ===
-	for i, c := range coursesJson {
-		courseID := i + 1
-		courseModel, sectionModel := ConvertJSONCourseToModel(c, courseID, reqMap)
-
-		if len(courseModel.Requirements) == 0 {
-			courseModel.Requirements = inferRequirementsFromCode(courseModel.Code)
-		}
-		if len(courseModel.Requirements) == 0 {
-			continue
-		}
-
-		universityState.Courses[courseID] = courseModel
-
-		cleanCode := strings.ToUpper(strings.TrimSpace(courseModel.Code))
-		if _, ok := sectionLookUp[cleanCode]; !ok {
-			sectionLookUp[cleanCode] = make(map[int]int)
-		}
-
-		for _, section := range sectionModel {
-			section.ID = globalSectionID
-			universityState.Sections[globalSectionID] = section
-			sectionLookUp[cleanCode][section.SectionNumber] = globalSectionID
-			globalSectionID++
-		}
-	}
-
-	// === PREPARACIÓN PARA FUSIÓN INTELIGENTE ===
-	globalEventID := 1
-	processedEvents := make(map[string]bool)
-	sectionFusionMap := make(map[int][]int)
-
-	//
-	for _, tJSON := range teachersJson {
-		if len(tJSON.TeachingLoad) == 0 {
-			continue
-		}
-
-		for _, load := range tJSON.TeachingLoad {
-			targetCode := strings.ToUpper(strings.TrimSpace(load.CourseCode))
-			loadType := strings.ToUpper(strings.TrimSpace(load.EventType))
-
-			var courseID int
-			var courseDist models.Distribution
-			found := false
-			for cid, c := range universityState.Courses {
-				if strings.ToUpper(strings.TrimSpace(c.Code)) == targetCode {
-					courseID = cid
-					courseDist = c.Distribution
-					found = true
-					break
-				}
-			}
-			if !found {
-				continue
-			}
-
-			var eType models.EventType
-			var duration int
-			var rType models.RoomType
-			var freq int
-
-			switch loadType {
-			case "CATEDRA":
-				eType = models.CAT
-				duration = courseDist.DurationLectures
-				rType = models.CR
-				freq = courseDist.NumLectures
-			case "LABORATORIO":
-				eType = models.LAB
-				duration = courseDist.DurationLabs
-				rType = models.LR
-				freq = courseDist.NumLabs
-			case "AYUDANTIA":
-				eType = models.AY
-				duration = courseDist.DurationAssistants
-				rType = models.CR
-				freq = courseDist.NumAssistants
-			default:
-				continue
-			}
-			if duration == 0 {
-				continue
-			}
-
-			var parentSectionIDs []int
-			totalSize := 0
-
-			for _, secNum := range load.RelatedSections {
-				if gID, ok := sectionLookUp[targetCode][secNum]; ok {
-					parentSectionIDs = append(parentSectionIDs, gID)
-					totalSize += universityState.Sections[gID].StudentsNumber
-					// Marcamos como procesado
-					processedEvents[fmt.Sprintf("%d-%s", gID, loadType)] = true
-				}
-			}
-
-			if len(parentSectionIDs) == 0 {
-				continue
-			}
-
-			// Registro de patrón de fusión para Cátedras
-			if eType == models.CAT && len(parentSectionIDs) > 1 {
-				for _, id := range parentSectionIDs {
-					sectionFusionMap[id] = parentSectionIDs
-				}
-			}
-
-			lEvent := models.LogicalEvent{
-				ID:               globalEventID,
-				CourseID:         courseID,
-				Type:             eType,
-				ParentSectionIDs: parentSectionIDs,
-				EventNumber:      load.EventNumber, // <--- Correcto desde archivo de profes
-				EventSize:        totalSize,
-				DurationBlocks:   duration,
-				Frequency:        freq,
-				TeachersIDs:      []int{tJSON.ID},
-				RoomType:         rType,
-			}
-			universityState.RawEvents = append(universityState.RawEvents, lEvent)
-			globalEventID++
-		}
-	}
-
-	// === BUCLE 3: BARRIDO Y FUSIÓN AUTOMÁTICA POR EVENT NUMBER ===
-	// Este bucle maneja eventos que no fueron procesados por el archivo de profesores (ej. Sin Profesor)
-	// Implementa una fusión inteligente basada puramente en el EventNumber del JSON de Oferta.
-
-	// Mapa para rastrear fusiones ya creadas en este paso
-	// Key: "CourseCode-Type-EventNumber" -> LogicalEventID
-	// Mapa para rastrear fusiones ya creadas en este paso
-	// Key: "CourseCode-Type-EventNumber" -> LogicalEventID
-	// createdAutoEvents := make(map[string]int) // No used anymore with pendingGroups approach
-
-	for _, cJSON := range coursesJson {
-		targetCode := strings.ToUpper(strings.TrimSpace(cJSON.Code))
-		if _, ok := sectionLookUp[targetCode]; !ok {
-			continue
-		}
-
-		// Obtener info del curso
-		var courseDist models.Distribution
-		var courseID int
-		// Asumimos que todas las secciones del mismo curso tienen el mismo ID de curso
-		// Tomamos la primera sección válida para sacar el ID
-		for _, s := range cJSON.Sections {
-			if gID, ok := sectionLookUp[targetCode][s.SectionNumber]; ok {
-				sec := universityState.Sections[gID]
-				courseID = sec.CourseID
-				courseDist = universityState.Courses[courseID].Distribution
-				break
-			}
-		}
-		if courseID == 0 {
-			continue
-		}
-
-		// Recolectar todos los eventos pendientes por (Type, EventNum) -> [List of Sections]
-		// Esto nos permite agrupar secciones que comparten evento ANTES de crearlos
-		type PendingEventGroup struct {
-			Type         string
-			EventNumber  int
-			SectionIDs   []int
-			TotalSize    int
-			TeachersJSON TeacherField
-		}
-		// Key: "Type-EventNum"
-		pendingGroups := make(map[string]*PendingEventGroup)
-
-		for _, sJSON := range cJSON.Sections {
-			globalID, ok := sectionLookUp[targetCode][sJSON.SectionNumber]
-			if !ok {
-				continue
-			}
-
-			for rawType, eventsList := range sJSON.AssignedEvents {
-				typeStr := strings.ToUpper(strings.TrimSpace(rawType))
-
-				// Si ya fue procesado por el archivo de profesores, lo ignoramos
-				if processedEvents[fmt.Sprintf("%d-%s", globalID, typeStr)] {
-					continue
-				}
-
-				for _, evtDetail := range eventsList {
-					// Clave de agrupación: Tipo y Número de Evento
-					groupKey := fmt.Sprintf("%s-%d", typeStr, evtDetail.EventNumber)
-
-					if _, exists := pendingGroups[groupKey]; !exists {
-						pendingGroups[groupKey] = &PendingEventGroup{
-							Type:         typeStr,
-							EventNumber:  evtDetail.EventNumber,
-							SectionIDs:   []int{},
-							TotalSize:    0,
-							TeachersJSON: evtDetail.Teacher, // Guardamos teacher info (aunque sea null)
-						}
-					}
-
-					// Agregar esta sección al grupo
-					group := pendingGroups[groupKey]
-					group.SectionIDs = append(group.SectionIDs, globalID)
-					group.TotalSize += universityState.Sections[globalID].StudentsNumber
-				}
-			}
-		}
-
-		// Procesar los grupos recolectados y crear LogicalEvents
-		for _, group := range pendingGroups {
-
-			// Determinar parámetros del modelo
-			var eType models.EventType
-			var duration int
-			var rType models.RoomType
-			var freq int
-
-			switch group.Type {
-			case "CATEDRA":
-				eType = models.CAT
-				duration = courseDist.DurationLectures
-				rType = models.CR
-				freq = courseDist.NumLectures
-			case "LABORATORIO":
-				eType = models.LAB
-				duration = courseDist.DurationLabs
-				rType = models.LR
-				freq = courseDist.NumLabs
-				// Excepción: Los laboratorios NO se fusionan, son por sección.
-				// A menos que explícitamente se quiera (pero el usuario pidió Cátedra).
-				// El modelo de dominio soporta Labs compartidos?
-				// domain/lab.go tiene "Section *Section" (singular).
-				// Por lo tanto, Labs NO se pueden fusionar en el modelo actual.
-				// Debemos crear uno por sección.
-			case "AYUDANTIA":
-				eType = models.AY
-				duration = courseDist.DurationAssistants
-				rType = models.CR
-				freq = courseDist.NumAssistants
-			default:
-				continue
-			}
-
-			if duration == 0 {
-				continue
-			}
-
-			// Caso especial LABORATORIO: Desagrupar
-			if eType == models.LAB {
-				for _, secID := range group.SectionIDs {
-					lEvent := models.LogicalEvent{
-						ID:               globalEventID,
-						CourseID:         courseID,
-						Type:             eType,
-						ParentSectionIDs: []int{secID},
-						EventNumber:      group.EventNumber,
-						EventSize:        universityState.Sections[secID].StudentsNumber,
-						DurationBlocks:   duration,
-						Frequency:        freq,
-						TeachersIDs:      []int{},
-						RoomType:         rType,
-					}
-					universityState.RawEvents = append(universityState.RawEvents, lEvent)
-					globalEventID++
-
-					// Marcar como procesado
-					// (Aunque ya no es necesario porque pendingGroups reemplaza el bucle directo)
-				}
-				continue
-			}
-
-			// Caso CATEDRA y AYUDANTIA: Crear UN evento fusionado
-			lEvent := models.LogicalEvent{
-				ID:               globalEventID,
-				CourseID:         courseID,
-				Type:             eType,
-				ParentSectionIDs: group.SectionIDs, // Todas las secciones juntas
-				EventNumber:      group.EventNumber,
-				EventSize:        group.TotalSize,
-				DurationBlocks:   duration,
-				Frequency:        freq,
-				TeachersIDs:      []int{}, // TODO: Podríamos intentar resolver nombres de TeachersJSON
-				RoomType:         rType,
-			}
-			universityState.RawEvents = append(universityState.RawEvents, lEvent)
-			globalEventID++
-		}
-	}
-
-	// ✅ NUEVO: Cargar restricciones de salas
-	constraintsPath := fmt.Sprintf("%s/rooms_constraints.json", basePath)
-	constraints, err := LoadRoomConstraints(constraintsPath)
-	if err != nil {
-		return nil, fmt.Errorf("error cargando room constraints: %w", err)
-	}
-	universityState.RoomConstraints = constraints
-
-	if err := ValidateState(universityState); err != nil {
-		return nil, err
-	}
-	return universityState, nil
+// ActivityJSON representa una actividad en el JSON
+type ActivityJSON struct {
+	ID             int      `json:"id"`
+	ActivityCode   string   `json:"activity_code"`
+	Type           string   `json:"type"`
+	EventNumber    int      `json:"event_number"`
+	LinkedSections []int    `json:"linked_sections"`
+	TotalStudents  int      `json:"total_students"`
+	Teachers       []string `json:"teachers"`
+	Comment        string   `json:"comment"`
 }
 
-// Funciones auxiliares (se mantienen igual)
-func getRoomType(code string) models.RoomType {
-	if strings.Contains(strings.ToUpper(code), "LAB") {
-		return models.LR
-	}
-	return models.CR
+// CourseDistributionJSON representa un curso en courses.json
+type CourseDistributionJSON struct {
+	ID           int              `json:"ID"`
+	Code         string           `json:"Code"`
+	Name         string           `json:"Name"`
+	Distribution DistributionJSON `json:"Distribution"`
 }
 
-func inferRequirementsFromCode(code string) []models.Requirement {
-	const ElectiveSemester = 9
-	prefix := ""
-	if len(code) >= 3 {
-		prefix = code[:3]
+// DistributionJSON representa la carga semanal
+type DistributionJSON struct {
+	NumCAT      int `json:"NumCAT"`
+	NumAY       int `json:"NumAY"`
+	NumLAB      int `json:"NumLAB"`
+	DurationCAT int `json:"DurationCAT"`
+	DurationAY  int `json:"DurationAY"`
+	DurationLAB int `json:"DurationLAB"`
+}
+
+// --------------------------------------------------------------------------
+// Funciones de carga
+// --------------------------------------------------------------------------
+
+// LoadCourseDistributions carga courses.json y retorna un mapa CourseCode -> Distribution
+func LoadCourseDistributions(path string) (map[string]DistributionJSON, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
 	}
-	var major models.Major
-	switch prefix {
-	case "CIT":
-		major = models.CIT
-	case "CII":
-		major = models.CII
-	case "COC":
-		major = models.COC
+
+	var courses []CourseDistributionJSON
+	if err := json.Unmarshal(data, &courses); err != nil {
+		return nil, err
+	}
+
+	result := make(map[string]DistributionJSON)
+	for _, c := range courses {
+		result[c.Code] = c.Distribution
+	}
+	return result, nil
+}
+
+// LoadActivitiesWithExpansion carga oferta_academica.json y expande cada actividad
+// en N sesiones según Distribution del curso.
+func LoadActivitiesWithExpansion(ofertaPath, coursesPath string) ([]domain.Activity, error) {
+	// Cargar distribuciones de cursos
+	distributions, err := LoadCourseDistributions(coursesPath)
+	if err != nil {
+		return nil, fmt.Errorf("error cargando courses.json: %w", err)
+	}
+
+	// Cargar oferta académica
+	data, err := os.ReadFile(ofertaPath)
+	if err != nil {
+		return nil, err
+	}
+
+	var courses []CourseOfertaJSON
+	if err := json.Unmarshal(data, &courses); err != nil {
+		return nil, err
+	}
+
+	var activities []domain.Activity
+	activityID := 1 // Contador global de IDs
+
+	for _, c := range courses {
+		dist := distributions[c.CourseCode]
+
+		for _, a := range c.Activities {
+			eventType := parseEventCategory(a.Type)
+
+			// Determinar cuántas sesiones semanales según tipo
+			numSessions := 1
+			switch eventType {
+			case domain.CAT:
+				numSessions = dist.NumCAT
+			case domain.AY:
+				numSessions = dist.NumAY
+			case domain.LAB:
+				numSessions = dist.NumLAB
+			}
+
+			// Si no hay distribución definida, usar 1 sesión por defecto
+			if numSessions == 0 {
+				numSessions = 1
+			}
+
+			// SiblingGroupID para agrupar sesiones espejo (solo CAT)
+			siblingGroup := ""
+			if eventType == domain.CAT {
+				siblingGroup = buildSiblingGroupID(c.CourseCode, a.LinkedSections)
+			}
+
+			// Crear N actividades (sesiones) para este evento
+			for session := 1; session <= numSessions; session++ {
+				sessionCode := fmt.Sprintf("%s-S%d", a.ActivityCode, session)
+
+				activity := domain.NewActivity(
+					activityID,
+					sessionCode,
+					c.CourseCode,
+					c.CourseName,
+					eventType,
+					a.EventNumber,
+					a.LinkedSections,
+					a.TotalStudents,
+					a.Teachers,
+					siblingGroup, // Todas las sesiones del mismo CAT comparten grupo
+				)
+				activities = append(activities, activity)
+				activityID++
+			}
+		}
+	}
+	return activities, nil
+}
+
+// LoadActivities carga oferta_academica.json SIN expandir (legacy, 1 actividad por fila).
+func LoadActivities(path string) ([]domain.Activity, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	var courses []CourseOfertaJSON
+	if err := json.Unmarshal(data, &courses); err != nil {
+		return nil, err
+	}
+
+	var activities []domain.Activity
+	for _, c := range courses {
+		for _, a := range c.Activities {
+			siblingGroup := ""
+			if a.Type == "CATEDRA" {
+				siblingGroup = buildSiblingGroupID(c.CourseCode, a.LinkedSections)
+			}
+
+			activity := domain.NewActivity(
+				a.ID,
+				a.ActivityCode,
+				c.CourseCode,
+				c.CourseName,
+				parseEventCategory(a.Type),
+				a.EventNumber,
+				a.LinkedSections,
+				a.TotalStudents,
+				a.Teachers,
+				siblingGroup,
+			)
+			activities = append(activities, activity)
+		}
+	}
+	return activities, nil
+}
+
+// buildSiblingGroupID genera un ID único para agrupar cátedras hermanas.
+// Formato: "COURSE_CODE-CAT-SECTIONS" (ej: "CBF1000-CAT-1,2")
+func buildSiblingGroupID(courseCode string, sections []int) string {
+	if len(sections) == 0 {
+		return ""
+	}
+	secs := make([]string, len(sections))
+	for i, s := range sections {
+		secs[i] = strconv.Itoa(s)
+	}
+	return fmt.Sprintf("%s-CAT-%s", courseCode, strings.Join(secs, ","))
+}
+
+// parseEventCategory convierte string a EventCategory
+func parseEventCategory(s string) domain.EventCategory {
+	switch s {
+	case "CATEDRA":
+		return domain.CAT
+	case "AYUDANTIA":
+		return domain.AY
+	case "LABORATORIO":
+		return domain.LAB
 	default:
-		return nil
+		return domain.CAT
 	}
-	return []models.Requirement{{Major: major, Semester: ElectiveSemester}}
+}
+
+// --------------------------------------------------------------------------
+// Carga de Salas (CSV)
+// --------------------------------------------------------------------------
+
+// LoadRooms carga rooms.csv y retorna las salas del dominio.
+func LoadRooms(path string) ([]domain.Room, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	reader := csv.NewReader(file)
+	records, err := reader.ReadAll()
+	if err != nil {
+		return nil, err
+	}
+
+	var rooms []domain.Room
+	for i, record := range records {
+		if i == 0 { // Skip header
+			continue
+		}
+		if len(record) < 2 {
+			continue
+		}
+		capacity, _ := strconv.Atoi(record[1])
+		roomType := domain.RoomClassroom
+		if strings.HasPrefix(record[0], "LAB") {
+			roomType = domain.RoomLab
+		}
+		rooms = append(rooms, domain.Room{
+			ID:       i,
+			Code:     record[0],
+			Capacity: capacity,
+			Type:     roomType,
+		})
+	}
+	return rooms, nil
+}
+
+// --------------------------------------------------------------------------
+// Carga de Profesores (JSON)
+// --------------------------------------------------------------------------
+
+// TeacherJSON representa un profesor en profesores.json
+type TeacherJSON struct {
+	ID                int                `json:"id"`
+	Name              string             `json:"name"`
+	UnavailableBlocks map[string][]int   `json:"unavailable_blocks"`
+	TeachingLoad      []TeachingLoadJSON `json:"teaching_load"`
+}
+
+// TeachingLoadJSON representa la carga docente
+type TeachingLoadJSON struct {
+	CourseCode      string `json:"course_code"`
+	CourseName      string `json:"course_name"`
+	EventType       string `json:"event_type"`
+	EventNumber     int    `json:"event_number"`
+	RelatedSections []int  `json:"related_sections"`
+}
+
+// LoadTeachers carga profesores.json y retorna los profesores del dominio.
+func LoadTeachers(path string) ([]domain.Teacher, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	var teachersJSON []TeacherJSON
+	if err := json.Unmarshal(data, &teachersJSON); err != nil {
+		return nil, err
+	}
+
+	var teachers []domain.Teacher
+	for _, t := range teachersJSON {
+		// Aplanar bloques no disponibles de todos los días
+		var busyBlocks []int
+		for _, blocks := range t.UnavailableBlocks {
+			busyBlocks = append(busyBlocks, blocks...)
+		}
+		teachers = append(teachers, domain.Teacher{
+			ID:         t.ID,
+			Name:       t.Name,
+			BusyBlocks: busyBlocks,
+		})
+	}
+	return teachers, nil
+}
+
+// --------------------------------------------------------------------------
+// Carga de Restricciones de Salas (JSON)
+// --------------------------------------------------------------------------
+
+// RoomConstraints mapea CourseCode -> EventType -> []AllowedRooms
+type RoomConstraints map[string]map[string][]string
+
+// LoadRoomConstraints carga rooms_constraints.json.
+func LoadRoomConstraints(path string) (RoomConstraints, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	var constraints RoomConstraints
+	if err := json.Unmarshal(data, &constraints); err != nil {
+		return nil, err
+	}
+
+	return constraints, nil
+}
+
+// GetAllowedRooms retorna las salas permitidas para una actividad.
+// Si no hay restricción, retorna nil (significa cualquier sala).
+func (rc RoomConstraints) GetAllowedRooms(courseCode string, eventType string) []string {
+	if courseConstraints, ok := rc[courseCode]; ok {
+		if allowed, ok := courseConstraints[eventType]; ok {
+			return allowed
+		}
+	}
+	return nil // Sin restricción = cualquier sala
+}
+
+// FilterRoomsByConstraint filtra las salas disponibles según las restricciones.
+func FilterRoomsByConstraint(rooms []domain.Room, allowedCodes []string) []domain.Room {
+	if allowedCodes == nil {
+		return rooms // Sin restricción, todas disponibles
+	}
+
+	allowedSet := make(map[string]bool)
+	for _, code := range allowedCodes {
+		allowedSet[code] = true
+	}
+
+	var filtered []domain.Room
+	for _, r := range rooms {
+		if allowedSet[r.Code] {
+			filtered = append(filtered, r)
+		}
+	}
+	return filtered
 }
