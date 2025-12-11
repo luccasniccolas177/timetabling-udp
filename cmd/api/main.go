@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"timetabling-UDP/internal/domain"
+	"timetabling-UDP/internal/exporter"
 	"timetabling-UDP/internal/graph"
 	"timetabling-UDP/internal/loader"
 	"timetabling-UDP/internal/solver"
@@ -151,6 +152,42 @@ func main() {
 		fmt.Printf("\n⚠️  TODAS las actividades sin sala (%d):\n", len(result.FinalDUD))
 		for _, a := range result.FinalDUD {
 			fmt.Printf("   - %-30s | %-10s | Curso: %-25s | %d est.\n", a.Code, a.Type, a.CourseName, a.Students)
+		}
+	}
+
+	// ═══════════════════════════════════════════════════════════════════════
+	// SIMULATED ANNEALING - Optimización de soft constraints
+	// ═══════════════════════════════════════════════════════════════════════
+	if len(result.FinalDUD) == 0 {
+		fmt.Println("\n═══════════════════════════════════════════════════════════")
+		fmt.Println("           SIMULATED ANNEALING - OPTIMIZACIÓN")
+		fmt.Println("═══════════════════════════════════════════════════════════")
+
+		config := solver.DefaultSAConfig()
+		fmt.Printf("\n⚙️  Parámetros SA:\n")
+		fmt.Printf("   Temp. inicial:  %.0f\n", config.InitialTemp)
+		fmt.Printf("   Tasa enfriamiento: %.4f\n", config.CoolingRate)
+		fmt.Printf("   Iteraciones/T: %d\n", config.IterationsPerT)
+
+		fmt.Println("\n🔄 Ejecutando optimización...")
+		saResult := solver.SimulatedAnnealing(activities, rooms, config)
+
+		fmt.Printf("\n📊 Resultado SA:\n")
+		fmt.Printf("   Costo inicial:      %.0f\n", saResult.InitialCost)
+		fmt.Printf("   Costo final:        %.0f\n", saResult.FinalCost)
+		fmt.Printf("   Mejora:             %.1f%%\n", (1-saResult.FinalCost/saResult.InitialCost)*100)
+		fmt.Printf("   Iteraciones:        %d\n", saResult.Iterations)
+		fmt.Printf("   Mejoras aceptadas:  %d\n", saResult.Improvements)
+		fmt.Printf("\n📈 Métricas de calidad:\n")
+		fmt.Printf("   Penalidad espejo:   %.0f\n", saResult.MirrorPenalty)
+		fmt.Printf("   AY en miércoles:    %.1f%%\n", saResult.WednesdayBonus)
+
+		// Exportar a JSON
+		outputFile := "data/output/schedule.json"
+		if err := exporter.ExportScheduleToJSON(activities, outputFile); err != nil {
+			fmt.Printf("\n❌ Error exportando JSON: %v\n", err)
+		} else {
+			fmt.Printf("\n💾 Horario exportado a: %s\n", outputFile)
 		}
 	}
 

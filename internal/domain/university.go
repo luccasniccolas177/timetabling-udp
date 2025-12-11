@@ -1,10 +1,5 @@
 package domain
 
-// ============================================================================
-// ENTIDADES ESTÁTICAS (Catálogo)
-// Representan información que no cambia durante la programación de horarios.
-// ============================================================================
-
 // Course define una asignatura en el plan de estudios.
 type Course struct {
 	ID            int
@@ -90,11 +85,6 @@ func (a *Activity) IsAssigned() bool {
 	return a.Block >= 0 && a.Room != ""
 }
 
-// ============================================================================
-// ENTIDAD AUXILIAR: Section (Vista simplificada)
-// Representa una sección ofertada de un curso en el semestre actual.
-// ============================================================================
-
 // Section representa una sección específica de un curso.
 // Las Activities referencian secciones a través de sus IDs.
 type Section struct {
@@ -115,10 +105,6 @@ func NewSection(id, courseID, sectionNum, students int, teacherIDs ...int) Secti
 		TeacherIDs:    teacherIDs,
 	}
 }
-
-// ============================================================================
-// RELACIONES Y HELPERS
-// ============================================================================
 
 // HasTeacher verifica si la actividad tiene asignado un profesor específico.
 func (a *Activity) HasTeacher(name string) bool {

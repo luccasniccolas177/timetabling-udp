@@ -107,8 +107,26 @@ func assignRoomsToPeriodWithConstraints(activities []*domain.Activity, rooms []d
 			if !roomAvailability[r.Code] {
 				continue // Ya usada en este periodo
 			}
-			if allowedCodes == nil || contains(allowedCodes, r.Code) {
-				availableRooms = append(availableRooms, r)
+
+			// Si hay restricción explícita, usar solo esas salas
+			if allowedCodes != nil {
+				if contains(allowedCodes, r.Code) {
+					availableRooms = append(availableRooms, r)
+				}
+			} else {
+				// Sin restricción explícita: respetar tipo de sala
+				// CAT/AY → solo aulas normales, LAB → solo laboratorios
+				if activity.Type == domain.LAB {
+					// Laboratorios solo pueden ir a salas tipo LAB
+					if r.Type == domain.RoomLab {
+						availableRooms = append(availableRooms, r)
+					}
+				} else {
+					// Cátedras y Ayudantías solo pueden ir a aulas normales
+					if r.Type == domain.RoomClassroom {
+						availableRooms = append(availableRooms, r)
+					}
+				}
 			}
 		}
 
