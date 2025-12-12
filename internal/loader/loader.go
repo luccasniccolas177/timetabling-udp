@@ -11,10 +11,6 @@ import (
 	"timetabling-UDP/internal/domain"
 )
 
-// --------------------------------------------------------------------------
-// Estructuras intermedias para deserializar el JSON
-// --------------------------------------------------------------------------
-
 // CourseOfertaJSON representa un curso en oferta_academica.json
 type CourseOfertaJSON struct {
 	CourseCode string         `json:"course_code"`
@@ -22,7 +18,7 @@ type CourseOfertaJSON struct {
 	Activities []ActivityJSON `json:"activities"`
 }
 
-// ActivityJSON representa una actividad en el JSON
+// ActivityJSON representa una actividad del json
 type ActivityJSON struct {
 	ID             int      `json:"id"`
 	ActivityCode   string   `json:"activity_code"`
@@ -52,11 +48,7 @@ type DistributionJSON struct {
 	DurationLAB int `json:"DurationLAB"`
 }
 
-// --------------------------------------------------------------------------
-// Funciones de carga
-// --------------------------------------------------------------------------
-
-// LoadCourseDistributions carga courses.json y retorna un mapa CourseCode -> Distribution
+// LoadCourseDistributions lee courses.json y retorna el mapa de distribuciones donde la llave es el codigo del curso
 func LoadCourseDistributions(path string) (map[string]DistributionJSON, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -85,7 +77,7 @@ type CourseFullJSON struct {
 	IsElective   bool             `json:"IsElective"` // Si es electivo
 }
 
-// LoadCoursePlanLocations carga courses.json y retorna mapa CourseCode -> (Major -> Semester)
+// LoadCoursePlanLocations lee courses.json y retorna el mapa con la carrera y semestre en que se imparte el curso
 func LoadCoursePlanLocations(path string) (map[string]map[string]int, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -104,7 +96,7 @@ func LoadCoursePlanLocations(path string) (map[string]map[string]int, error) {
 	return result, nil
 }
 
-// LoadElectives carga courses.json y retorna set de códigos de cursos electivos
+// LoadElectives lee courses.json y retorna los codigos de los cursos electivos, para diferenciarlos de los de la malla
 func LoadElectives(path string) (map[string]bool, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -125,7 +117,7 @@ func LoadElectives(path string) (map[string]bool, error) {
 	return result, nil
 }
 
-// LoadPrerequisites carga courses.json y retorna mapa CourseCode -> []PrerequisiteCodes
+// LoadPrerequisites lee courses.json y retorna mapa con los los prerequisitos de cada curso
 func LoadPrerequisites(path string) (map[string][]string, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -150,7 +142,7 @@ func LoadPrerequisites(path string) (map[string][]string, error) {
 		idToCode[c.ID] = c.Code
 	}
 
-	// Crear mapa Code -> []PrereqCodes
+	// Crear mapa de prerequisitos
 	result := make(map[string][]string)
 	for _, c := range courses {
 		if len(c.Prerequisites) > 0 {
@@ -166,8 +158,7 @@ func LoadPrerequisites(path string) (map[string][]string, error) {
 	return result, nil
 }
 
-// LoadActivitiesWithExpansion carga oferta_academica.json y expande cada actividad
-// en N sesiones según Distribution del curso.
+// LoadActivitiesWithExpansion lee oferta_academica.json y crea una el conjutno de actividades por cada sección siguiendo la distribución del curso
 func LoadActivitiesWithExpansion(ofertaPath, coursesPath string) ([]domain.Activity, error) {
 	// Cargar distribuciones de cursos
 	distributions, err := LoadCourseDistributions(coursesPath)
@@ -218,7 +209,7 @@ func LoadActivitiesWithExpansion(ofertaPath, coursesPath string) ([]domain.Activ
 				duration = 1
 			}
 
-			// SiblingGroupID para agrupar sesiones espejo (solo CAT)
+			// SiblingGroupID para agrupar actividades espejo (catedras)
 			siblingGroup := ""
 			if eventType == domain.CAT {
 				siblingGroup = buildSiblingGroupID(c.CourseCode, a.LinkedSections)
@@ -249,47 +240,7 @@ func LoadActivitiesWithExpansion(ofertaPath, coursesPath string) ([]domain.Activ
 	return activities, nil
 }
 
-// LoadActivities carga oferta_academica.json SIN expandir (legacy, 1 actividad por fila).
-func LoadActivities(path string) ([]domain.Activity, error) {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-
-	var courses []CourseOfertaJSON
-	if err := json.Unmarshal(data, &courses); err != nil {
-		return nil, err
-	}
-
-	var activities []domain.Activity
-	for _, c := range courses {
-		for _, a := range c.Activities {
-			siblingGroup := ""
-			if a.Type == "CATEDRA" {
-				siblingGroup = buildSiblingGroupID(c.CourseCode, a.LinkedSections)
-			}
-
-			activity := domain.NewActivity(
-				a.ID,
-				a.ActivityCode,
-				c.CourseCode,
-				c.CourseName,
-				parseEventCategory(a.Type),
-				a.EventNumber,
-				a.LinkedSections,
-				a.TotalStudents,
-				a.Teachers,
-				siblingGroup,
-				1, // Duración por defecto (legacy)
-			)
-			activities = append(activities, activity)
-		}
-	}
-	return activities, nil
-}
-
 // buildSiblingGroupID genera un ID único para agrupar cátedras hermanas.
-// Formato: "COURSE_CODE-CAT-SECTIONS" (ej: "CBF1000-CAT-1,2")
 func buildSiblingGroupID(courseCode string, sections []int) string {
 	if len(sections) == 0 {
 		return ""
@@ -301,7 +252,6 @@ func buildSiblingGroupID(courseCode string, sections []int) string {
 	return fmt.Sprintf("%s-CAT-%s", courseCode, strings.Join(secs, ","))
 }
 
-// parseEventCategory convierte string a EventCategory
 func parseEventCategory(s string) domain.EventCategory {
 	switch s {
 	case "CATEDRA":
@@ -315,11 +265,7 @@ func parseEventCategory(s string) domain.EventCategory {
 	}
 }
 
-// --------------------------------------------------------------------------
-// Carga de Salas (CSV)
-// --------------------------------------------------------------------------
-
-// LoadRooms carga rooms.csv y retorna las salas del dominio.
+// LoadRooms lee rooms.csv y retorna las salas utilizadas
 func LoadRooms(path string) ([]domain.Room, error) {
 	file, err := os.Open(path)
 	if err != nil {
@@ -356,11 +302,7 @@ func LoadRooms(path string) ([]domain.Room, error) {
 	return rooms, nil
 }
 
-// --------------------------------------------------------------------------
-// Carga de Profesores (JSON)
-// --------------------------------------------------------------------------
-
-// TeacherJSON representa un profesor en profesores.json
+// TeacherJSON representa un profesor de profesores.json
 type TeacherJSON struct {
 	ID                int                `json:"id"`
 	Name              string             `json:"name"`
@@ -377,7 +319,7 @@ type TeachingLoadJSON struct {
 	RelatedSections []int  `json:"related_sections"`
 }
 
-// LoadTeachers carga profesores.json y retorna los profesores del dominio.
+// LoadTeachers lee profesores.json y retorna los profesores de la FIC
 func LoadTeachers(path string) ([]domain.Teacher, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -405,14 +347,10 @@ func LoadTeachers(path string) ([]domain.Teacher, error) {
 	return teachers, nil
 }
 
-// --------------------------------------------------------------------------
-// Carga de Restricciones de Salas (JSON)
-// --------------------------------------------------------------------------
-
 // RoomConstraints mapea CourseCode -> EventType -> []AllowedRooms
 type RoomConstraints map[string]map[string][]string
 
-// LoadRoomConstraints carga rooms_constraints.json.
+// LoadRoomConstraints lee las restricciones de salas de rooms_constraints.json.
 func LoadRoomConstraints(path string) (RoomConstraints, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -435,10 +373,10 @@ func (rc RoomConstraints) GetAllowedRooms(courseCode string, eventType string) [
 			return allowed
 		}
 	}
-	return nil // Sin restricción = cualquier sala
+	return nil // cualquier sala
 }
 
-// FilterRoomsByConstraint filtra las salas disponibles según las restricciones.
+// FilterRoomsByConstraint filtra las salas disponibles según las restricciones
 func FilterRoomsByConstraint(rooms []domain.Room, allowedCodes []string) []domain.Room {
 	if allowedCodes == nil {
 		return rooms // Sin restricción, todas disponibles

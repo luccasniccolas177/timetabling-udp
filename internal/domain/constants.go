@@ -2,12 +2,10 @@ package domain
 
 import "time"
 
-// --- TUS TIPOS EXISTENTES ---
-type Major string
-type RoomType string
-type EventCategory string
+type Major string         // carreras de la FIC
+type RoomType string      // tipo de sala
+type EventCategory string // tipo de actividad (catedra, ayudantia, laboratorio)
 
-// --- TUS CONSTANTES EXISTENTES ---
 const (
 	// Carreras
 	EIT Major = "CIVIL_INFORMATICA_TELECOMUNICACIONES"
@@ -25,19 +23,38 @@ const (
 )
 
 const (
-	// Definición de la grilla horaria
+	// definición de bloques horarios
 	BlocksPerDay = 7
 	DaysPerWeek  = 5
 	TotalBlocks  = BlocksPerDay * DaysPerWeek // 35 bloques
 
-	// Duración base (referencia)
+	// Duración clases (80 minutos)
 	BlockDuration = 80 * time.Minute
+
+	// miercoles 11:30-12:50 horario protegido
+	ProtectedWednesdayBlock = 2*BlocksPerDay + 2 // = 16
 )
 
-// Estos valores ayudan al algoritmo a decidir qué es "grave" y qué es "aceptable".
+// IsProtectedBlock verifica si un bloque es el horario protegido
+func IsProtectedBlock(block int) bool {
+	return block == ProtectedWednesdayBlock
+}
+
+// OccupiesProtectedBlock verifica si una actividad ocupa el bloque protegido
+// especial para el caso de clases que duran más de un bloque
+func OccupiesProtectedBlock(startBlock, duration int) bool {
+	if duration < 1 {
+		duration = 1
+	}
+	endBlock := startBlock + duration - 1
+
+	return startBlock <= ProtectedWednesdayBlock && ProtectedWednesdayBlock <= endBlock
+}
+
+// valores de penalización para SA
 
 const (
-	PenaltyHard   = 100000 // Inviolable (ej: Profesor en dos lugares)
-	PenaltyMedium = 1000   // Preferible evitar (ej: Ventanas de 3 horas)
+	PenaltyHard   = 100000 // Restricciones duras (profesor en 2 lugares)
+	PenaltyMedium = 1000   // Preferible
 	PenaltySoft   = 10     // Preferencia leve
 )

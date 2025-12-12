@@ -7,8 +7,7 @@ import (
 	"timetabling-UDP/internal/graph"
 )
 
-// ColorSet representa un conjunto de actividades que pueden ocurrir en el mismo periodo.
-// Todas las actividades en un ColorSet no tienen conflictos entre sí.
+// ColorSet representa un conjunto de actividades que pueden ocurrir en el mismo periodo, no hay conflictos entre actividades
 type ColorSet struct {
 	Color      int                // Número del color/periodo
 	Activities []*domain.Activity // Actividades asignadas a este periodo
@@ -29,7 +28,7 @@ func GreedyColoring(g *graph.ConflictGraph) []ColorSet {
 		colorSet := findMaxIndependentSet(H)
 
 		if len(colorSet) == 0 {
-			break // No deberían quedar vértices aislados, pero por seguridad
+			break
 		}
 
 		// Crear ColorSet con las actividades
@@ -53,8 +52,7 @@ func GreedyColoring(g *graph.ConflictGraph) []ColorSet {
 	return colorSets
 }
 
-// findMaxIndependentSet encuentra un conjunto independiente (casi) máximo usando
-// el algoritmo de fusión del paper (Dutton-Brigham + Tehrani).
+// findMaxIndependentSet encuentra un conjunto independiente máximo usando el algoritmo Dutton-Brigham + Tehrani
 func findMaxIndependentSet(H *graph.ConflictGraph) []int {
 	if H.NumVertices() == 0 {
 		return nil
@@ -88,15 +86,14 @@ func findMaxIndependentSet(H *graph.ConflictGraph) []int {
 	return independentSet
 }
 
-// findBestMergeCandidate encuentra el vértice no adyacente con más vecinos comunes.
-// Implementa el concepto de triples (x, z, y) del paper.
+// findBestMergeCandidate encuentra el vértice no adyacente con más vecinos comunes. aca se implementa el concepto de tripletas
 func findBestMergeCandidate(H *graph.ConflictGraph, currentSet []int, merged map[int]bool) int {
 	bestCandidate := -1
 	maxCommonNeighbors := -1
 
-	// Para cada vértice candidato
+	// Para cada candidato
 	for candidateID := range H.Vertices {
-		// Saltar si ya está en el conjunto
+		// continuar si ya está en el conjunto
 		if merged[candidateID] {
 			continue
 		}
@@ -113,7 +110,7 @@ func findBestMergeCandidate(H *graph.ConflictGraph, currentSet []int, merged map
 			continue
 		}
 
-		// Contar vecinos comunes con el conjunto (triples del paper)
+		// Contar vecinos comunes con el conjunto
 		commonNeighbors := countCommonNeighbors(H, currentSet, candidateID)
 
 		// Elegir el candidato con más vecinos comunes
@@ -121,14 +118,14 @@ func findBestMergeCandidate(H *graph.ConflictGraph, currentSet []int, merged map
 			maxCommonNeighbors = commonNeighbors
 			bestCandidate = candidateID
 		} else if commonNeighbors == maxCommonNeighbors && bestCandidate != -1 {
-			// Desempate: elegir el de mayor grado
+			// si hay empate, elegir el de mayor grado
 			if H.Degree(candidateID) > H.Degree(bestCandidate) {
 				bestCandidate = candidateID
 			}
 		}
 	}
 
-	// Si no hay candidatos con vecinos comunes, buscar cualquier no-adyacente con max grado
+	// Si no hay candidatos con vecinos comunes, buscar cualquier vertice no adyacente con max grado
 	if bestCandidate == -1 {
 		bestCandidate = findMaxDegreeNonAdjacent(H, currentSet, merged)
 	}
@@ -137,7 +134,6 @@ func findBestMergeCandidate(H *graph.ConflictGraph, currentSet []int, merged map
 }
 
 // countCommonNeighbors cuenta cuántos vecinos del conjunto son también vecinos del candidato.
-// Esto implementa los "triples" (x, z, y) donde z es un vecino común.
 func countCommonNeighbors(H *graph.ConflictGraph, currentSet []int, candidateID int) int {
 	candidateNeighbors := make(map[int]bool)
 	for _, n := range H.Neighbors(candidateID) {
@@ -230,18 +226,29 @@ func removeVertex(H *graph.ConflictGraph, id int) {
 }
 
 // AssignBlocksToColorSets asigna bloques temporales (0-34) a cada ColorSet.
-// Cada color se mapea a un bloque diferente.
+// Cada color se mapea a un bloque diferente, saltando el bloque protegido del miércoles.
 func AssignBlocksToColorSets(colorSets []ColorSet) {
+	block := 0
 	for i := range colorSets {
-		block := i % domain.TotalBlocks // Wrap around si hay más colores que bloques
+		// Saltar el bloque protegido del miércoles (11:30-12:50)
+		for domain.IsProtectedBlock(block) && block < domain.TotalBlocks {
+			block++
+		}
+		if block >= domain.TotalBlocks {
+			block = 0
+			// Volver a verificar
+			for domain.IsProtectedBlock(block) && block < domain.TotalBlocks {
+				block++
+			}
+		}
 		for _, activity := range colorSets[i].Activities {
 			activity.Block = block
 		}
+		block++
 	}
 }
 
 // SortColorSetsBySize ordena los ColorSets por tamaño (más grandes primero).
-// Útil para asignar los bloques más convenientes a los periodos más llenos.
 func SortColorSetsBySize(colorSets []ColorSet) {
 	sort.Slice(colorSets, func(i, j int) bool {
 		return len(colorSets[i].Activities) > len(colorSets[j].Activities)

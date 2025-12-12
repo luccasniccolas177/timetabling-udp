@@ -3,12 +3,12 @@ package domain
 // Course define una asignatura en el plan de estudios.
 type Course struct {
 	ID            int
-	Code          string        // Código institucional (ej: "CBF1000")
-	Name          string        // Nombre de la asignatura
+	Code          string        // Código de curso (CBF1000)
+	Name          string        // Nombre de la asignatura (mecanica)
 	Prerequisites []int         // IDs de cursos prerequisito
-	PlanLocation  map[Major]int // Carrera -> Semestre en la malla
-	Distribution  Distribution  // Carga académica (CAT, AY, LAB)
-	IsElective    bool          // Si es una asignatura electiva
+	PlanLocation  map[Major]int // carrera y semestre en el que se debe tomar
+	Distribution  Distribution  // Carga académica del curso
+	IsElective    bool          // Si es un electivo
 }
 
 // Distribution define la carga semanal de un curso.
@@ -21,7 +21,7 @@ type Distribution struct {
 	DurationLAB int // Duración en bloques de cada laboratorio
 }
 
-// Teacher representa a un docente.
+// Teacher representa a un profesor
 type Teacher struct {
 	ID         int
 	Name       string
@@ -31,32 +31,31 @@ type Teacher struct {
 // Room representa un espacio físico.
 type Room struct {
 	ID       int
-	Code     string   // Identificador (ej: "LAB D", "101")
-	Capacity int      // Capacidad máxima de estudiantes
+	Code     string   // Identificador ("LAB D", "101")
+	Capacity int      // Capacidad sala
 	Type     RoomType // SALA o LABORATORIO
 }
 
-// Activity es la unidad fundamental de programación (vértice en el grafo).
-// Cada Activity corresponde a un evento que debe asignarse a un bloque y sala.
+// Activity representa un evento, es decir una instancia de clase de cualquier tipo
+// (catedra, ayudantía, laboratorio), es un nodo/vertice del grafo y se le debe asignar
+// un horario (bloque) y sala. multiples secciones pueden asistir a la misma actividad,
+// con esto nos referimos a que en la oferta academica existen multiples secciones de
+// un mismo curso, donde muchas comparten catedra y ayudantía pero con diferentes labs.
 type Activity struct {
-	ID           int           // Identificador único
-	Code         string        // Código de actividad (ej: "CBF1000-CAT-1")
-	CourseCode   string        // Código del curso padre
-	CourseName   string        // Nombre del curso (para reportes)
-	Type         EventCategory // CATEDRA, AYUDANTIA, LABORATORIO
-	EventNumber  int           // Distingue CAT-1, CAT-2, etc.
-	Sections     []int         // Secciones vinculadas (super-vértice)
-	Students     int           // Total de estudiantes (para Bin Packing)
-	TeacherNames []string      // Nombres de profesores asignados
-	Duration     int           // Duración en bloques (1 = 1 bloque, 2 = 2 consecutivos)
-
-	// SiblingGroupID agrupa cátedras que deben ser "espejo" (mismo horario, días distintos).
-	// Formato: "COURSE_CODE-TYPE-SECTIONS" (ej: "CBF1000-CAT-1,2")
+	ID           int    // Identificador único
+	Code         string // Código de actividad ("CBF1000-CAT-1-S1") -> mecanica- catedra 1-sesión 1
+	CourseCode   string
+	CourseName   string
+	Type         EventCategory
+	EventNumber  int      // Distingue entre las diferentes catedras, ayudantías o laboratorios
+	Sections     []int    // lista de secciones que asisten a la actividad
+	Students     int      // Total de estudiantes
+	TeacherNames []string // Nombres de profesores asignados
+	Duration     int      // Duración en bloques
+	// SiblingGroupID agrupa actividades hermanas, en este caso agrupa las instancias de la catedra de una sección de un curso
 	SiblingGroupID string
-
-	// --- Estado del Scheduler (se llena durante la programación) ---
-	Block int    // Bloque temporal de INICIO (-1 = sin asignar)
-	Room  string // Sala asignada ("" = sin asignar)
+	Block          int    // Bloque temporal de INICIO
+	Room           string // Sala asignada
 }
 
 // NewActivity crea una Activity con estado inicial sin asignar.
@@ -81,18 +80,17 @@ func NewActivity(id int, code, courseCode, courseName string, eventType EventCat
 	}
 }
 
-// IsSiblingOf verifica si dos actividades son hermanas (mismo grupo espejo).
+// IsSiblingOf verifica si dos actividades son hermanas
 func (a *Activity) IsSiblingOf(other *Activity) bool {
 	return a.SiblingGroupID != "" && a.SiblingGroupID == other.SiblingGroupID && a.ID != other.ID
 }
 
-// IsAssigned indica si la actividad ya tiene bloque y sala asignados.
+// IsAssigned indica si la actividad ya tiene bloque y sala asignados
 func (a *Activity) IsAssigned() bool {
 	return a.Block >= 0 && a.Room != ""
 }
 
-// Section representa una sección específica de un curso.
-// Las Activities referencian secciones a través de sus IDs.
+// Section representa una sección específica de un curso. cada actividad tiene una o más secciones asociadas
 type Section struct {
 	ID            int
 	CourseID      int
@@ -112,7 +110,7 @@ func NewSection(id, courseID, sectionNum, students int, teacherIDs ...int) Secti
 	}
 }
 
-// HasTeacher verifica si la actividad tiene asignado un profesor específico.
+// HasTeacher verifica si la actividad tiene asignado un profesor
 func (a *Activity) HasTeacher(name string) bool {
 	for _, t := range a.TeacherNames {
 		if t == name {
@@ -133,10 +131,8 @@ func (a *Activity) SharesTeacher(other *Activity) bool {
 }
 
 // SharesSection verifica si dos actividades comparten al menos una sección.
-// IMPORTANTE: Solo considera conflicto si son del MISMO curso, ya que las
-// secciones son independientes entre cursos diferentes.
 func (a *Activity) SharesSection(other *Activity) bool {
-	// Secciones solo son compartidas si es el mismo curso
+	// si las actividades no son del mismo curso, no comparten sección
 	if a.CourseCode != other.CourseCode {
 		return false
 	}
@@ -151,8 +147,7 @@ func (a *Activity) SharesSection(other *Activity) bool {
 	return false
 }
 
-// BlocksOccupied retorna la lista de bloques que ocupa la actividad.
-// Por ejemplo, si Block=5 y Duration=2, ocupa bloques [5, 6].
+// BlocksOccupied retorna la lista de bloques que ocupa la actividad, para actividades de más de un bloque
 func (a *Activity) BlocksOccupied() []int {
 	if a.Block < 0 {
 		return nil
@@ -172,14 +167,13 @@ func (a *Activity) OccupiesBlock(block int) bool {
 	return block >= a.Block && block < a.Block+a.Duration
 }
 
-// OverlapsInTime verifica si dos actividades se solapan en tiempo.
-// Considera la duración de ambas actividades.
+// OverlapsInTime verifica si dos actividades se sobreponen en tiempo.
 func (a *Activity) OverlapsInTime(other *Activity) bool {
 	if a.Block < 0 || other.Block < 0 {
 		return false
 	}
 	aEnd := a.Block + a.Duration
 	otherEnd := other.Block + other.Duration
-	// Se solapan si uno empieza antes de que el otro termine
+	// se sobreponen si una actividad termina antes de que la otra comience
 	return a.Block < otherEnd && other.Block < aEnd
 }

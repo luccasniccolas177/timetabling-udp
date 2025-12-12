@@ -1,0 +1,422 @@
+/* ===== Variables ===== */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #64748b;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-header: #1e293b;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --radius: 8px;
+}
+
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* ===== App Container ===== */
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Header ===== */
+.header {
+    background: var(--bg-header);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+/* ===== Filters Panel ===== */
+.filters-panel {
+    background: var(--bg-card);
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filter-group label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    min-width: 150px;
+    background: white;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-secondary {
+    padding: 0.5rem 1rem;
+    background: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+/* ===== View Toggle ===== */
+.view-toggle {
+    padding: 0.75rem 2rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+}
+
+.btn-view {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.btn-view:hover {
+    background: var(--bg-main);
+}
+
+.btn-view.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.activities-count {
+    margin-left: auto;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* ===== Main Content ===== */
+.main-content {
+    flex: 1;
+    padding: 1rem 2rem;
+    overflow-x: auto;
+}
+
+.view-container.hidden {
+    display: none;
+}
+
+/* ===== Schedule Grid ===== */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    min-width: 900px;
+}
+
+.grid-header {
+    background: var(--bg-header);
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.grid-time {
+    background: #f1f5f9;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grid-time .block-num {
+    font-size: 0.625rem;
+    color: var(--text-secondary);
+}
+
+.grid-cell {
+    background: var(--bg-card);
+    padding: 0.25rem;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.grid-cell.protected {
+    background: #fef3c7;
+    position: relative;
+}
+
+.grid-cell.protected::after {
+    content: "🔒 Protegido";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.625rem;
+    color: var(--warning);
+}
+
+/* ===== Activity Card ===== */
+.activity-card {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.625rem;
+    cursor: pointer;
+    transition: transform 0.1s;
+    border-left: 3px solid;
+}
+
+.activity-card:hover {
+    transform: scale(1.02);
+    z-index: 10;
+}
+
+.activity-card.type-catedra {
+    background: #dbeafe;
+    border-color: var(--primary);
+}
+
+.activity-card.type-ayudantia {
+    background: #d1fae5;
+    border-color: var(--success);
+}
+
+.activity-card.type-laboratorio {
+    background: #fef3c7;
+    border-color: var(--warning);
+}
+
+.activity-card .code {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activity-card .room {
+    color: var(--text-secondary);
+}
+
+/* ===== Activities Table ===== */
+.activities-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.activities-table th,
+.activities-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.activities-table th {
+    background: var(--bg-header);
+    color: white;
+    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.activities-table tbody tr:hover {
+    background: #f1f5f9;
+}
+
+.activities-table td {
+    font-size: 0.875rem;
+}
+
+.type-badge {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.625rem;
+    font-weight: 600;
+}
+
+.type-badge.catedra {
+    background: #dbeafe;
+    color: var(--primary-dark);
+}
+
+.type-badge.ayudantia {
+    background: #d1fae5;
+    color: #047857;
+}
+
+.type-badge.laboratorio {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+/* ===== Stats Footer ===== */
+.stats-footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .filters-panel {
+        padding: 1rem;
+    }
+    
+    .filter-group select,
+    .filter-group input {
+        min-width: 120px;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .stats-footer {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+}
+
+/* ===== Activity Modal ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-content .detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-content .detail-label {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.modal-content .btn-close {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+}

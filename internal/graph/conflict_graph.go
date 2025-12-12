@@ -2,10 +2,11 @@ package graph
 
 import (
 	"timetabling-UDP/internal/domain"
+	"timetabling-UDP/internal/utils"
 )
 
-// ConflictGraph representa el grafo de conflictos G = (V, E).
-// Los vértices son Activities y las aristas representan conflictos.
+// ConflictGraph representa el grafo de conflictos G = (V, E). donde los nodos/vertices son las actividades y las aristas representan
+// conflictos entre las actividades
 type ConflictGraph struct {
 	Vertices  map[int]*domain.Activity // ID -> Activity
 	Adjacency map[int]map[int]bool     // ID -> Set de IDs adyacentes
@@ -47,7 +48,7 @@ func (g *ConflictGraph) HasEdge(id1, id2 int) bool {
 	return false
 }
 
-// Degree retorna el grado (número de conflictos) de un vértice.
+// Degree retorna el grado de un vértice, numero de vecinos
 func (g *ConflictGraph) Degree(id int) int {
 	return len(g.Adjacency[id])
 }
@@ -85,7 +86,7 @@ func BuildFromActivities(activities []domain.Activity) *ConflictGraph {
 		g.AddVertex(&activities[i])
 	}
 
-	// Detectar conflictos (O(n²) pero necesario)
+	// Detectar conflictos de profesores y secciones
 	for i := 0; i < len(activities); i++ {
 		for j := i + 1; j < len(activities); j++ {
 			a1 := &activities[i]
@@ -100,14 +101,14 @@ func BuildFromActivities(activities []domain.Activity) *ConflictGraph {
 	return g
 }
 
-// areConflicting determina si dos actividades tienen conflicto hard.
+// areConflicting determina si dos actividades tienen rompen una restricción dura.
 func areConflicting(a1, a2 *domain.Activity) bool {
-	// Conflicto 1: Comparten profesor (no puede estar en dos lugares)
+	// Comparten profesor
 	if a1.SharesTeacher(a2) {
 		return true
 	}
 
-	// Conflicto 2: Comparten sección (mismos estudiantes)
+	// Comparten sección (mismos estudiantes)
 	if a1.SharesSection(a2) {
 		return true
 	}
@@ -115,10 +116,8 @@ func areConflicting(a1, a2 *domain.Activity) bool {
 	return false
 }
 
-// BuildFromActivitiesWithCliques construye el grafo incluyendo cliques por semestre.
-// Cursos con una sola sección (o secciones fusionadas) en el mismo semestre
-// forman un clique (todos sus eventos en conflicto).
-// Los cursos electivos NO forman parte de los cliques.
+// BuildFromActivitiesWithCliques construye el grafo incluyendo cliques por semestre. este clique que es un subgrafo completo se crea cuando
+// en un solo semestre hay N cursos con una sola sección (o secciones fusionadas) y todos son de la misma carrera. no se toma en cuenta electivos
 func BuildFromActivitiesWithCliques(
 	activities []domain.Activity,
 	planLocations map[string]map[string]int, // CourseCode -> Major -> Semester
@@ -131,7 +130,7 @@ func BuildFromActivitiesWithCliques(
 		g.AddVertex(&activities[i])
 	}
 
-	// Detectar conflictos normales (profesor + sección)
+	// Detectar conflictos
 	for i := 0; i < len(activities); i++ {
 		for j := i + 1; j < len(activities); j++ {
 			a1 := &activities[i]
@@ -144,9 +143,8 @@ func BuildFromActivitiesWithCliques(
 	}
 
 	// Contar secciones únicas por curso (secciones fusionadas cuentan como 1)
-	// Usamos el conjunto único de linked_sections como identificador de "grupo"
-	courseSectionGroups := make(map[string]map[string]bool) // CourseCode -> Set de sectionGroupIDs
-	courseActivities := make(map[string][]*domain.Activity) // CourseCode -> Activities
+	courseSectionGroups := make(map[string]map[string]bool)
+	courseActivities := make(map[string][]*domain.Activity)
 
 	for i := range activities {
 		a := &activities[i]
@@ -154,23 +152,21 @@ func BuildFromActivitiesWithCliques(
 			courseSectionGroups[a.CourseCode] = make(map[string]bool)
 		}
 
-		// Crear ID único para el grupo de secciones
-		sectionGroupID := sectionGroupKey(a.Sections)
+		// Crear id único para el grupo de secciones
+		sectionGroupID := utils.SectionGroupKey(a.Sections)
 		courseSectionGroups[a.CourseCode][sectionGroupID] = true
 		courseActivities[a.CourseCode] = append(courseActivities[a.CourseCode], a)
 	}
 
-	// Identificar cursos con una sola sección/grupo (EXCLUYENDO ELECTIVOS)
+	// Identificar cursos con una sola sección/grupo
 	singleSectionCourses := make(map[string]bool)
 	for courseCode, groups := range courseSectionGroups {
-		// Solo si tiene 1 sección Y NO es electivo
 		if len(groups) == 1 && !electives[courseCode] {
 			singleSectionCourses[courseCode] = true
 		}
 	}
 
-	// Agrupar cursos de sección única por (Major, Semester)
-	// Estructura: Major -> Semester -> []CourseCode
+	// se agrupan los cursos por carrera y semestre
 	semesterCourses := make(map[string]map[int][]string)
 
 	for courseCode := range singleSectionCourses {
@@ -187,11 +183,11 @@ func BuildFromActivitiesWithCliques(
 		}
 	}
 
-	// Crear cliques para cada (Major, Semester)
+	// Crear cliques para cada carrera y semestre
 	for _, semesters := range semesterCourses {
 		for _, courseCodes := range semesters {
 			if len(courseCodes) < 2 {
-				continue // No hay clique con menos de 2 cursos
+				continue
 			}
 
 			// Recolectar todas las actividades de estos cursos
@@ -200,7 +196,7 @@ func BuildFromActivitiesWithCliques(
 				cliqueCourses = append(cliqueCourses, courseActivities[cc]...)
 			}
 
-			// Crear clique: todos contra todos
+			// Crear clique
 			for i := 0; i < len(cliqueCourses); i++ {
 				for j := i + 1; j < len(cliqueCourses); j++ {
 					a1 := cliqueCourses[i]
@@ -215,30 +211,4 @@ func BuildFromActivitiesWithCliques(
 	}
 
 	return g
-}
-
-// sectionGroupKey crea una clave única para un grupo de secciones
-func sectionGroupKey(sections []int) string {
-	if len(sections) == 0 {
-		return "empty"
-	}
-	// Ordenar y concatenar
-	sorted := make([]int, len(sections))
-	copy(sorted, sections)
-	// Simple sort
-	for i := 0; i < len(sorted); i++ {
-		for j := i + 1; j < len(sorted); j++ {
-			if sorted[i] > sorted[j] {
-				sorted[i], sorted[j] = sorted[j], sorted[i]
-			}
-		}
-	}
-	key := ""
-	for _, s := range sorted {
-		if key != "" {
-			key += "-"
-		}
-		key += string(rune('0' + s))
-	}
-	return key
 }

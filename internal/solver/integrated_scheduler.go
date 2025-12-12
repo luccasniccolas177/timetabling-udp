@@ -8,7 +8,7 @@ import (
 	"timetabling-UDP/internal/loader"
 )
 
-// Period representa un periodo completo con actividades y sus salas asignadas.
+// Period representa un bloque completo con actividades y sus salas asignadas.
 type Period struct {
 	Number      int                // Número de periodo (0-based)
 	Block       int                // Bloque temporal asignado
@@ -18,7 +18,7 @@ type Period struct {
 
 // TimetableResult es el resultado del algoritmo integrado.
 type TimetableResult struct {
-	Periods      []Period           // Periodos programados
+	Periods      []Period           // bloques programados
 	FinalDUD     []*domain.Activity // Actividades que no pudieron ser programadas
 	TotalPeriods int                // Total de periodos usados
 }
@@ -35,9 +35,16 @@ func IntegratedSchedulerWithConstraints(activities []domain.Activity, G *graph.C
 
 	var periods []Period
 	periodNum := 0
+	blockNum := 0 // Bloque temporal real (0-34), puede saltar el protegido
 
 	// Mientras queden vértices en el grafo
-	for G.NumVertices() > 0 && periodNum < domain.TotalBlocks {
+	for G.NumVertices() > 0 && blockNum < domain.TotalBlocks {
+		// Saltar el bloque protegido del miércoles (11:30-12:50)
+		if domain.IsProtectedBlock(blockNum) {
+			blockNum++
+			continue
+		}
+
 		colorSet := findMaxIndependentSet(G)
 
 		if len(colorSet) == 0 {
@@ -51,7 +58,7 @@ func IntegratedSchedulerWithConstraints(activities []domain.Activity, G *graph.C
 		}
 
 		// Asignar salas usando Algoritmo 2 CON restricciones
-		period := assignRoomsToPeriodWithConstraints(periodActivities, allRooms, constraints, periodNum)
+		period := assignRoomsToPeriodWithConstraints(periodActivities, allRooms, constraints, blockNum)
 
 		periods = append(periods, period)
 
@@ -59,11 +66,12 @@ func IntegratedSchedulerWithConstraints(activities []domain.Activity, G *graph.C
 		for _, ra := range period.Assignments {
 			for _, a := range ra.Activities {
 				removeVertex(G, a.ID)
-				a.Block = periodNum
+				a.Block = blockNum // Usar bloque real, no periodNum
 			}
 		}
 
 		periodNum++
+		blockNum++
 	}
 
 	// DUD final
@@ -187,122 +195,4 @@ func contains(slice []string, s string) bool {
 		}
 	}
 	return false
-}
-
-// assignCoursesToRooms implementa el Algoritmo 2 para CURSOS (Section 3.1).
-// Regla: 1 curso por sala, con desplazamiento a salas más grandes.
-func assignCoursesToRooms(courses []*domain.Activity, rooms []domain.Room) RoomAssignmentResult {
-	if len(courses) == 0 || len(rooms) == 0 {
-		return RoomAssignmentResult{DUD: courses}
-	}
-
-	// Paso 1: Ordenar cursos por tamaño (estudiantes), menor primero
-	sortedCourses := make([]*domain.Activity, len(courses))
-	copy(sortedCourses, courses)
-	sort.Slice(sortedCourses, func(i, j int) bool {
-		return sortedCourses[i].Students < sortedCourses[j].Students
-	})
-
-	// Paso 1: Ordenar salas por capacidad, menor primero
-	sortedRooms := make([]domain.Room, len(rooms))
-	copy(sortedRooms, rooms)
-	sort.Slice(sortedRooms, func(i, j int) bool {
-		return sortedRooms[i].Capacity < sortedRooms[j].Capacity
-	})
-
-	// Inicializar asignaciones
-	assignments := make([]RoomAssignment, len(sortedRooms))
-	for i, r := range sortedRooms {
-		assignments[i] = RoomAssignment{
-			RoomCode:   r.Code,
-			Capacity:   r.Capacity,
-			Activities: nil,
-			Used:       0,
-		}
-	}
-
-	// Pasos 2-3: Colocar cada curso en la sala más pequeña donde quepa
-	for _, course := range sortedCourses {
-		for j := range assignments {
-			if course.Students <= assignments[j].Capacity {
-				assignments[j].Activities = append(assignments[j].Activities, course)
-				assignments[j].Used += course.Students
-				break
-			}
-		}
-	}
-
-	// Pasos 4-6: Desplazar para que quede máximo 1 curso por sala
-	var dud []*domain.Activity
-	for j := range assignments {
-		if len(assignments[j].Activities) <= 1 {
-			continue
-		}
-
-		// Ordenar por tamaño, menor primero
-		sort.Slice(assignments[j].Activities, func(i, k int) bool {
-			return assignments[j].Activities[i].Students < assignments[j].Activities[k].Students
-		})
-
-		// Encontrar el curso más pequeño que NO cabe en la sala anterior
-		keepIdx := -1
-		for i, a := range assignments[j].Activities {
-			if j == 0 || a.Students > assignments[j-1].Capacity {
-				keepIdx = i
-				break
-			}
-		}
-
-		// Si ninguno cumple, quedarse con el más pequeño
-		if keepIdx == -1 {
-			keepIdx = 0
-		}
-
-		// Mover los demás a la siguiente sala o DUD
-		for i, a := range assignments[j].Activities {
-			if i == keepIdx {
-				continue
-			}
-
-			moved := false
-			if j+1 < len(assignments) {
-				nextRoom := &assignments[j+1]
-				// Agregar a la siguiente sala (se resolverá en la siguiente iteración)
-				nextRoom.Activities = append(nextRoom.Activities, a)
-				nextRoom.Used += a.Students
-				moved = true
-			}
-
-			if !moved {
-				dud = append(dud, a)
-			}
-		}
-
-		// Mantener solo el curso seleccionado
-		kept := assignments[j].Activities[keepIdx]
-		assignments[j].Activities = []*domain.Activity{kept}
-		assignments[j].Used = kept.Students
-		kept.Room = assignments[j].RoomCode
-	}
-
-	// Filtrar asignaciones válidas y asignar Room a las actividades
-	var validAssignments []RoomAssignment
-	for _, a := range assignments {
-		if len(a.Activities) == 1 {
-			a.Activities[0].Room = a.RoomCode
-			validAssignments = append(validAssignments, a)
-		} else if len(a.Activities) > 1 {
-			// Esto no debería pasar después del desplazamiento
-			// pero por seguridad, solo quedarnos con el primero
-			a.Activities[0].Room = a.RoomCode
-			a.Activities = a.Activities[:1]
-			validAssignments = append(validAssignments, a)
-			dud = append(dud, a.Activities[1:]...)
-		}
-	}
-
-	return RoomAssignmentResult{
-		Assignments: validAssignments,
-		DUD:         dud,
-	}
 }

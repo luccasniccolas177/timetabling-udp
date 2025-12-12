@@ -3,12 +3,11 @@ package solver
 import (
 	"math"
 	"math/rand"
-	"sort"
 	"strconv"
-	"time"
 
 	"timetabling-UDP/internal/domain"
 	"timetabling-UDP/internal/loader"
+	"timetabling-UDP/internal/utils"
 )
 
 // SAConfig contiene los parámetros del Simulated Annealing.
@@ -25,7 +24,7 @@ func DefaultSAConfig() SAConfig {
 		InitialTemp:    1000.0,
 		CoolingRate:    0.999, // Más lento = más iteraciones
 		MinTemp:        0.01,  // Temperatura mínima más baja
-		IterationsPerT: 2000,  // Reducido para prueba
+		IterationsPerT: 5000,  // Reducido para prueba
 	}
 }
 
@@ -43,7 +42,7 @@ type SAResult struct {
 }
 
 // SimulatedAnnealing optimiza el horario usando SA.
-// Ahora puede mover BLOQUES y SALAS.
+// puede mover bloques y salas.
 // Hard constraints validados:
 // - RC1: Conflicto de profesor
 // - RC2: Conflicto de sección
@@ -58,7 +57,6 @@ type SAResult struct {
 // - Ayudantías en miércoles
 // - Prerrequisitos en mismo bloque
 func SimulatedAnnealing(activities []domain.Activity, rooms []domain.Room, config SAConfig, prerequisites map[string][]string, planLocations map[string]map[string]int, electives map[string]bool, constraints loader.RoomConstraints) SAResult {
-	rand.Seed(time.Now().UnixNano())
 
 	// Construir índices útiles
 	siblingGroups := buildSiblingIndex(activities)
@@ -213,23 +211,6 @@ func buildPrereqPairs(prerequisites map[string][]string, courseActivities map[st
 	return pairs
 }
 
-// calculateTotalCostWithPrereq calcula costo total incluyendo bonus de prereqs
-func calculateTotalCostWithPrereq(activities []domain.Activity, siblings map[string][]*domain.Activity, prereqPairs []PrereqPair) float64 {
-	cost := 0.0
-	for i := range activities {
-		cost += activityCost(&activities[i], siblings)
-	}
-
-	// Bonus por prereqs en mismo bloque (costo negativo = bueno)
-	for _, pair := range prereqPairs {
-		if pair.PrereqActivity.Block == pair.DepActivity.Block {
-			cost -= 15.0 // Bonus balanceado
-		}
-	}
-
-	return cost
-}
-
 // calculatePrereqBonus calcula porcentaje de pares prereq en mismo bloque
 func calculatePrereqBonus(activities []domain.Activity, prereqPairs []PrereqPair) float64 {
 	if len(prereqPairs) == 0 {
@@ -264,45 +245,16 @@ func buildBlockOccupancy(activities []domain.Activity) map[int][]*domain.Activit
 	return occ
 }
 
-// hasConflictInBlock verifica si mover actividad a bloque causa conflicto
-func hasConflictInBlock(activity *domain.Activity, block int, occupancy map[int][]*domain.Activity, cliqueConflicts map[string]map[string]bool) bool {
-	for _, other := range occupancy[block] {
-		if other.ID == activity.ID {
-			continue
-		}
-		// Conflicto si comparten profesor
-		if activity.SharesTeacher(other) {
-			return true
-		}
-		// Conflicto si comparten sección (mismo curso)
-		if activity.SharesSection(other) {
-			return true
-		}
-		// Conflicto si usan la misma sala
-		if activity.Room == other.Room {
-			return true
-		}
-		// Conflicto de CLIQUE DE SEMESTRE (hard constraint)
-		// Si el otro curso está en mi lista de conflictos de clique
-		if cliqueConflicts[activity.CourseCode] != nil && cliqueConflicts[activity.CourseCode][other.CourseCode] {
-			return true
-		}
-	}
-	return false
-}
-
 // buildCliqueMap construye un mapa de conflictos por clique de semestre.
-// Retorna: CourseCode -> Map[ConflictingCourseCode]bool
-// Los cursos electivos NO forman parte de los cliques.
 func buildCliqueMap(activities []domain.Activity, planLocations map[string]map[string]int, electives map[string]bool) map[string]map[string]bool {
-	// 1. Identificar cursos con 1 sola sección (o fusionadas)
+	// identificar cursos con 1 sola sección (o fusionadas)
 	courseSectionGroups := make(map[string]map[string]bool)
 	for i := range activities {
 		a := &activities[i]
 		if courseSectionGroups[a.CourseCode] == nil {
 			courseSectionGroups[a.CourseCode] = make(map[string]bool)
 		}
-		key := sectionGroupKey(a.Sections)
+		key := utils.SectionGroupKey(a.Sections)
 		courseSectionGroups[a.CourseCode][key] = true
 	}
 
@@ -314,7 +266,7 @@ func buildCliqueMap(activities []domain.Activity, planLocations map[string]map[s
 		}
 	}
 
-	// 2. Agrupar por (Major, Semester)
+	// agrupar por carrera y semestre
 	semesterCourses := make(map[string]map[int][]string)
 	for code := range singleSectionCourses {
 		if locs, ok := planLocations[code]; ok {
@@ -327,7 +279,7 @@ func buildCliqueMap(activities []domain.Activity, planLocations map[string]map[s
 		}
 	}
 
-	// 3. Crear mapa de conflictos
+	// crear mapa de conflictos
 	conflicts := make(map[string]map[string]bool)
 	for _, semesters := range semesterCourses {
 		for _, courses := range semesters {
@@ -350,74 +302,6 @@ func buildCliqueMap(activities []domain.Activity, planLocations map[string]map[s
 	return conflicts
 }
 
-// sectionGroupKey crea una clave única para un grupo de secciones (helper duplicado de graph, mover a utils idealmente)
-func sectionGroupKey(sections []int) string {
-	if len(sections) == 0 {
-		return "empty"
-	}
-	sorted := make([]int, len(sections))
-	copy(sorted, sections)
-	sort.Ints(sorted) // Usando sort.Ints
-
-	key := ""
-	for _, s := range sorted {
-		if key != "" {
-			key += "-"
-		}
-		key += strconv.Itoa(s) // Usando strconv
-	}
-	return key
-}
-
-// removeFromBlockOccupancy quita actividad del índice
-func removeFromBlockOccupancy(activity *domain.Activity, block int, occupancy map[int][]*domain.Activity) {
-	list := occupancy[block]
-	for i, a := range list {
-		if a.ID == activity.ID {
-			occupancy[block] = append(list[:i], list[i+1:]...)
-			return
-		}
-	}
-}
-
-// addToBlockOccupancy agrega actividad al índice
-func addToBlockOccupancy(activity *domain.Activity, block int, occupancy map[int][]*domain.Activity) {
-	occupancy[block] = append(occupancy[block], activity)
-}
-
-// activityCostForBlock calcula costo considerando un bloque hipotético
-func activityCostForBlock(a *domain.Activity, block int, siblings map[string][]*domain.Activity) float64 {
-	cost := 0.0
-
-	// Penalidad por hermanos NO en espejo
-	if a.SiblingGroupID != "" {
-		sibs := siblings[a.SiblingGroupID]
-		for _, sib := range sibs {
-			if sib.ID == a.ID {
-				continue
-			}
-			day1, slot1 := blockToDaySlot(block)
-			day2, slot2 := blockToDaySlot(sib.Block)
-
-			if slot1 != slot2 {
-				cost += 50.0 // Diferente hora
-			} else if day1 == day2 {
-				cost += 100.0 // Mismo día (no es espejo válido)
-			}
-		}
-	}
-
-	// Penalidad para AY no en miércoles
-	if a.Type == domain.AY {
-		day, _ := blockToDaySlot(block)
-		if day != 2 {
-			cost += 10.0
-		}
-	}
-
-	return cost
-}
-
 // buildSiblingIndex crea un índice de actividades por SiblingGroupID.
 func buildSiblingIndex(activities []domain.Activity) map[string][]*domain.Activity {
 	index := make(map[string][]*domain.Activity)
@@ -432,93 +316,14 @@ func buildSiblingIndex(activities []domain.Activity) map[string][]*domain.Activi
 	return index
 }
 
-// buildRoomIndex crea un índice de salas por código.
-func buildRoomIndex(rooms []domain.Room) map[string]domain.Room {
-	index := make(map[string]domain.Room)
-	for _, r := range rooms {
-		index[r.Code] = r
-	}
-	return index
-}
-
-// calculateTotalCost calcula el costo total del horario.
-func calculateTotalCost(activities []domain.Activity, siblings map[string][]*domain.Activity) float64 {
-	cost := 0.0
-	for i := range activities {
-		cost += activityCost(&activities[i], siblings)
-	}
-	return cost
-}
-
-// activityCost calcula el costo de una actividad.
-func activityCost(a *domain.Activity, siblings map[string][]*domain.Activity) float64 {
-	cost := 0.0
-
-	// Penalidad por hermanos NO en espejo
-	if a.SiblingGroupID != "" {
-		sibs := siblings[a.SiblingGroupID]
-		for _, sib := range sibs {
-			if sib.ID == a.ID {
-				continue
-			}
-			// Calcular si están en espejo (mismo slot horario, día diferente)
-			day1, slot1 := blockToDaySlot(a.Block)
-			day2, slot2 := blockToDaySlot(sib.Block)
-
-			// Penalizar si NO están en mismo slot pero diferente día
-			if slot1 != slot2 {
-				cost += 50.0 // Penalidad alta: diferente hora
-			} else if day1 == day2 {
-				cost += 100.0 // Penalidad muy alta: mismo día (conflicto)
-			}
-
-			// Penalizar si NO están en la misma sala
-			if a.Room != sib.Room {
-				cost += 20.0 // Penalidad media: diferente sala
-			}
-		}
-	}
-
-	// Bonus para AY en miércoles (día 2, bloques 14-20)
-	if a.Type == domain.AY {
-		day, _ := blockToDaySlot(a.Block)
-		if day != 2 { // No es miércoles
-			cost += 10.0 // Penalidad leve
-		}
-	}
-
-	return cost
-}
-
 // blockToDaySlot convierte bloque (0-34) a día y slot.
-// Día: 0=Lun, 1=Mar, 2=Mié, 3=Jue, 4=Vie
-// Slot: 0-6 (7 bloques por día)
 func blockToDaySlot(block int) (day, slot int) {
 	day = block / domain.BlocksPerDay
 	slot = block % domain.BlocksPerDay
 	return
 }
 
-// selectRandomSwap selecciona dos índices aleatorios para swap.
-func selectRandomSwap(activities []domain.Activity) (int, int) {
-	n := len(activities)
-	return rand.Intn(n), rand.Intn(n)
-}
-
-// isValidSwap verifica si un swap es válido (misma sección = conflicto).
-func isValidSwap(a1, a2 *domain.Activity) bool {
-	// No permitir swap si comparten profesor
-	if a1.SharesTeacher(a2) {
-		return false
-	}
-	// No permitir swap si comparten sección
-	if a1.SharesSection(a2) {
-		return false
-	}
-	return true
-}
-
-// calculateMirrorPenalty calcula solo la penalidad de espejo.
+// calculateMirrorPenalty calcula la penalidad de espejo.
 func calculateMirrorPenalty(activities []domain.Activity, siblings map[string][]*domain.Activity) float64 {
 	penalty := 0.0
 	counted := make(map[string]bool)
@@ -573,10 +378,6 @@ func calculateWednesdayBonus(activities []domain.Activity) float64 {
 	return float64(ayOnWednesday) / float64(totalAY) * 100.0
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-// NUEVAS FUNCIONES PARA ROOM SWAP
-// ═══════════════════════════════════════════════════════════════════════════
-
 // buildRoomMap crea un mapa de código de sala a Room para búsqueda rápida
 func buildRoomMap(rooms []domain.Room) map[string]domain.Room {
 	m := make(map[string]domain.Room)
@@ -586,7 +387,7 @@ func buildRoomMap(rooms []domain.Room) map[string]domain.Room {
 	return m
 }
 
-// buildRoomBlockOccupancy crea índice (room, block) -> actividad ocupante (considerando duración)
+// buildRoomBlockOccupancy crea índice (room, block) -> actividad ocupante
 func buildRoomBlockOccupancy(activities []domain.Activity) map[string]*domain.Activity {
 	occ := make(map[string]*domain.Activity)
 	for i := range activities {
@@ -595,7 +396,7 @@ func buildRoomBlockOccupancy(activities []domain.Activity) map[string]*domain.Ac
 		if duration < 1 {
 			duration = 1
 		}
-		// Registrar en cada bloque que ocupa
+		// registrar en cada bloque que ocupa
 		for d := 0; d < duration; d++ {
 			b := a.Block + d
 			key := a.Room + ":" + strconv.Itoa(b)
@@ -605,10 +406,9 @@ func buildRoomBlockOccupancy(activities []domain.Activity) map[string]*domain.Ac
 	return occ
 }
 
-// selectValidRoom selecciona una sala válida aleatoria para la actividad en el bloque dado
-// Valida: RC3 (no ocupada en todos los bloques), RC4 (capacidad), RC5 (tipo), RC6 (restricción específica)
+// selectValidRoom selecciona una sala válida aleatoria para la actividad en el bloque dado, valida: RC3, RC4, RC5 y RC6
 func selectValidRoom(activity *domain.Activity, block int, rooms []domain.Room, roomMap map[string]domain.Room, constraints loader.RoomConstraints, roomBlockOcc map[string]*domain.Activity) string {
-	// Obtener salas permitidas por restricción específica (RC6)
+	// obtener salas permitidas por restricción específica
 	eventType := eventTypeToString(activity.Type)
 	allowedCodes := constraints.GetAllowedRooms(activity.CourseCode, eventType)
 
@@ -621,7 +421,7 @@ func selectValidRoom(activity *domain.Activity, block int, rooms []domain.Room, 
 
 roomLoop:
 	for _, room := range rooms {
-		// RC3: No ocupada en NINGUNO de los bloques que ocuparía
+		// RC3
 		for d := 0; d < duration; d++ {
 			b := block + d
 			key := room.Code + ":" + strconv.Itoa(b)
@@ -630,13 +430,13 @@ roomLoop:
 			}
 		}
 
-		// RC6: Restricción específica
+		// RC6
 		if allowedCodes != nil {
 			if !contains(allowedCodes, room.Code) {
 				continue
 			}
 		} else {
-			// RC5: Tipo de sala
+			// RC5
 			if activity.Type == domain.LAB && room.Type != domain.RoomLab {
 				continue
 			}
@@ -645,7 +445,7 @@ roomLoop:
 			}
 		}
 
-		// RC4: Capacidad
+		// RC4
 		if activity.Students > room.Capacity {
 			continue
 		}
@@ -657,43 +457,48 @@ roomLoop:
 		return ""
 	}
 
-	// Seleccionar aleatoriamente entre las válidas
+	// seleccionar aleatoriamente entre las válidas
 	return validRooms[rand.Intn(len(validRooms))]
 }
 
-// hasConflictInBlockWithRoom verifica conflictos considerando la sala propuesta
-// y la duración de la actividad (puede ocupar múltiples bloques consecutivos).
+// hasConflictInBlockWithRoom verifica conflictos considerando la sala propuesta y la duración de la actividad (puede ocupar múltiples bloques consecutivos).
 func hasConflictInBlockWithRoom(activity *domain.Activity, block int, room string, blockOcc map[int][]*domain.Activity, roomBlockOcc map[string]*domain.Activity, cliqueConflicts map[string]map[string]bool) bool {
 	duration := activity.Duration
 	if duration < 1 {
 		duration = 1
 	}
 
-	// Validar que no cruce días: todos los bloques deben estar en el mismo día
+	// validar que no cruce días: todos los bloques deben estar en el mismo día
 	startDay := block / domain.BlocksPerDay
 	endBlock := block + duration - 1
 	endDay := endBlock / domain.BlocksPerDay
 	if startDay != endDay {
-		return true // Cruzaría días - inválido
+		return true // cruzaría días - inválido
 	}
 
-	// Validar que no exceda el último bloque del día
+	// validar que no exceda el último bloque del día
 	slotInDay := block % domain.BlocksPerDay
 	if slotInDay+duration > domain.BlocksPerDay {
 		return true // No cabe en el día
 	}
 
-	// Verificar cada bloque que ocuparía la actividad
+	// validar que no ocupe el bloque protegido del miércoles (11:30-12:50)
+	// esto aplica tanto al bloque directo como a actividades multi-bloque que lo atraviesen
+	if domain.OccupiesProtectedBlock(block, duration) {
+		return true // ocuparía el bloque protegido
+	}
+
+	// verificar cada bloque que ocuparía la actividad
 	for i := 0; i < duration; i++ {
 		b := block + i
 
-		// Verificar ocupación de sala en este bloque
+		// verificar ocupación de sala en este bloque
 		key := room + ":" + strconv.Itoa(b)
 		if existing := roomBlockOcc[key]; existing != nil && existing.ID != activity.ID {
-			return true // Sala ocupada en este bloque
+			return true // sala ocupada en este bloque
 		}
 
-		// Verificar conflictos con otras actividades en este bloque
+		// verificar conflictos con otras actividades en este bloque
 		for _, other := range blockOcc[b] {
 			if other.ID == activity.ID {
 				continue
@@ -713,7 +518,7 @@ func hasConflictInBlockWithRoom(activity *domain.Activity, block int, room strin
 	return false
 }
 
-// removeFromOccupancy remueve actividad de los índices considerando su duración
+// removeFromOccupancy limpia los indices de ocupación actual, se usa cuando SA mueve una actividad de un bloque a otro
 func removeFromOccupancy(activity *domain.Activity, block int, room string, blockOcc map[int][]*domain.Activity, roomBlockOcc map[string]*domain.Activity) {
 	duration := activity.Duration
 	if duration < 1 {
@@ -723,7 +528,7 @@ func removeFromOccupancy(activity *domain.Activity, block int, room string, bloc
 	for i := 0; i < duration; i++ {
 		b := block + i
 
-		// Remover de blockOcc
+		// remover de blockOcc
 		list := blockOcc[b]
 		for j, a := range list {
 			if a.ID == activity.ID {
@@ -732,13 +537,13 @@ func removeFromOccupancy(activity *domain.Activity, block int, room string, bloc
 			}
 		}
 
-		// Remover de roomBlockOcc
+		// remover de roomBlockOcc
 		key := room + ":" + strconv.Itoa(b)
 		delete(roomBlockOcc, key)
 	}
 }
 
-// addToOccupancy agrega actividad a los índices considerando su duración
+// addToOccupancy agrega actividad a los índices considerando su duración, se usa cuando SA mueve una actividad de un bloque a otro
 func addToOccupancy(activity *domain.Activity, block int, room string, blockOcc map[int][]*domain.Activity, roomBlockOcc map[string]*domain.Activity) {
 	duration := activity.Duration
 	if duration < 1 {
@@ -753,17 +558,17 @@ func addToOccupancy(activity *domain.Activity, block int, room string, blockOcc 
 	}
 }
 
-// activityCostForBlockAndRoom calcula costo de actividad en bloque+sala dados
+// activityCostForBlockAndRoom calcula costo de actividad en bloque + sala
 // Incluye penalidades de espejo (horario Y sala) Y separación de días
 func activityCostForBlockAndRoom(activity *domain.Activity, block int, room string, siblings map[string][]*domain.Activity) float64 {
 	cost := 0.0
 
-	// Solo evaluar hermanos para cátedras
+	// solo evaluar hermanos para cátedras
 	if activity.SiblingGroupID != "" && activity.Type == domain.CAT {
 		sibs := siblings[activity.SiblingGroupID]
 		myDay, mySlot := blockToDaySlot(block)
 
-		// Filtrar solo hermanos CAT (no AY)
+		// filtrar solo hermanos CAT (no AY)
 		var catSibs []*domain.Activity
 		for _, sib := range sibs {
 			if sib.Type == domain.CAT {
@@ -777,39 +582,38 @@ func activityCostForBlockAndRoom(activity *domain.Activity, block int, room stri
 			}
 			sibDay, sibSlot := blockToDaySlot(sib.Block)
 
-			// Penalidad por NO estar en espejo (mismo slot horario)
+			// penalidad por NO estar en espejo (mismo slot horario)
 			if sibSlot != mySlot {
 				cost += 50.0
 			}
 
-			// Penalidad por hermano en distinta sala
+			// penalidad por hermano en distinta sala
 			if sib.Room != room {
 				cost += 30.0
 			}
 
-			// === SEPARACIÓN DE DÍAS ===
 			daySeparation := abs(myDay - sibDay)
 
 			if len(catSibs) == 2 {
-				// Para 2 cátedras: ideal 3 días (Lun-Jue, Mar-Vie)
+				// para 2 cátedras: ideal 3 días (Lun-Jue, Mar-Vie)
 				switch daySeparation {
-				case 3: // Ideal: Lun-Jue o Mar-Vie
+				case 3: // ideal: Lun-Jue o Mar-Vie
 					cost -= 20.0 // Bonus
-				case 2: // Aceptable: Lun-Mie, Mar-Jue, Mie-Vie
+				case 2: // aceptable: Lun-Mie, Mar-Jue, Mie-Vie
 					cost += 0.0 // Neutro
-				case 1: // Malo: días consecutivos
+				case 1: // malo: días consecutivos
 					cost += 25.0
-				case 0: // Muy malo: mismo día
+				case 0: // muy malo: mismo día
 					cost += 60.0
 				default: // 4 días (Lun-Vie)
-					cost += 10.0 // Menos ideal que 3
+					cost += 10.0 // menos ideal que 3
 				}
 			} else if len(catSibs) >= 3 {
-				// Para 3+ cátedras: deben estar en días diferentes
+				// para 3+ cátedras: deben estar en días diferentes
 				if daySeparation == 0 {
-					cost += 80.0 // Muy malo: dos CAT el mismo día
+					cost += 80.0 // muy malo: dos CAT el mismo día
 				} else if daySeparation == 1 {
-					cost += 15.0 // Aceptable pero no ideal
+					cost += 15.0 // aceptable pero no ideal
 				}
 			}
 		}
@@ -836,7 +640,6 @@ func activityCostForBlockAndRoom(activity *domain.Activity, block int, room stri
 	return cost
 }
 
-// abs retorna valor absoluto
 func abs(x int) int {
 	if x < 0 {
 		return -x
@@ -844,11 +647,11 @@ func abs(x int) int {
 	return x
 }
 
-// calculateTotalCostWithRooms calcula costo total incluyendo room consistency y separación de días
+// calculateTotalCostWithRooms calcula costo total incluyendo la consistencia de salas y separación de días
 func calculateTotalCostWithRooms(activities []domain.Activity, siblings map[string][]*domain.Activity, prereqPairs []PrereqPair) float64 {
 	cost := 0.0
 
-	// Costo de espejo, sala y separación de días (solo para CAT)
+	// costo de espejo, sala y separación de días (catedras)
 	counted := make(map[string]bool)
 	for i := range activities {
 		a := &activities[i]
@@ -859,7 +662,7 @@ func calculateTotalCostWithRooms(activities []domain.Activity, siblings map[stri
 
 		sibs := siblings[a.SiblingGroupID]
 
-		// Filtrar solo CAT
+		// filtrar solo catedra
 		var catSibs []*domain.Activity
 		for _, sib := range sibs {
 			if sib.Type == domain.CAT {
@@ -877,16 +680,16 @@ func calculateTotalCostWithRooms(activities []domain.Activity, siblings map[stri
 		for j := 1; j < len(catSibs); j++ {
 			day, slot := blockToDaySlot(catSibs[j].Block)
 
-			// Espejo
+			// espejo
 			if slot != baseSlot {
 				cost += 50.0
 			}
-			// Sala
+			// sala
 			if catSibs[j].Room != baseRoom {
 				cost += 30.0
 			}
 
-			// Separación de días
+			// separación de días
 			daySeparation := abs(day - baseDay)
 			if len(catSibs) == 2 {
 				switch daySeparation {
@@ -910,7 +713,7 @@ func calculateTotalCostWithRooms(activities []domain.Activity, siblings map[stri
 			}
 		}
 
-		// Verificar CAT vs AY mismo día
+		// verificar CAT vs AY mismo día
 		for _, cat := range catSibs {
 			catDay, _ := blockToDaySlot(cat.Block)
 			for _, sib := range sibs {
