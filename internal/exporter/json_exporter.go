@@ -47,6 +47,8 @@ type ActivityExport struct {
 	Type       string   `json:"type"`
 	Room       string   `json:"room"`
 	Block      int      `json:"block"`
+	EndBlock   int      `json:"end_block"` // Bloque final (block + duration - 1)
+	Duration   int      `json:"duration"`  // Duración en bloques
 	Day        string   `json:"day"`
 	TimeSlot   string   `json:"time_slot"`
 	Students   int      `json:"students"`
@@ -67,6 +69,10 @@ var timeSlots = []string{
 	"16:00-17:20",
 	"17:25-18:45",
 }
+
+// Start times for building ranges
+var startTimes = []string{"08:30", "10:00", "11:30", "13:00", "14:30", "16:00", "17:25"}
+var endTimes = []string{"09:50", "11:20", "12:50", "14:20", "15:50", "17:20", "18:45"}
 
 // ExportScheduleToJSON exporta el horario completo a un archivo JSON.
 func ExportScheduleToJSON(activities []domain.Activity, filename string) error {
@@ -140,7 +146,7 @@ func buildDaySchedule(activities []domain.Activity) []DaySchedule {
 		}
 	}
 
-	// Agregar actividades a sus slots
+	// Agregar actividades a sus slots (solo al bloque de inicio)
 	for _, a := range activities {
 		if a.Block < 0 || a.Block >= domain.TotalBlocks {
 			continue
@@ -180,12 +186,27 @@ func activityToExport(a domain.Activity) ActivityExport {
 	slot := 0
 	dayName := ""
 	timeSlot := ""
+	duration := a.Duration
+	if duration < 1 {
+		duration = 1
+	}
+	endBlock := a.Block + duration - 1
 
 	if a.Block >= 0 && a.Block < domain.TotalBlocks {
 		day = a.Block / domain.BlocksPerDay
 		slot = a.Block % domain.BlocksPerDay
 		dayName = dayNames[day]
-		timeSlot = timeSlots[slot]
+
+		// Calcular rango horario
+		endSlot := slot + duration - 1
+		if endSlot >= domain.BlocksPerDay {
+			endSlot = domain.BlocksPerDay - 1
+		}
+		if duration == 1 {
+			timeSlot = timeSlots[slot]
+		} else {
+			timeSlot = startTimes[slot] + "-" + endTimes[endSlot]
+		}
 	}
 
 	typeStr := "CATEDRA"
@@ -203,6 +224,8 @@ func activityToExport(a domain.Activity) ActivityExport {
 		Type:       typeStr,
 		Room:       a.Room,
 		Block:      a.Block,
+		EndBlock:   endBlock,
+		Duration:   duration,
 		Day:        dayName,
 		TimeSlot:   timeSlot,
 		Students:   a.Students,

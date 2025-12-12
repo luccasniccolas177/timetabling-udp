@@ -48,18 +48,22 @@ type Activity struct {
 	Sections     []int         // Secciones vinculadas (super-vértice)
 	Students     int           // Total de estudiantes (para Bin Packing)
 	TeacherNames []string      // Nombres de profesores asignados
+	Duration     int           // Duración en bloques (1 = 1 bloque, 2 = 2 consecutivos)
 
 	// SiblingGroupID agrupa cátedras que deben ser "espejo" (mismo horario, días distintos).
 	// Formato: "COURSE_CODE-TYPE-SECTIONS" (ej: "CBF1000-CAT-1,2")
 	SiblingGroupID string
 
 	// --- Estado del Scheduler (se llena durante la programación) ---
-	Block int    // Bloque temporal asignado (-1 = sin asignar)
+	Block int    // Bloque temporal de INICIO (-1 = sin asignar)
 	Room  string // Sala asignada ("" = sin asignar)
 }
 
 // NewActivity crea una Activity con estado inicial sin asignar.
-func NewActivity(id int, code, courseCode, courseName string, eventType EventCategory, eventNum int, sections []int, students int, teachers []string, siblingGroup string) Activity {
+func NewActivity(id int, code, courseCode, courseName string, eventType EventCategory, eventNum int, sections []int, students int, teachers []string, siblingGroup string, duration int) Activity {
+	if duration < 1 {
+		duration = 1
+	}
 	return Activity{
 		ID:             id,
 		Code:           code,
@@ -70,6 +74,7 @@ func NewActivity(id int, code, courseCode, courseName string, eventType EventCat
 		Sections:       sections,
 		Students:       students,
 		TeacherNames:   teachers,
+		Duration:       duration,
 		SiblingGroupID: siblingGroup,
 		Block:          -1,
 		Room:           "",
@@ -144,4 +149,37 @@ func (a *Activity) SharesSection(other *Activity) bool {
 		}
 	}
 	return false
+}
+
+// BlocksOccupied retorna la lista de bloques que ocupa la actividad.
+// Por ejemplo, si Block=5 y Duration=2, ocupa bloques [5, 6].
+func (a *Activity) BlocksOccupied() []int {
+	if a.Block < 0 {
+		return nil
+	}
+	blocks := make([]int, a.Duration)
+	for i := 0; i < a.Duration; i++ {
+		blocks[i] = a.Block + i
+	}
+	return blocks
+}
+
+// OccupiesBlock verifica si la actividad ocupa un bloque específico.
+func (a *Activity) OccupiesBlock(block int) bool {
+	if a.Block < 0 || a.Duration < 1 {
+		return false
+	}
+	return block >= a.Block && block < a.Block+a.Duration
+}
+
+// OverlapsInTime verifica si dos actividades se solapan en tiempo.
+// Considera la duración de ambas actividades.
+func (a *Activity) OverlapsInTime(other *Activity) bool {
+	if a.Block < 0 || other.Block < 0 {
+		return false
+	}
+	aEnd := a.Block + a.Duration
+	otherEnd := other.Block + other.Duration
+	// Se solapan si uno empieza antes de que el otro termine
+	return a.Block < otherEnd && other.Block < aEnd
 }

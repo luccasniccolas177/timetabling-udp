@@ -246,12 +246,20 @@ func calculatePrereqBonus(activities []domain.Activity, prereqPairs []PrereqPair
 	return float64(sameBlock) / float64(len(prereqPairs)) * 100.0
 }
 
-// buildBlockOccupancy crea índice de actividades por bloque
+// buildBlockOccupancy crea índice de actividades por bloque (considerando duración)
 func buildBlockOccupancy(activities []domain.Activity) map[int][]*domain.Activity {
 	occ := make(map[int][]*domain.Activity)
 	for i := range activities {
-		b := activities[i].Block
-		occ[b] = append(occ[b], &activities[i])
+		a := &activities[i]
+		duration := a.Duration
+		if duration < 1 {
+			duration = 1
+		}
+		// Registrar en cada bloque que ocupa
+		for d := 0; d < duration; d++ {
+			b := a.Block + d
+			occ[b] = append(occ[b], a)
+		}
 	}
 	return occ
 }
@@ -578,31 +586,48 @@ func buildRoomMap(rooms []domain.Room) map[string]domain.Room {
 	return m
 }
 
-// buildRoomBlockOccupancy crea índice (room, block) -> actividad ocupante
+// buildRoomBlockOccupancy crea índice (room, block) -> actividad ocupante (considerando duración)
 func buildRoomBlockOccupancy(activities []domain.Activity) map[string]*domain.Activity {
 	occ := make(map[string]*domain.Activity)
 	for i := range activities {
 		a := &activities[i]
-		key := a.Room + ":" + strconv.Itoa(a.Block)
-		occ[key] = a
+		duration := a.Duration
+		if duration < 1 {
+			duration = 1
+		}
+		// Registrar en cada bloque que ocupa
+		for d := 0; d < duration; d++ {
+			b := a.Block + d
+			key := a.Room + ":" + strconv.Itoa(b)
+			occ[key] = a
+		}
 	}
 	return occ
 }
 
 // selectValidRoom selecciona una sala válida aleatoria para la actividad en el bloque dado
-// Valida: RC3 (no ocupada), RC4 (capacidad), RC5 (tipo), RC6 (restricción específica)
+// Valida: RC3 (no ocupada en todos los bloques), RC4 (capacidad), RC5 (tipo), RC6 (restricción específica)
 func selectValidRoom(activity *domain.Activity, block int, rooms []domain.Room, roomMap map[string]domain.Room, constraints loader.RoomConstraints, roomBlockOcc map[string]*domain.Activity) string {
 	// Obtener salas permitidas por restricción específica (RC6)
 	eventType := eventTypeToString(activity.Type)
 	allowedCodes := constraints.GetAllowedRooms(activity.CourseCode, eventType)
 
+	duration := activity.Duration
+	if duration < 1 {
+		duration = 1
+	}
+
 	var validRooms []string
 
+roomLoop:
 	for _, room := range rooms {
-		// RC3: No ocupada en este bloque
-		key := room.Code + ":" + strconv.Itoa(block)
-		if existing := roomBlockOcc[key]; existing != nil && existing.ID != activity.ID {
-			continue
+		// RC3: No ocupada en NINGUNO de los bloques que ocuparía
+		for d := 0; d < duration; d++ {
+			b := block + d
+			key := room.Code + ":" + strconv.Itoa(b)
+			if existing := roomBlockOcc[key]; existing != nil && existing.ID != activity.ID {
+				continue roomLoop
+			}
 		}
 
 		// RC6: Restricción específica
@@ -637,52 +662,95 @@ func selectValidRoom(activity *domain.Activity, block int, rooms []domain.Room, 
 }
 
 // hasConflictInBlockWithRoom verifica conflictos considerando la sala propuesta
+// y la duración de la actividad (puede ocupar múltiples bloques consecutivos).
 func hasConflictInBlockWithRoom(activity *domain.Activity, block int, room string, blockOcc map[int][]*domain.Activity, roomBlockOcc map[string]*domain.Activity, cliqueConflicts map[string]map[string]bool) bool {
-	// Verificar ocupación de sala
-	key := room + ":" + strconv.Itoa(block)
-	if existing := roomBlockOcc[key]; existing != nil && existing.ID != activity.ID {
-		return true // Sala ocupada
+	duration := activity.Duration
+	if duration < 1 {
+		duration = 1
 	}
 
-	// Verificar otros conflictos en el bloque
-	for _, other := range blockOcc[block] {
-		if other.ID == activity.ID {
-			continue
+	// Validar que no cruce días: todos los bloques deben estar en el mismo día
+	startDay := block / domain.BlocksPerDay
+	endBlock := block + duration - 1
+	endDay := endBlock / domain.BlocksPerDay
+	if startDay != endDay {
+		return true // Cruzaría días - inválido
+	}
+
+	// Validar que no exceda el último bloque del día
+	slotInDay := block % domain.BlocksPerDay
+	if slotInDay+duration > domain.BlocksPerDay {
+		return true // No cabe en el día
+	}
+
+	// Verificar cada bloque que ocuparía la actividad
+	for i := 0; i < duration; i++ {
+		b := block + i
+
+		// Verificar ocupación de sala en este bloque
+		key := room + ":" + strconv.Itoa(b)
+		if existing := roomBlockOcc[key]; existing != nil && existing.ID != activity.ID {
+			return true // Sala ocupada en este bloque
 		}
-		if activity.SharesTeacher(other) {
-			return true
-		}
-		if activity.SharesSection(other) {
-			return true
-		}
-		// Clique de semestre
-		if cliqueConflicts[activity.CourseCode] != nil && cliqueConflicts[activity.CourseCode][other.CourseCode] {
-			return true
+
+		// Verificar conflictos con otras actividades en este bloque
+		for _, other := range blockOcc[b] {
+			if other.ID == activity.ID {
+				continue
+			}
+			if activity.SharesTeacher(other) {
+				return true
+			}
+			if activity.SharesSection(other) {
+				return true
+			}
+			// Clique de semestre
+			if cliqueConflicts[activity.CourseCode] != nil && cliqueConflicts[activity.CourseCode][other.CourseCode] {
+				return true
+			}
 		}
 	}
 	return false
 }
 
-// removeFromOccupancy remueve actividad de ambos índices
+// removeFromOccupancy remueve actividad de los índices considerando su duración
 func removeFromOccupancy(activity *domain.Activity, block int, room string, blockOcc map[int][]*domain.Activity, roomBlockOcc map[string]*domain.Activity) {
-	// Remover de blockOcc
-	list := blockOcc[block]
-	for i, a := range list {
-		if a.ID == activity.ID {
-			blockOcc[block] = append(list[:i], list[i+1:]...)
-			break
-		}
+	duration := activity.Duration
+	if duration < 1 {
+		duration = 1
 	}
-	// Remover de roomBlockOcc
-	key := room + ":" + strconv.Itoa(block)
-	delete(roomBlockOcc, key)
+
+	for i := 0; i < duration; i++ {
+		b := block + i
+
+		// Remover de blockOcc
+		list := blockOcc[b]
+		for j, a := range list {
+			if a.ID == activity.ID {
+				blockOcc[b] = append(list[:j], list[j+1:]...)
+				break
+			}
+		}
+
+		// Remover de roomBlockOcc
+		key := room + ":" + strconv.Itoa(b)
+		delete(roomBlockOcc, key)
+	}
 }
 
-// addToOccupancy agrega actividad a ambos índices
+// addToOccupancy agrega actividad a los índices considerando su duración
 func addToOccupancy(activity *domain.Activity, block int, room string, blockOcc map[int][]*domain.Activity, roomBlockOcc map[string]*domain.Activity) {
-	blockOcc[block] = append(blockOcc[block], activity)
-	key := room + ":" + strconv.Itoa(block)
-	roomBlockOcc[key] = activity
+	duration := activity.Duration
+	if duration < 1 {
+		duration = 1
+	}
+
+	for i := 0; i < duration; i++ {
+		b := block + i
+		blockOcc[b] = append(blockOcc[b], activity)
+		key := room + ":" + strconv.Itoa(b)
+		roomBlockOcc[key] = activity
+	}
 }
 
 // activityCostForBlockAndRoom calcula costo de actividad en bloque+sala dados

@@ -195,20 +195,27 @@ func LoadActivitiesWithExpansion(ofertaPath, coursesPath string) ([]domain.Activ
 		for _, a := range c.Activities {
 			eventType := parseEventCategory(a.Type)
 
-			// Determinar cuántas sesiones semanales según tipo
+			// Determinar cuántas sesiones semanales y duración según tipo
 			numSessions := 1
+			duration := 1
 			switch eventType {
 			case domain.CAT:
 				numSessions = dist.NumCAT
+				duration = dist.DurationCAT
 			case domain.AY:
 				numSessions = dist.NumAY
+				duration = dist.DurationAY
 			case domain.LAB:
 				numSessions = dist.NumLAB
+				duration = dist.DurationLAB
 			}
 
-			// Si no hay distribución definida, usar 1 sesión por defecto
+			// Si no hay distribución definida, usar valores por defecto
 			if numSessions == 0 {
 				numSessions = 1
+			}
+			if duration == 0 {
+				duration = 1
 			}
 
 			// SiblingGroupID para agrupar sesiones espejo (solo CAT)
@@ -231,7 +238,8 @@ func LoadActivitiesWithExpansion(ofertaPath, coursesPath string) ([]domain.Activ
 					a.LinkedSections,
 					a.TotalStudents,
 					a.Teachers,
-					siblingGroup, // Todas las sesiones del mismo CAT comparten grupo
+					siblingGroup,
+					duration, // Duración en bloques
 				)
 				activities = append(activities, activity)
 				activityID++
@@ -272,6 +280,7 @@ func LoadActivities(path string) ([]domain.Activity, error) {
 				a.TotalStudents,
 				a.Teachers,
 				siblingGroup,
+				1, // Duración por defecto (legacy)
 			)
 			activities = append(activities, activity)
 		}
