@@ -13,7 +13,7 @@ import (
 // SAConfig contiene los parámetros del Simulated Annealing.
 type SAConfig struct {
 	InitialTemp    float64 // Temperatura inicial
-	CoolingRate    float64 // Tasa de enfriamiento (0.99 típico)
+	CoolingRate    float64 // Tasa de enfriamiento
 	MinTemp        float64 // Temperatura mínima para parar
 	IterationsPerT int     // Iteraciones por nivel de temperatura
 }
@@ -22,9 +22,9 @@ type SAConfig struct {
 func DefaultSAConfig() SAConfig {
 	return SAConfig{
 		InitialTemp:    1000.0,
-		CoolingRate:    0.999, // Más lento = más iteraciones
-		MinTemp:        0.01,  // Temperatura mínima más baja
-		IterationsPerT: 5000,  // Reducido para prueba
+		CoolingRate:    0.999,
+		MinTemp:        0.01,
+		IterationsPerT: 5000,
 	}
 }
 
@@ -38,24 +38,10 @@ type SAResult struct {
 	WednesdayBonus  float64
 	PrereqBonus     float64 // Porcentaje de pares prereq en mismo bloque
 	RoomConsistency float64 // Porcentaje de hermanos en misma sala
-	DaySeparation   float64 // Porcentaje de CAT con separación ideal (3 días)
+	DaySeparation   float64 // Porcentaje de CAT con separación ideal
 }
 
-// SimulatedAnnealing optimiza el horario usando SA.
-// puede mover bloques y salas.
-// Hard constraints validados:
-// - RC1: Conflicto de profesor
-// - RC2: Conflicto de sección
-// - RC3: Sala duplicada en bloque
-// - RC4: Capacidad de sala
-// - RC5: Tipo de sala (LAB/CLASSROOM)
-// - RC6: Restricciones específicas de sala
-// - RC7: Cliques de semestre
-// Soft constraints:
-// - Cátedras hermanas en mismo slot horario
-// - Cátedras hermanas en MISMA SALA (nuevo)
-// - Ayudantías en miércoles
-// - Prerrequisitos en mismo bloque
+// SimulatedAnnealing ejecuta el algoritmo de Simulated Annealing para optimizar la asignación de bloques y salas.
 func SimulatedAnnealing(activities []domain.Activity, rooms []domain.Room, config SAConfig, prerequisites map[string][]string, planLocations map[string]map[string]int, electives map[string]bool, constraints loader.RoomConstraints) SAResult {
 
 	// Construir índices útiles
@@ -94,7 +80,6 @@ func SimulatedAnnealing(activities []domain.Activity, rooms []domain.Room, confi
 			moveType := rand.Intn(2)
 
 			if moveType == 0 {
-				// === MOVIMIENTO DE BLOQUE ===
 				newBlock := rand.Intn(domain.TotalBlocks)
 				oldBlock := activity.Block
 
@@ -112,7 +97,6 @@ func SimulatedAnnealing(activities []domain.Activity, rooms []domain.Room, confi
 				newCostVal := activityCostForBlockAndRoom(activity, newBlock, activity.Room, siblingGroups)
 				delta := newCostVal - oldCost
 
-				// Aceptar o rechazar
 				if delta < 0 || rand.Float64() < math.Exp(-delta/temperature) {
 					removeFromOccupancy(activity, oldBlock, activity.Room, blockOccupancy, roomBlockOccupancy)
 					activity.Block = newBlock
@@ -124,21 +108,19 @@ func SimulatedAnnealing(activities []domain.Activity, rooms []domain.Room, confi
 					}
 				}
 			} else {
-				// === MOVIMIENTO DE SALA ===
 				newRoom := selectValidRoom(activity, activity.Block, rooms, roomMap, constraints, roomBlockOccupancy)
 				if newRoom == "" || newRoom == activity.Room {
 					continue
 				}
 
-				// La sala ya fue validada (RC4, RC5, RC6, RC3)
+				// La sala ya fue validada
 				oldRoom := activity.Room
 
-				// Calcular delta de costo (room consistency)
+				// Calcular delta de costo
 				oldCost := activityCostForBlockAndRoom(activity, activity.Block, oldRoom, siblingGroups)
 				newCostVal := activityCostForBlockAndRoom(activity, activity.Block, newRoom, siblingGroups)
 				delta := newCostVal - oldCost
 
-				// Aceptar o rechazar
 				if delta < 0 || rand.Float64() < math.Exp(-delta/temperature) {
 					removeFromOccupancy(activity, activity.Block, oldRoom, blockOccupancy, roomBlockOccupancy)
 					activity.Room = newRoom
@@ -227,7 +209,7 @@ func calculatePrereqBonus(activities []domain.Activity, prereqPairs []PrereqPair
 	return float64(sameBlock) / float64(len(prereqPairs)) * 100.0
 }
 
-// buildBlockOccupancy crea índice de actividades por bloque (considerando duración)
+// buildBlockOccupancy crea índice de actividades por bloque
 func buildBlockOccupancy(activities []domain.Activity) map[int][]*domain.Activity {
 	occ := make(map[int][]*domain.Activity)
 	for i := range activities {
@@ -461,7 +443,7 @@ roomLoop:
 	return validRooms[rand.Intn(len(validRooms))]
 }
 
-// hasConflictInBlockWithRoom verifica conflictos considerando la sala propuesta y la duración de la actividad (puede ocupar múltiples bloques consecutivos).
+// hasConflictInBlockWithRoom verifica conflictos considerando la sala propuesta y la duración de la actividad
 func hasConflictInBlockWithRoom(activity *domain.Activity, block int, room string, blockOcc map[int][]*domain.Activity, roomBlockOcc map[string]*domain.Activity, cliqueConflicts map[string]map[string]bool) bool {
 	duration := activity.Duration
 	if duration < 1 {
@@ -473,7 +455,7 @@ func hasConflictInBlockWithRoom(activity *domain.Activity, block int, room strin
 	endBlock := block + duration - 1
 	endDay := endBlock / domain.BlocksPerDay
 	if startDay != endDay {
-		return true // cruzaría días - inválido
+		return true
 	}
 
 	// validar que no exceda el último bloque del día
@@ -559,7 +541,7 @@ func addToOccupancy(activity *domain.Activity, block int, room string, blockOcc 
 }
 
 // activityCostForBlockAndRoom calcula costo de actividad en bloque + sala
-// Incluye penalidades de espejo (horario Y sala) Y separación de días
+// Incluye penalidades de espejo y separación de días
 func activityCostForBlockAndRoom(activity *domain.Activity, block int, room string, siblings map[string][]*domain.Activity) float64 {
 	cost := 0.0
 
@@ -582,7 +564,7 @@ func activityCostForBlockAndRoom(activity *domain.Activity, block int, room stri
 			}
 			sibDay, sibSlot := blockToDaySlot(sib.Block)
 
-			// penalidad por NO estar en espejo (mismo slot horario)
+			// penalidad por no estar en espejo
 			if sibSlot != mySlot {
 				cost += 50.0
 			}
@@ -595,21 +577,19 @@ func activityCostForBlockAndRoom(activity *domain.Activity, block int, room stri
 			daySeparation := abs(myDay - sibDay)
 
 			if len(catSibs) == 2 {
-				// para 2 cátedras: ideal 3 días (Lun-Jue, Mar-Vie)
 				switch daySeparation {
-				case 3: // ideal: Lun-Jue o Mar-Vie
-					cost -= 20.0 // Bonus
-				case 2: // aceptable: Lun-Mie, Mar-Jue, Mie-Vie
-					cost += 0.0 // Neutro
-				case 1: // malo: días consecutivos
+				case 3:
+					cost -= 20.0
+				case 2:
+					cost += 0.0
+				case 1:
 					cost += 25.0
-				case 0: // muy malo: mismo día
+				case 0:
 					cost += 60.0
-				default: // 4 días (Lun-Vie)
-					cost += 10.0 // menos ideal que 3
+				default:
+					cost += 10.0
 				}
 			} else if len(catSibs) >= 3 {
-				// para 3+ cátedras: deben estar en días diferentes
 				if daySeparation == 0 {
 					cost += 80.0 // muy malo: dos CAT el mismo día
 				} else if daySeparation == 1 {
@@ -651,7 +631,7 @@ func abs(x int) int {
 func calculateTotalCostWithRooms(activities []domain.Activity, siblings map[string][]*domain.Activity, prereqPairs []PrereqPair) float64 {
 	cost := 0.0
 
-	// costo de espejo, sala y separación de días (catedras)
+	// costo de espejo, sala y separación de días
 	counted := make(map[string]bool)
 	for i := range activities {
 		a := &activities[i]
@@ -713,7 +693,6 @@ func calculateTotalCostWithRooms(activities []domain.Activity, siblings map[stri
 			}
 		}
 
-		// verificar CAT vs AY mismo día
 		for _, cat := range catSibs {
 			catDay, _ := blockToDaySlot(cat.Block)
 			for _, sib := range sibs {
@@ -809,7 +788,7 @@ func calculateDaySeparationMetric(activities []domain.Activity, siblings map[str
 		}
 
 		if len(catSibs) != 2 {
-			continue // Solo medimos grupos de 2 CAT
+			continue
 		}
 
 		totalGroups++

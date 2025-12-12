@@ -366,7 +366,7 @@ func LoadRoomConstraints(path string) (RoomConstraints, error) {
 }
 
 // GetAllowedRooms retorna las salas permitidas para una actividad.
-// Si no hay restricción, retorna nil (significa cualquier sala).
+// Si no hay restricción, retorna nil.
 func (rc RoomConstraints) GetAllowedRooms(courseCode string, eventType string) []string {
 	if courseConstraints, ok := rc[courseCode]; ok {
 		if allowed, ok := courseConstraints[eventType]; ok {

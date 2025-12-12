@@ -10,7 +10,7 @@ import (
 
 // Period representa un bloque completo con actividades y sus salas asignadas.
 type Period struct {
-	Number      int                // Número de periodo (0-based)
+	Number      int                // Número de periodo
 	Block       int                // Bloque temporal asignado
 	Assignments []RoomAssignment   // Asignaciones de salas
 	Unassigned  []*domain.Activity // DUD local de este periodo
@@ -24,14 +24,14 @@ type TimetableResult struct {
 }
 
 // IntegratedSchedulerWithConstraints implementa el Algoritmo Integrado con restricciones de salas.
-// Recibe el grafo ya construido (con cliques) para no reconstruirlo.
+// Recibe el grafo ya construido
 func IntegratedSchedulerWithConstraints(activities []domain.Activity, G *graph.ConflictGraph, rooms []domain.Room, constraints loader.RoomConstraints) TimetableResult {
 	// Separar salas por tipo
 	classrooms := GetRoomsByType(rooms, domain.RoomClassroom)
 	labs := GetRoomsByType(rooms, domain.RoomLab)
 	allRooms := append(classrooms, labs...)
 
-	// El grafo G ya viene construido desde main (con cliques)
+	// El grafo G ya viene construido desde main
 
 	var periods []Period
 	periodNum := 0
@@ -39,7 +39,7 @@ func IntegratedSchedulerWithConstraints(activities []domain.Activity, G *graph.C
 
 	// Mientras queden vértices en el grafo
 	for G.NumVertices() > 0 && blockNum < domain.TotalBlocks {
-		// Saltar el bloque protegido del miércoles (11:30-12:50)
+		// Saltar el bloque protegido del miércoles
 		if domain.IsProtectedBlock(blockNum) {
 			blockNum++
 			continue
@@ -87,7 +87,7 @@ func IntegratedSchedulerWithConstraints(activities []domain.Activity, G *graph.C
 	}
 }
 
-// IntegratedScheduler versión sin restricciones (legacy).
+// IntegratedScheduler versión sin restricciones.
 func IntegratedScheduler(activities []domain.Activity, rooms []domain.Room) TimetableResult {
 	G := graph.BuildFromActivities(activities)
 	return IntegratedSchedulerWithConstraints(activities, G, rooms, nil)

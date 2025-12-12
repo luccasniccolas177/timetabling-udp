@@ -24,7 +24,7 @@ func main() {
 	dataHandler := http.FileServer(http.Dir(baseDir + "/data"))
 	http.Handle("/data/", http.StripPrefix("/data/", dataHandler))
 
-	fmt.Printf("🌐 Servidor iniciado en http://localhost:%s\n", port)
+	fmt.Printf(" Servidor iniciado en http://localhost:%s\n", port)
 	fmt.Println("   Abre esta URL en tu navegador para ver el visualizador de horarios")
 	fmt.Println("   Presiona Ctrl+C para detener el servidor")
 

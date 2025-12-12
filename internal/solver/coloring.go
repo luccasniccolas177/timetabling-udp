@@ -37,7 +37,7 @@ func GreedyColoring(g *graph.ConflictGraph) []ColorSet {
 			Activities: make([]*domain.Activity, len(colorSet)),
 		}
 		for i, id := range colorSet {
-			cs.Activities[i] = g.Vertices[id] // Usar referencia del grafo original
+			cs.Activities[i] = g.Vertices[id]
 		}
 		colorSets = append(colorSets, cs)
 
@@ -52,23 +52,20 @@ func GreedyColoring(g *graph.ConflictGraph) []ColorSet {
 	return colorSets
 }
 
-// findMaxIndependentSet encuentra un conjunto independiente máximo usando el algoritmo Dutton-Brigham + Tehrani
+// findMaxIndependentSet encuentra un conjunto independiente máximo
 func findMaxIndependentSet(H *graph.ConflictGraph) []int {
 	if H.NumVertices() == 0 {
 		return nil
 	}
 
-	// Paso 1: Elegir vértice de máximo grado como semilla
 	seed := maxDegreeVertex(H)
 	if seed == -1 {
 		return nil
 	}
 
-	// El conjunto independiente comienza con la semilla
 	independentSet := []int{seed}
 	merged := map[int]bool{seed: true}
 
-	// Paso 2-4: Fusionar vértices iterativamente
 	for {
 		// Buscar mejor candidato para fusionar (máximos vecinos comunes, no adyacente)
 		candidate := findBestMergeCandidate(H, independentSet, merged)
@@ -78,7 +75,7 @@ func findMaxIndependentSet(H *graph.ConflictGraph) []int {
 			break
 		}
 
-		// Fusionar: agregar al conjunto independiente
+		// Agregar al conjunto independiente
 		independentSet = append(independentSet, candidate)
 		merged[candidate] = true
 	}
@@ -86,7 +83,7 @@ func findMaxIndependentSet(H *graph.ConflictGraph) []int {
 	return independentSet
 }
 
-// findBestMergeCandidate encuentra el vértice no adyacente con más vecinos comunes. aca se implementa el concepto de tripletas
+// findBestMergeCandidate encuentra el vértice no adyacente con más vecinos comunes.
 func findBestMergeCandidate(H *graph.ConflictGraph, currentSet []int, merged map[int]bool) int {
 	bestCandidate := -1
 	maxCommonNeighbors := -1
@@ -248,7 +245,7 @@ func AssignBlocksToColorSets(colorSets []ColorSet) {
 	}
 }
 
-// SortColorSetsBySize ordena los ColorSets por tamaño (más grandes primero).
+// SortColorSetsBySize ordena los ColorSets por tamaño.
 func SortColorSetsBySize(colorSets []ColorSet) {
 	sort.Slice(colorSets, func(i, j int) bool {
 		return len(colorSets[i].Activities) > len(colorSets[j].Activities)

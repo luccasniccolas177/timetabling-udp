@@ -38,9 +38,7 @@ type Room struct {
 
 // Activity representa un evento, es decir una instancia de clase de cualquier tipo
 // (catedra, ayudantía, laboratorio), es un nodo/vertice del grafo y se le debe asignar
-// un horario (bloque) y sala. multiples secciones pueden asistir a la misma actividad,
-// con esto nos referimos a que en la oferta academica existen multiples secciones de
-// un mismo curso, donde muchas comparten catedra y ayudantía pero con diferentes labs.
+// un horario (bloque) y sala.
 type Activity struct {
 	ID           int    // Identificador único
 	Code         string // Código de actividad ("CBF1000-CAT-1-S1") -> mecanica- catedra 1-sesión 1
