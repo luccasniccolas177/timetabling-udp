@@ -201,6 +201,7 @@ func main() {
 		fmt.Printf("   AY en miércoles:    %.1f%%\n", saResult.WednesdayBonus)
 		fmt.Printf("   Prereq en mismo bloque: %.1f%%\n", saResult.PrereqBonus)
 		fmt.Printf("   Hermanos misma sala: %.1f%%\n", saResult.RoomConsistency)
+		fmt.Printf("   Sep. ideal (3 días): %.1f%%\n", saResult.DaySeparation)
 
 		// Exportar a JSON
 		outputFile := "data/output/schedule.json"

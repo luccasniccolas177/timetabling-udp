@@ -39,6 +39,7 @@ type SAResult struct {
 	WednesdayBonus  float64
 	PrereqBonus     float64 // Porcentaje de pares prereq en mismo bloque
 	RoomConsistency float64 // Porcentaje de hermanos en misma sala
+	DaySeparation   float64 // Porcentaje de CAT con separación ideal (3 días)
 }
 
 // SimulatedAnnealing optimiza el horario usando SA.
@@ -162,6 +163,7 @@ func SimulatedAnnealing(activities []domain.Activity, rooms []domain.Room, confi
 	wednesdayBonus := calculateWednesdayBonus(activities)
 	prereqBonus := calculatePrereqBonus(activities, prereqPairs)
 	roomConsistency := calculateRoomConsistency(activities, siblingGroups)
+	daySeparation := calculateDaySeparationMetric(activities, siblingGroups)
 
 	return SAResult{
 		InitialCost:     initialCost,
@@ -172,6 +174,7 @@ func SimulatedAnnealing(activities []domain.Activity, rooms []domain.Room, confi
 		WednesdayBonus:  wednesdayBonus,
 		PrereqBonus:     prereqBonus,
 		RoomConsistency: roomConsistency,
+		DaySeparation:   daySeparation,
 	}
 }
 
@@ -683,26 +686,73 @@ func addToOccupancy(activity *domain.Activity, block int, room string, blockOcc 
 }
 
 // activityCostForBlockAndRoom calcula costo de actividad en bloque+sala dados
-// Incluye penalidades de espejo (horario Y sala)
+// Incluye penalidades de espejo (horario Y sala) Y separación de días
 func activityCostForBlockAndRoom(activity *domain.Activity, block int, room string, siblings map[string][]*domain.Activity) float64 {
 	cost := 0.0
 
-	// Penalidad por hermanos en distinto bloque horario (espejo)
-	if activity.SiblingGroupID != "" {
+	// Solo evaluar hermanos para cátedras
+	if activity.SiblingGroupID != "" && activity.Type == domain.CAT {
 		sibs := siblings[activity.SiblingGroupID]
-		_, mySlot := blockToDaySlot(block)
+		myDay, mySlot := blockToDaySlot(block)
 
+		// Filtrar solo hermanos CAT (no AY)
+		var catSibs []*domain.Activity
 		for _, sib := range sibs {
+			if sib.Type == domain.CAT {
+				catSibs = append(catSibs, sib)
+			}
+		}
+
+		for _, sib := range catSibs {
 			if sib.ID == activity.ID {
 				continue
 			}
-			_, sibSlot := blockToDaySlot(sib.Block)
+			sibDay, sibSlot := blockToDaySlot(sib.Block)
+
+			// Penalidad por NO estar en espejo (mismo slot horario)
 			if sibSlot != mySlot {
-				cost += 50.0 // Penalidad por NO estar en espejo
+				cost += 50.0
 			}
+
 			// Penalidad por hermano en distinta sala
 			if sib.Room != room {
-				cost += 30.0 // Penalidad por NO estar en misma sala
+				cost += 30.0
+			}
+
+			// === SEPARACIÓN DE DÍAS ===
+			daySeparation := abs(myDay - sibDay)
+
+			if len(catSibs) == 2 {
+				// Para 2 cátedras: ideal 3 días (Lun-Jue, Mar-Vie)
+				switch daySeparation {
+				case 3: // Ideal: Lun-Jue o Mar-Vie
+					cost -= 20.0 // Bonus
+				case 2: // Aceptable: Lun-Mie, Mar-Jue, Mie-Vie
+					cost += 0.0 // Neutro
+				case 1: // Malo: días consecutivos
+					cost += 25.0
+				case 0: // Muy malo: mismo día
+					cost += 60.0
+				default: // 4 días (Lun-Vie)
+					cost += 10.0 // Menos ideal que 3
+				}
+			} else if len(catSibs) >= 3 {
+				// Para 3+ cátedras: deben estar en días diferentes
+				if daySeparation == 0 {
+					cost += 80.0 // Muy malo: dos CAT el mismo día
+				} else if daySeparation == 1 {
+					cost += 15.0 // Aceptable pero no ideal
+				}
+			}
+		}
+
+		// Verificar que CAT no esté el mismo día que su AY
+		for _, sib := range sibs {
+			if sib.Type == domain.AY {
+				ayDay, _ := blockToDaySlot(sib.Block)
+				if myDay == ayDay {
+					cost += 35.0 // Penalizar CAT mismo día que AY
+				}
 			}
 		}
 	}
@@ -718,34 +768,90 @@ func activityCostForBlockAndRoom(activity *domain.Activity, block int, room stri
 	return cost
 }
 
-// calculateTotalCostWithRooms calcula costo total incluyendo room consistency
+// abs retorna valor absoluto
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+// calculateTotalCostWithRooms calcula costo total incluyendo room consistency y separación de días
 func calculateTotalCostWithRooms(activities []domain.Activity, siblings map[string][]*domain.Activity, prereqPairs []PrereqPair) float64 {
 	cost := 0.0
 
-	// Costo de espejo (horario + sala)
+	// Costo de espejo, sala y separación de días (solo para CAT)
 	counted := make(map[string]bool)
 	for i := range activities {
 		a := &activities[i]
-		if a.SiblingGroupID == "" || counted[a.SiblingGroupID] {
+		if a.SiblingGroupID == "" || a.Type != domain.CAT || counted[a.SiblingGroupID] {
 			continue
 		}
 		counted[a.SiblingGroupID] = true
 
 		sibs := siblings[a.SiblingGroupID]
-		if len(sibs) < 2 {
+
+		// Filtrar solo CAT
+		var catSibs []*domain.Activity
+		for _, sib := range sibs {
+			if sib.Type == domain.CAT {
+				catSibs = append(catSibs, sib)
+			}
+		}
+
+		if len(catSibs) < 2 {
 			continue
 		}
 
-		_, baseSlot := blockToDaySlot(sibs[0].Block)
-		baseRoom := sibs[0].Room
+		baseDay, baseSlot := blockToDaySlot(catSibs[0].Block)
+		baseRoom := catSibs[0].Room
 
-		for j := 1; j < len(sibs); j++ {
-			_, slot := blockToDaySlot(sibs[j].Block)
+		for j := 1; j < len(catSibs); j++ {
+			day, slot := blockToDaySlot(catSibs[j].Block)
+
+			// Espejo
 			if slot != baseSlot {
 				cost += 50.0
 			}
-			if sibs[j].Room != baseRoom {
+			// Sala
+			if catSibs[j].Room != baseRoom {
 				cost += 30.0
+			}
+
+			// Separación de días
+			daySeparation := abs(day - baseDay)
+			if len(catSibs) == 2 {
+				switch daySeparation {
+				case 3:
+					cost -= 20.0
+				case 2:
+					cost += 0.0
+				case 1:
+					cost += 25.0
+				case 0:
+					cost += 60.0
+				default:
+					cost += 10.0
+				}
+			} else if len(catSibs) >= 3 {
+				if daySeparation == 0 {
+					cost += 80.0
+				} else if daySeparation == 1 {
+					cost += 15.0
+				}
+			}
+		}
+
+		// Verificar CAT vs AY mismo día
+		for _, cat := range catSibs {
+			catDay, _ := blockToDaySlot(cat.Block)
+			for _, sib := range sibs {
+				if sib.Type == domain.AY {
+					ayDay, _ := blockToDaySlot(sib.Block)
+					if catDay == ayDay {
+						cost += 35.0
+					}
+				}
 			}
 		}
 	}
@@ -806,4 +912,47 @@ func calculateRoomConsistency(activities []domain.Activity, siblings map[string]
 		return 100.0
 	}
 	return float64(consistentGroups) / float64(totalGroups) * 100.0
+}
+
+// calculateDaySeparationMetric calcula % de grupos CAT con separación ideal de días
+func calculateDaySeparationMetric(activities []domain.Activity, siblings map[string][]*domain.Activity) float64 {
+	totalGroups := 0
+	idealGroups := 0
+
+	counted := make(map[string]bool)
+	for i := range activities {
+		a := &activities[i]
+		if a.SiblingGroupID == "" || a.Type != domain.CAT || counted[a.SiblingGroupID] {
+			continue
+		}
+		counted[a.SiblingGroupID] = true
+
+		sibs := siblings[a.SiblingGroupID]
+
+		// Filtrar solo CAT
+		var catSibs []*domain.Activity
+		for _, sib := range sibs {
+			if sib.Type == domain.CAT {
+				catSibs = append(catSibs, sib)
+			}
+		}
+
+		if len(catSibs) != 2 {
+			continue // Solo medimos grupos de 2 CAT
+		}
+
+		totalGroups++
+		day0, _ := blockToDaySlot(catSibs[0].Block)
+		day1, _ := blockToDaySlot(catSibs[1].Block)
+		separation := abs(day0 - day1)
+
+		if separation == 3 { // Lun-Jue o Mar-Vie
+			idealGroups++
+		}
+	}
+
+	if totalGroups == 0 {
+		return 100.0
+	}
+	return float64(idealGroups) / float64(totalGroups) * 100.0
 }
