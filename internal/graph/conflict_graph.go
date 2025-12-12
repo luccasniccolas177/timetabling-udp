@@ -121,7 +121,7 @@ func areConflicting(a1, a2 *domain.Activity) bool {
 func BuildFromActivitiesWithCliques(
 	activities []domain.Activity,
 	planLocations map[string]map[string]int, // CourseCode -> Major -> Semester
-	electives map[string]bool, // Set de cursos electivos (excluir de cliques)
+	electives map[string]bool, // Set de cursos electivos
 ) *ConflictGraph {
 	g := New()
 
@@ -201,7 +201,7 @@ func BuildFromActivitiesWithCliques(
 				for j := i + 1; j < len(cliqueCourses); j++ {
 					a1 := cliqueCourses[i]
 					a2 := cliqueCourses[j]
-					// Solo agregar si no existe ya (evitar duplicados)
+					// Solo agregar si no existe ya
 					if !g.HasEdge(a1.ID, a2.ID) {
 						g.AddEdge(a1.ID, a2.ID)
 					}

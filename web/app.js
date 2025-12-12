@@ -1,9 +1,3 @@
-/**
- * UDP Timetabling - Schedule Viewer SPA
- * Vanilla JS application for visualizing generated schedules
- */
-
-// ===== State =====
 const state = {
     scheduleData: null,
     allActivities: [],
@@ -16,10 +10,9 @@ const state = {
         type: '',
         search: ''
     },
-    view: 'grid' // 'grid' or 'list'
+    view: 'grid'
 };
 
-// ===== Constants =====
 const DAYS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
 const TIME_SLOTS = [
     { block: 0, time: '08:30-09:50' },
@@ -33,7 +26,6 @@ const TIME_SLOTS = [
 const BLOCKS_PER_DAY = 7;
 const PROTECTED_BLOCK = 16; // Miércoles 11:30-12:50
 
-// ===== DOM Elements =====
 const elements = {
     filterDay: document.getElementById('filter-day'),
     filterCourse: document.getElementById('filter-course'),
@@ -55,7 +47,6 @@ const elements = {
     statGenerated: document.getElementById('stat-generated')
 };
 
-// ===== Initialize =====
 async function init() {
     try {
         await loadScheduleData();
@@ -70,16 +61,13 @@ async function init() {
     }
 }
 
-// ===== Data Loading =====
 async function loadScheduleData() {
-    // Try to load from the data/output directory
     const response = await fetch('/data/output/schedule.json');
     if (!response.ok) {
         throw new Error('Failed to load schedule.json');
     }
     state.scheduleData = await response.json();
 
-    // Flatten activities for easier filtering
     state.allActivities = [];
     for (const day of state.scheduleData.schedule) {
         for (const block of day.blocks) {
@@ -95,9 +83,7 @@ async function loadScheduleData() {
     state.filteredActivities = [...state.allActivities];
 }
 
-// ===== Populate Filters =====
 function populateFilters() {
-    // Days
     DAYS.forEach(day => {
         const option = document.createElement('option');
         option.value = day;
@@ -105,7 +91,6 @@ function populateFilters() {
         elements.filterDay.appendChild(option);
     });
 
-    // Courses (unique)
     const courses = [...new Set(state.allActivities.map(a => a.course_code))].sort();
     courses.forEach(course => {
         const option = document.createElement('option');
@@ -114,7 +99,6 @@ function populateFilters() {
         elements.filterCourse.appendChild(option);
     });
 
-    // Teachers (unique, excluding empty)
     const teachers = [...new Set(state.allActivities.flatMap(a => a.teachers || []))]
         .filter(t => t && t.trim())
         .sort();
@@ -125,7 +109,6 @@ function populateFilters() {
         elements.filterTeacher.appendChild(option);
     });
 
-    // Rooms (unique)
     const rooms = [...new Set(state.allActivities.map(a => a.room))].sort();
     rooms.forEach(room => {
         const option = document.createElement('option');
@@ -135,9 +118,7 @@ function populateFilters() {
     });
 }
 
-// ===== Event Listeners =====
 function setupEventListeners() {
-    // Filter changes
     elements.filterDay.addEventListener('change', () => {
         state.filters.day = elements.filterDay.value;
         applyFilters();
@@ -174,28 +155,22 @@ function setupEventListeners() {
         renderCurrentView();
     });
 
-    // Clear filters
     elements.btnClearFilters.addEventListener('click', clearFilters);
 
-    // View toggle
     elements.btnViewGrid.addEventListener('click', () => setView('grid'));
     elements.btnViewList.addEventListener('click', () => setView('list'));
 }
 
-// ===== Filtering =====
 function applyFilters() {
     state.filteredActivities = state.allActivities.filter(activity => {
-        // Day filter
         if (state.filters.day && activity.dayName !== state.filters.day) {
             return false;
         }
 
-        // Course filter
         if (state.filters.course && activity.course_code !== state.filters.course) {
             return false;
         }
 
-        // Teacher filter
         if (state.filters.teacher) {
             const teachers = activity.teachers || [];
             if (!teachers.includes(state.filters.teacher)) {
@@ -203,17 +178,14 @@ function applyFilters() {
             }
         }
 
-        // Room filter
         if (state.filters.room && activity.room !== state.filters.room) {
             return false;
         }
 
-        // Type filter
         if (state.filters.type && activity.type !== state.filters.type) {
             return false;
         }
 
-        // Search filter
         if (state.filters.search) {
             const searchText = [
                 activity.code,
@@ -248,7 +220,6 @@ function clearFilters() {
     renderCurrentView();
 }
 
-// ===== View Management =====
 function setView(view) {
     state.view = view;
 
@@ -269,18 +240,14 @@ function renderCurrentView() {
     }
 }
 
-// ===== Grid View Rendering =====
 function renderGridView() {
     const grid = elements.scheduleGrid;
     grid.innerHTML = '';
 
-    // Header row
     grid.appendChild(createGridHeader('Hora'));
     DAYS.forEach(day => grid.appendChild(createGridHeader(day)));
 
-    // Time slots
     TIME_SLOTS.forEach((slot, slotIndex) => {
-        // Time cell
         const timeCell = document.createElement('div');
         timeCell.className = 'grid-time';
         timeCell.innerHTML = `
@@ -289,17 +256,14 @@ function renderGridView() {
         `;
         grid.appendChild(timeCell);
 
-        // Day cells
         DAYS.forEach((day, dayIndex) => {
             const blockNum = dayIndex * BLOCKS_PER_DAY + slotIndex;
             const cell = document.createElement('div');
             cell.className = 'grid-cell';
 
-            // Mark protected block
             if (blockNum === PROTECTED_BLOCK) {
                 cell.classList.add('protected');
             } else {
-                // Get activities for this cell
                 const cellActivities = state.filteredActivities.filter(a =>
                     a.dayName === day && a.block === blockNum
                 );
@@ -335,13 +299,10 @@ function createActivityCard(activity) {
 
     return card;
 }
-
-// ===== List View Rendering =====
 function renderListView() {
     const tbody = elements.activitiesTbody;
     tbody.innerHTML = '';
 
-    // Sort by day, then block
     const sorted = [...state.filteredActivities].sort((a, b) => {
         const dayDiff = DAYS.indexOf(a.dayName) - DAYS.indexOf(b.dayName);
         if (dayDiff !== 0) return dayDiff;
@@ -371,9 +332,7 @@ function renderListView() {
     });
 }
 
-// ===== Modal =====
 function showActivityModal(activity) {
-    // Remove existing modal if any
     const existingModal = document.querySelector('.modal-overlay');
     if (existingModal) existingModal.remove();
 
@@ -427,7 +386,6 @@ function showActivityModal(activity) {
         </div>
     `;
 
-    // Close on overlay click
     modal.addEventListener('click', (e) => {
         if (e.target === modal || e.target.classList.contains('btn-close')) {
             modal.remove();
@@ -437,7 +395,6 @@ function showActivityModal(activity) {
     document.body.appendChild(modal);
 }
 
-// ===== Stats =====
 function updateStats() {
     const data = state.scheduleData;
 
@@ -447,7 +404,6 @@ function updateStats() {
     elements.statGenerated.textContent = data.generated_at.split(' ')[0]; // Just date
 }
 
-// ===== Error Handling =====
 function showError(message) {
     elements.scheduleGrid.innerHTML = `
         <div style="grid-column: 1/-1; padding: 2rem; text-align: center; color: #ef4444;">
@@ -460,5 +416,4 @@ function showError(message) {
     `;
 }
 
-// ===== Start App =====
 document.addEventListener('DOMContentLoaded', init);

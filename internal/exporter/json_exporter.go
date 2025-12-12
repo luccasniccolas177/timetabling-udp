@@ -56,7 +56,6 @@ type ActivityExport struct {
 	Sections   []int    `json:"sections"`
 }
 
-// Days names in Spanish
 var dayNames = []string{"Lunes", "Martes", "Miércoles", "Jueves", "Viernes"}
 
 // Time slots - Horarios UDP
@@ -123,7 +122,7 @@ func calculateSummary(activities []domain.Activity) ScheduleSummary {
 		TotalCourses:     len(courses),
 		TotalRooms:       len(rooms),
 		AYOnWednesday:    ayPercent,
-		MirrorCompliance: 0, // TODO: calcular
+		MirrorCompliance: 0,
 	}
 }
 

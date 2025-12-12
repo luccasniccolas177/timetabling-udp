@@ -21,27 +21,24 @@ type RoomAssignmentResult struct {
 }
 
 // AssignRoomsToColorSet implementamos el Algoritmo 2 del paper.
-// ordena actividades y salas por tamaño (menor primero) y asigna.
+// ordena actividades y salas por tamaño y asigna.
 func AssignRoomsToColorSet(activities []*domain.Activity, rooms []domain.Room) RoomAssignmentResult {
 	if len(activities) == 0 {
 		return RoomAssignmentResult{}
 	}
 
-	// Paso 1: Ordenar actividades por tamaño (estudiantes), menor primero
 	sortedActivities := make([]*domain.Activity, len(activities))
 	copy(sortedActivities, activities)
 	sort.Slice(sortedActivities, func(i, j int) bool {
 		return sortedActivities[i].Students < sortedActivities[j].Students
 	})
 
-	// Paso 2: Ordenar salas por capacidad, menor primero
 	sortedRooms := make([]domain.Room, len(rooms))
 	copy(sortedRooms, rooms)
 	sort.Slice(sortedRooms, func(i, j int) bool {
 		return sortedRooms[i].Capacity < sortedRooms[j].Capacity
 	})
 
-	// Inicializar asignaciones (una por sala)
 	assignments := make([]RoomAssignment, len(sortedRooms))
 	for i, r := range sortedRooms {
 		assignments[i] = RoomAssignment{
@@ -54,11 +51,10 @@ func AssignRoomsToColorSet(activities []*domain.Activity, rooms []domain.Room) R
 
 	var dud []*domain.Activity
 
-	// Paso 3: Para cada actividad, buscar sala
 	for _, activity := range sortedActivities {
 		placed := false
 
-		// Buscar la sala más pequeña donde quepa (1 actividad por sala para cursos)
+		// Buscar la sala más pequeña donde entre
 		for j := range assignments {
 			if len(assignments[j].Activities) == 0 && activity.Students <= assignments[j].Capacity {
 				assignments[j].Activities = append(assignments[j].Activities, activity)

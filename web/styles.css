@@ -1,4 +1,3 @@
-/* ===== Variables ===== */
 :root {
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
@@ -16,7 +15,6 @@
     --radius: 8px;
 }
 
-/* ===== Reset & Base ===== */
 * {
     margin: 0;
     padding: 0;
@@ -30,14 +28,12 @@ body {
     line-height: 1.5;
 }
 
-/* ===== App Container ===== */
 .app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* ===== Header ===== */
 .header {
     background: var(--bg-header);
     color: white;
@@ -55,7 +51,6 @@ body {
     opacity: 0.8;
 }
 
-/* ===== Filters Panel ===== */
 .filters-panel {
     background: var(--bg-card);
     padding: 1rem 2rem;
@@ -112,7 +107,6 @@ body {
     background: #475569;
 }
 
-/* ===== View Toggle ===== */
 .view-toggle {
     padding: 0.75rem 2rem;
     display: flex;
@@ -148,7 +142,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* ===== Main Content ===== */
 .main-content {
     flex: 1;
     padding: 1rem 2rem;
@@ -159,7 +152,6 @@ body {
     display: none;
 }
 
-/* ===== Schedule Grid ===== */
 .schedule-grid {
     display: grid;
     grid-template-columns: 80px repeat(5, 1fr);
@@ -220,7 +212,6 @@ body {
     color: var(--warning);
 }
 
-/* ===== Activity Card ===== */
 .activity-card {
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
@@ -261,7 +252,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* ===== Activities Table ===== */
 .activities-table {
     width: 100%;
     border-collapse: collapse;
@@ -317,7 +307,6 @@ body {
     color: #b45309;
 }
 
-/* ===== Stats Footer ===== */
 .stats-footer {
     background: var(--bg-card);
     border-top: 1px solid var(--border);
@@ -344,7 +333,6 @@ body {
     text-transform: uppercase;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
     .filters-panel {
         padding: 1rem;
@@ -365,7 +353,6 @@ body {
     }
 }
 
-/* ===== Activity Modal ===== */
 .modal-overlay {
     position: fixed;
     top: 0;

@@ -41,7 +41,6 @@ func IsProtectedBlock(block int) bool {
 }
 
 // OccupiesProtectedBlock verifica si una actividad ocupa el bloque protegido
-// especial para el caso de clases que duran más de un bloque
 func OccupiesProtectedBlock(startBlock, duration int) bool {
 	if duration < 1 {
 		duration = 1
