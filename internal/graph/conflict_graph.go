@@ -118,9 +118,11 @@ func areConflicting(a1, a2 *domain.Activity) bool {
 // BuildFromActivitiesWithCliques construye el grafo incluyendo cliques por semestre.
 // Cursos con una sola sección (o secciones fusionadas) en el mismo semestre
 // forman un clique (todos sus eventos en conflicto).
+// Los cursos electivos NO forman parte de los cliques.
 func BuildFromActivitiesWithCliques(
 	activities []domain.Activity,
 	planLocations map[string]map[string]int, // CourseCode -> Major -> Semester
+	electives map[string]bool, // Set de cursos electivos (excluir de cliques)
 ) *ConflictGraph {
 	g := New()
 
@@ -158,10 +160,11 @@ func BuildFromActivitiesWithCliques(
 		courseActivities[a.CourseCode] = append(courseActivities[a.CourseCode], a)
 	}
 
-	// Identificar cursos con una sola sección/grupo
+	// Identificar cursos con una sola sección/grupo (EXCLUYENDO ELECTIVOS)
 	singleSectionCourses := make(map[string]bool)
 	for courseCode, groups := range courseSectionGroups {
-		if len(groups) == 1 {
+		// Solo si tiene 1 sección Y NO es electivo
+		if len(groups) == 1 && !electives[courseCode] {
 			singleSectionCourses[courseCode] = true
 		}
 	}

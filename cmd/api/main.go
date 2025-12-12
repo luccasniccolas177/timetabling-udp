@@ -45,8 +45,14 @@ func main() {
 		log.Fatalf("Error cargando plan locations: %v", err)
 	}
 
-	// Construir grafo de conflictos CON cliques de semestre
-	conflictGraph := graph.BuildFromActivitiesWithCliques(activities, planLocations)
+	// Cargar cursos electivos (excluir de cliques de semestre)
+	electives, err := loader.LoadElectives("data/input/courses.json")
+	if err != nil {
+		log.Fatalf("Error cargando electivos: %v", err)
+	}
+
+	// Construir grafo de conflictos CON cliques de semestre (sin electivos)
+	conflictGraph := graph.BuildFromActivitiesWithCliques(activities, planLocations, electives)
 
 	// Estadísticas generales
 	fmt.Println("═══════════════════════════════════════════════════════════")
@@ -79,7 +85,7 @@ func main() {
 	fmt.Println("           EJECUTANDO SCHEDULER CON RESTRICCIONES")
 	fmt.Println("═══════════════════════════════════════════════════════════")
 
-	result := solver.IntegratedSchedulerWithConstraints(activities, rooms, roomConstraints)
+	result := solver.IntegratedSchedulerWithConstraints(activities, conflictGraph, rooms, roomConstraints)
 
 	fmt.Printf("\n🎨 Resultado del Scheduling:\n")
 	fmt.Printf("   Periodos utilizados:     %d\n", result.TotalPeriods)
@@ -169,14 +175,20 @@ func main() {
 		fmt.Println("           SIMULATED ANNEALING - OPTIMIZACIÓN")
 		fmt.Println("═══════════════════════════════════════════════════════════")
 
+		// Cargar prerrequisitos
+		prerequisites, err := loader.LoadPrerequisites("data/input/courses.json")
+		if err != nil {
+			log.Fatalf("Error cargando prerrequisitos: %v", err)
+		}
+
 		config := solver.DefaultSAConfig()
 		fmt.Printf("\n⚙️  Parámetros SA:\n")
 		fmt.Printf("   Temp. inicial:  %.0f\n", config.InitialTemp)
 		fmt.Printf("   Tasa enfriamiento: %.4f\n", config.CoolingRate)
 		fmt.Printf("   Iteraciones/T: %d\n", config.IterationsPerT)
 
-		fmt.Println("\n🔄 Ejecutando optimización...")
-		saResult := solver.SimulatedAnnealing(activities, rooms, config)
+		fmt.Println("\n🔄 Ejecutando optimización (bloques + salas)...")
+		saResult := solver.SimulatedAnnealing(activities, rooms, config, prerequisites, planLocations, electives, roomConstraints)
 
 		fmt.Printf("\n📊 Resultado SA:\n")
 		fmt.Printf("   Costo inicial:      %.0f\n", saResult.InitialCost)
@@ -187,6 +199,8 @@ func main() {
 		fmt.Printf("\n📈 Métricas de calidad:\n")
 		fmt.Printf("   Penalidad espejo:   %.0f\n", saResult.MirrorPenalty)
 		fmt.Printf("   AY en miércoles:    %.1f%%\n", saResult.WednesdayBonus)
+		fmt.Printf("   Prereq en mismo bloque: %.1f%%\n", saResult.PrereqBonus)
+		fmt.Printf("   Hermanos misma sala: %.1f%%\n", saResult.RoomConsistency)
 
 		// Exportar a JSON
 		outputFile := "data/output/schedule.json"

@@ -8,6 +8,7 @@ type Course struct {
 	Prerequisites []int         // IDs de cursos prerequisito
 	PlanLocation  map[Major]int // Carrera -> Semestre en la malla
 	Distribution  Distribution  // Carga académica (CAT, AY, LAB)
+	IsElective    bool          // Si es una asignatura electiva
 }
 
 // Distribution define la carga semanal de un curso.

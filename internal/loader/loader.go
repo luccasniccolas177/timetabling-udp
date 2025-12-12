@@ -82,6 +82,7 @@ type CourseFullJSON struct {
 	Name         string           `json:"Name"`
 	PlanLocation map[string]int   `json:"PlanLocation"` // Major -> Semester
 	Distribution DistributionJSON `json:"Distribution"`
+	IsElective   bool             `json:"IsElective"` // Si es electivo
 }
 
 // LoadCoursePlanLocations carga courses.json y retorna mapa CourseCode -> (Major -> Semester)
@@ -99,6 +100,68 @@ func LoadCoursePlanLocations(path string) (map[string]map[string]int, error) {
 	result := make(map[string]map[string]int)
 	for _, c := range courses {
 		result[c.Code] = c.PlanLocation
+	}
+	return result, nil
+}
+
+// LoadElectives carga courses.json y retorna set de códigos de cursos electivos
+func LoadElectives(path string) (map[string]bool, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	var courses []CourseFullJSON
+	if err := json.Unmarshal(data, &courses); err != nil {
+		return nil, err
+	}
+
+	result := make(map[string]bool)
+	for _, c := range courses {
+		if c.IsElective {
+			result[c.Code] = true
+		}
+	}
+	return result, nil
+}
+
+// LoadPrerequisites carga courses.json y retorna mapa CourseCode -> []PrerequisiteCodes
+func LoadPrerequisites(path string) (map[string][]string, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+
+	// Estructura con Prerequisites como IDs
+	type CourseWithPrereq struct {
+		ID            int    `json:"ID"`
+		Code          string `json:"Code"`
+		Prerequisites []int  `json:"Prerequisites"`
+	}
+
+	var courses []CourseWithPrereq
+	if err := json.Unmarshal(data, &courses); err != nil {
+		return nil, err
+	}
+
+	// Crear mapa ID -> Code
+	idToCode := make(map[int]string)
+	for _, c := range courses {
+		idToCode[c.ID] = c.Code
+	}
+
+	// Crear mapa Code -> []PrereqCodes
+	result := make(map[string][]string)
+	for _, c := range courses {
+		if len(c.Prerequisites) > 0 {
+			var prereqCodes []string
+			for _, prereqID := range c.Prerequisites {
+				if code, ok := idToCode[prereqID]; ok {
+					prereqCodes = append(prereqCodes, code)
+				}
+			}
+			result[c.Code] = prereqCodes
+		}
 	}
 	return result, nil
 }

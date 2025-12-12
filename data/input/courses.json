@@ -1700,5 +1700,689 @@
             "NumLAB": 0,
             "DurationLAB": 0
         }
+    },
+    {
+        "ID": 88,
+        "Name": "procesamiento de imagenes",
+        "Code": "CIT3501",
+        "Prerequisites": [
+            37
+        ],
+        "PlanLocation": {
+            "EIT": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 89,
+        "Name": "continuidad de negocios",
+        "Code": "CIT3320",
+        "Prerequisites": [
+            33
+        ],
+        "PlanLocation": {
+            "EIT": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 90,
+        "Name": "seguridad y pestenting de aplicaciones",
+        "Code": "CIT3415",
+        "Prerequisites": [
+            35
+        ],
+        "PlanLocation": {
+            "EIT": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 91,
+        "Name": "televisión digital",
+        "Code": "CIT3423",
+        "Prerequisites": [
+            35
+        ],
+        "PlanLocation": {
+            "EIT": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 92,
+        "Name": "internet de las cosas",
+        "Code": "CIT3427",
+        "Prerequisites": [
+            24
+        ],
+        "PlanLocation": {
+            "EIT": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 93,
+        "Name": "comunicaciones satelitales",
+        "Code": "CIT3432",
+        "Prerequisites": [
+            30
+        ],
+        "PlanLocation": {
+            "EIT": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 94,
+        "Name": "juegos serios",
+        "Code": "CIT3356",
+        "Prerequisites": [
+            33
+        ],
+        "PlanLocation": {
+            "EIT": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 95,
+        "Name": "algoritmos exactos y metaheurísticas",
+        "Code": "CIT3352",
+        "Prerequisites": [
+            18
+        ],
+        "PlanLocation": {
+            "EIT": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 96,
+        "Name": "sistemas de información empresariales",
+        "Code": "CIT3363",
+        "Prerequisites": [
+            33
+        ],
+        "PlanLocation": {
+            "EIT": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 97,
+        "Name": "ep. tecnología del asfalto",
+        "Code": "COC3410",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "EOC": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 98,
+        "Name": "ep eg; ingeniería geotécnica avanzada",
+        "Code": "COC3530",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "EOC": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 99,
+        "Name": "ep hm; modelación hidrológica",
+        "Code": "COC3428",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "EOC": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 100,
+        "Name": "ep eg; taller  de estructuras",
+        "Code": "COC3532",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "EOC": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 101,
+        "Name": "ep gc; sistemas integrados de gestión",
+        "Code": "COC3633",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "EOC": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 102,
+        "Name": "ep eg; sistemas de protección sísmica",
+        "Code": "COC3533",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "EOC": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 103,
+        "Name": "ep hm; diseño hidráulico de puentes",
+        "Code": "COC3439",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "EOC": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 104,
+        "Name": "energías renovables y sustentabilidad",
+        "Code": "CII3406",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 105,
+        "Name": "tópicos de log. y sis.  de dis. de carga",
+        "Code": "CII3422",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 106,
+        "Name": "redes de transporte",
+        "Code": "CII3425",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 107,
+        "Name": "juego de negocios: aplicación práctica",
+        "Code": "CII3500",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 108,
+        "Name": "gestión de procesos",
+        "Code": "CII3503",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 109,
+        "Name": "tópicos en finanzas",
+        "Code": "CII3600",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 110,
+        "Name": "strategic communication in english",
+        "Code": "CII3607",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 111,
+        "Name": "ética empresarial",
+        "Code": "CII3611",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 112,
+        "Name": "tópicos en macroeconomía",
+        "Code": "CII3612",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 113,
+        "Name": "microeconometría",
+        "Code": "CII3615",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 113,
+        "Name": "python for engineers",
+        "Code": "CII3622",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 114,
+        "Name": "economía circular",
+        "Code": "CII3623",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 115,
+        "Name": "evaluación social de proyectos",
+        "Code": "CII3624",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 116,
+        "Name": "data mining",
+        "Code": "CII3629",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 1,
+            "DurationAY": 1,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 117,
+        "Name": "introducción a la teoría de juegos",
+        "Code": "CII3705",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 118,
+        "Name": "fundamentos de la inteligencia artificia",
+        "Code": "CII3706",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 119,
+        "Name": "gestión en la industria minera",
+        "Code": "CII3709",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 10
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 120,
+        "Name": "fintech",
+        "Code": "CII3710",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 121,
+        "Name": "gestión cadena de abast. & operaciones",
+        "Code": "CII3724",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 1,
+            "DurationCAT": 2,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 122,
+        "Name": "nexo agua-energía",
+        "Code": "CII3730",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
+    },
+    {
+        "ID": 123,
+        "Name": "empresas impulsadas por datos",
+        "Code": "CII3731",
+        "Prerequisites": [],
+        "PlanLocation": {
+            "CII": 9
+        },
+        "Distribution": {
+            "NumCAT": 2,
+            "DurationCAT": 1,
+            "NumAY": 0,
+            "DurationAY": 0,
+            "NumLAB": 0,
+            "DurationLAB": 0
+        },
+        "IsElective": true
     }
 ]

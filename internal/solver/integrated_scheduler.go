@@ -24,14 +24,14 @@ type TimetableResult struct {
 }
 
 // IntegratedSchedulerWithConstraints implementa el Algoritmo Integrado con restricciones de salas.
-func IntegratedSchedulerWithConstraints(activities []domain.Activity, rooms []domain.Room, constraints loader.RoomConstraints) TimetableResult {
+// Recibe el grafo ya construido (con cliques) para no reconstruirlo.
+func IntegratedSchedulerWithConstraints(activities []domain.Activity, G *graph.ConflictGraph, rooms []domain.Room, constraints loader.RoomConstraints) TimetableResult {
 	// Separar salas por tipo
 	classrooms := GetRoomsByType(rooms, domain.RoomClassroom)
 	labs := GetRoomsByType(rooms, domain.RoomLab)
 	allRooms := append(classrooms, labs...)
 
-	// Crear grafo de conflictos mutable
-	G := graph.BuildFromActivities(activities)
+	// El grafo G ya viene construido desde main (con cliques)
 
 	var periods []Period
 	periodNum := 0
@@ -81,7 +81,8 @@ func IntegratedSchedulerWithConstraints(activities []domain.Activity, rooms []do
 
 // IntegratedScheduler versión sin restricciones (legacy).
 func IntegratedScheduler(activities []domain.Activity, rooms []domain.Room) TimetableResult {
-	return IntegratedSchedulerWithConstraints(activities, rooms, nil)
+	G := graph.BuildFromActivities(activities)
+	return IntegratedSchedulerWithConstraints(activities, G, rooms, nil)
 }
 
 // assignRoomsToPeriodWithConstraints asigna salas respetando restricciones.
