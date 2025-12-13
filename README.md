@@ -1,13 +1,16 @@
-Proyecto final para Grafos y algoritmos: Optimización y asignación de horarios universitarios UDP - FIC
+## Proyecto final para Grafos y algoritmos: Optimización y asignación de horarios universitarios UDP - FIC
 
-Algoritmos utilizados:
+### Algoritmos utilizados:
 
 -Greedy Graph Coloring.
+
 -Best-Fit Room Assignment.
+
 -Simulated Annealing.
+
 -Detección de Cliques.
 
-Como ejecutar el proyecto:
+### Como ejecutar el proyecto:
 
 -Es necesario tener instalado Golang.
 
